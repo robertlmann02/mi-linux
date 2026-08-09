@@ -1,11 +1,14 @@
 #!/bin/sh
 set -e
-lb config \
-  --distribution forky \
-  --archive-areas "main contrib non-free non-free-firmware" \
-  --binary-images iso-hybrid \
-  --bootappend-live "boot=live components quiet splash" \
-  --debian-installer none \
-  --iso-application "MI Linux Forky Founder" \
-  --iso-publisher "Mann Industries" \
-  --iso-volume "MI-Linux-Forky-Founder"
+if [ "${1:-}" != "noauto" ]; then
+  lb config noauto \
+    --distribution forky \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --binary-images iso-hybrid \
+    --bootappend-live "boot=live components quiet splash" \
+    --debian-installer none \
+    --iso-application "MI Linux Forky Founder" \
+    --iso-publisher "Mann Industries" \
+    --iso-volume "MI-Linux-Forky-Founder" \
+    "$@"
+fi
