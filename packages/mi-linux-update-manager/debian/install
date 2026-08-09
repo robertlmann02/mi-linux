@@ -1,1 +1,1 @@
-../../../src/mi-linux-update-manager/mi-linux-update-manager.py usr/bin/mi-linux-update-manager
+../../src/mi-linux-update-manager/mi-linux-update-manager.py usr/bin/mi-linux-update-manager
