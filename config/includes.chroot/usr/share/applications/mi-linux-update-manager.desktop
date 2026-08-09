@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MI Linux Update Manager
+Comment=Manage MI Linux system updates
+Exec=mi-linux-update-manager
+Icon=system-software-update
+Categories=System;Settings;

@@ -3,6 +3,8 @@ Section: misc
 Priority: optional
 Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
 Standards-Version: 4.7.0
+Build-Depends: debhelper-compat (= 13)
+Rules-Requires-Root: no
 
 Package: mi-linux-default-settings
 Architecture: all

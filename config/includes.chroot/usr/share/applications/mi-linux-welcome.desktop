@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Welcome to MI Linux
+Comment=Get started with MI Linux
+Exec=mi-linux-welcome
+Icon=help-about
+Categories=System;
