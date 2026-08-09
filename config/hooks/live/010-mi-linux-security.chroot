@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+ufw default deny incoming || true
+ufw default allow outgoing || true
+ufw allow OpenSSH || ufw allow 22/tcp || true
+ufw --force enable || true
+systemctl enable unattended-upgrades || true
+systemctl enable clamav-freshclam || true
+systemctl enable clamav-daemon || true
+systemctl enable mi-linux-clamav-quick-scan.timer || true
+systemctl enable mi-linux-clamav-full-scan.timer || true
+systemctl enable mi-linux-rootkit-scan.timer || true

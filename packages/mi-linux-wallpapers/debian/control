@@ -1,0 +1,11 @@
+Source: mi-linux-wallpapers
+Section: misc
+Priority: optional
+Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Standards-Version: 4.7.0
+
+Package: mi-linux-wallpapers
+Architecture: all
+Depends: ${misc:Depends}
+Description: mi linux wallpapers for MI Linux
+ Founder Preview package skeleton for Mann Industries Linux.

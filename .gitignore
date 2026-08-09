@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.build/
+binary/
+cache/
+chroot/
+*.log
+*.iso
+*.img
+*.deb
+*.changes
+*.buildinfo

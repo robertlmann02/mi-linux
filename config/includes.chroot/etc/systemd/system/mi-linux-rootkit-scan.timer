@@ -1,0 +1,10 @@
+[Unit]
+Description=Run MI Linux rootkit security scan
+
+[Timer]
+OnCalendar=Sun *-*-* 05:30:00
+Persistent=true
+RandomizedDelaySec=45m
+
+[Install]
+WantedBy=timers.target

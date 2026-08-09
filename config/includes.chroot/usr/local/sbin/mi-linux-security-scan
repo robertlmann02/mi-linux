@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+MODE="${1:-quick}"
+LOGDIR=/var/log/mi-linux-security
+QUAR=/var/quarantine/mi-linux-security
+mkdir -p "$LOGDIR" "$QUAR"
+TS=$(date +%Y%m%d-%H%M%S)
+LOG="$LOGDIR/${MODE}-${TS}.log"
+CLAM="nice -n 15 ionice -c3 clamscan --infected --recursive=yes --cross-fs=no --move=$QUAR"
+case "$MODE" in
+  quick)
+    $CLAM /home/*/Downloads /home/*/Desktop /home/*/Documents /media /run/media >"$LOG" 2>&1 || [ "$?" = 1 ]
+    ;;
+  full)
+    $CLAM --exclude-dir='^/home/[^/]+/.cache' --exclude-dir='^/home/[^/]+/.steam' --exclude-dir='^/home/[^/]+/.local/share/Steam' /home /media /run/media /mnt >"$LOG" 2>&1 || [ "$?" = 1 ]
+    ;;
+  rootkit)
+    { rkhunter --check --sk --nocolors || true; chkrootkit || true; } >"$LOG" 2>&1
+    ;;
+  *)
+    echo "Usage: mi-linux-security-scan {quick|full|rootkit}" >&2
+    exit 2
+    ;;
+esac
+echo "$LOG"

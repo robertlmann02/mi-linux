@@ -1,0 +1,11 @@
+Source: mi-linux-branding
+Section: misc
+Priority: optional
+Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Standards-Version: 4.7.0
+
+Package: mi-linux-branding
+Architecture: all
+Depends: ${misc:Depends}
+Description: mi linux branding for MI Linux
+ Founder Preview package skeleton for Mann Industries Linux.

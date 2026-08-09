@@ -1,0 +1,11 @@
+Source: mi-linux-gnome-theme
+Section: misc
+Priority: optional
+Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Standards-Version: 4.7.0
+
+Package: mi-linux-gnome-theme
+Architecture: all
+Depends: ${misc:Depends}
+Description: mi linux gnome theme for MI Linux
+ Founder Preview package skeleton for Mann Industries Linux.

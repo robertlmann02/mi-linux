@@ -1,0 +1,6 @@
+[Unit]
+Description=MI Linux quick security scan
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/mi-linux-security-scan quick

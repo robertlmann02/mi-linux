@@ -1,0 +1,1 @@
+GPLv3 applies to MI Linux build scripts. Full license text should be added from GNU GPL-3.0 before public release.

@@ -1,0 +1,11 @@
+Source: mi-linux-archive-keyring
+Section: misc
+Priority: optional
+Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Standards-Version: 4.7.0
+
+Package: mi-linux-archive-keyring
+Architecture: all
+Depends: ${misc:Depends}
+Description: mi linux archive keyring for MI Linux
+ Founder Preview package skeleton for Mann Industries Linux.

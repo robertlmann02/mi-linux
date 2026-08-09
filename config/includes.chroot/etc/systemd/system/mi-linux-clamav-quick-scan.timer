@@ -1,0 +1,10 @@
+[Unit]
+Description=Run MI Linux quick security scan
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+Persistent=true
+RandomizedDelaySec=45m
+
+[Install]
+WantedBy=timers.target

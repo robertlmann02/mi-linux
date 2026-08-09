@@ -1,0 +1,66 @@
+# Core desktop
+linux-image-amd64
+gnome-core
+gdm3
+gnome-terminal
+nautilus
+gnome-control-center
+gnome-software
+gnome-software-plugin-flatpak
+flatpak
+firefox-esr
+geary
+rhythmbox
+vlc
+loupe
+file-roller
+zip
+unzip
+p7zip-full
+unrar-free
+cups
+printer-driver-all
+system-config-printer
+sane-airscan
+ipp-usb
+
+# Installer and recovery
+calamares
+timeshift
+
+# Security baseline
+ufw
+clamav
+clamav-daemon
+rkhunter
+chkrootkit
+unattended-upgrades
+apt-listchanges
+
+# Hardware/gaming base
+firmware-linux
+firmware-linux-free
+firmware-linux-nonfree
+firmware-misc-nonfree
+mesa-vulkan-drivers
+vulkan-tools
+gamemode
+mangohud
+steam-devices
+
+# GNOME extensions, names may need adjustment against Forky package availability
+gnome-shell-extension-dashtopanel
+gnome-shell-extension-appindicator
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-arc-menu
+gnome-shell-extension-user-theme
+
+# MI Linux packages built locally
+mi-linux-archive-keyring
+mi-linux-branding
+mi-linux-wallpapers
+mi-linux-default-settings
+mi-linux-gnome-theme
+mi-linux-welcome
+mi-linux-update-manager
+mi-linux-gaming-meta

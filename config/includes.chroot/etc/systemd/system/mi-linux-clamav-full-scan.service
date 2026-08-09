@@ -1,0 +1,6 @@
+[Unit]
+Description=MI Linux full security scan
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/mi-linux-security-scan full

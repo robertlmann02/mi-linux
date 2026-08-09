@@ -1,0 +1,10 @@
+[Unit]
+Description=Run MI Linux full security scan
+
+[Timer]
+OnCalendar=Sun *-*-* 04:30:00
+Persistent=true
+RandomizedDelaySec=45m
+
+[Install]
+WantedBy=timers.target
