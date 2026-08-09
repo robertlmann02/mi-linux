@@ -48,8 +48,8 @@ gamemode
 mangohud
 steam-devices
 
-# GNOME extensions, names may need adjustment against Forky package availability
-gnome-shell-extension-dashtopanel
+# GNOME extensions
+gnome-shell-extension-dash-to-panel
 gnome-shell-extension-appindicator
 gnome-shell-extension-blur-my-shell
 gnome-shell-extension-arc-menu
