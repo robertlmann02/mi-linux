@@ -36,8 +36,8 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 - **Beginner-friendly installer:** the live ISO boots into a desktop and uses Calamares for graphical installation.
 - **Gaming-ready foundation:** i386 multiarch, Vulkan support, GameMode, MangoHud, controller support, and Proton-management support are part of the plan while Steam stays optional.
 - **Waydroid-ready direction:** MI Linux targets a latest stable Secure Boot-supported kernel with Waydroid, Android binder IPC, and binderfs support.
-- **Secure Boot supported:** Secure Boot support is a first-release goal, not an afterthought.
-- **No Snap installed by default:** the system uses Debian packages plus Flatpak/Flathub and GNOME Software for app discovery.
+- **Secure Boot supported:** MI Linux is built to support Secure Boot on compatible UEFI systems.
+- **Debian packages plus Flatpak:** app discovery uses Debian packages, Flatpak/Flathub, and GNOME Software by default.
 - **Privacy-first defaults:** no telemetry, no analytics, no automatic usage reporting, no required online account, and user-initiated bug reporting.
 - **Mann Industries security baseline:** UFW firewall defaults, unattended security updates, Timeshift, ClamAV, rkhunter, chkrootkit, and low-impact scheduled background scans are included in the design.
 - **Real release artifacts:** ISO downloads will include SHA256, SHA512, and GPG signature verification.
