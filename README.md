@@ -1,5 +1,9 @@
 # Mann Industries Linux (MI Linux)
 
+<p align="center">
+  <img src=".github/assets/mannindustries-logo.png" alt="MI Linux logo" width="420">
+</p>
+
 Mann Industries Linux, short name **MI Linux**, is a Debian Testing/Forky-based desktop operating system project. The first public release is **MI Linux Forky Founder — Founder Preview**.
 
 This is intended to be a real installable Linux OS, not just a theme pack:
