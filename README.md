@@ -87,7 +87,6 @@ Until the website is live, this GitHub repository is the public source for the M
 
 - GitHub Release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`
 - ISO download: `https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download`
-- MannCloud folder: `https://manncloud.mannindustries.org/s/e4QJdYx6R9HqRik`
 - SHA256: `https://manncloud.mannindustries.org/s/zA73PDfyYr8jxkj/download`
 - SHA512: `https://manncloud.mannindustries.org/s/JBrpKra4KnyfsiZ/download`
 
