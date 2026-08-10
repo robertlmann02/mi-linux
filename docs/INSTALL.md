@@ -31,11 +31,20 @@ docs/CREATE-BOOTABLE-USB.md
 
 Quick GitHub flow:
 
-1. Open `https://github.com/robertlmann02/mi-linux`.
-2. Click **Releases**.
-3. Open the Founder Preview release and use the MannCloud ISO link in the release notes.
-4. Download the `.sha256` and `.sha512` files from the release assets or MannCloud links, then verify the ISO.
-5. Write it with the right tool for your computer: Rufus or balenaEtcher on PC/Windows, balenaEtcher on Mac, GNOME Disks or `scripts/write-usb.sh` on Linux, or Ventoy for advanced multi-ISO USB drives.
+1. Open the Founder Preview release:
+
+   ```text
+   https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview
+   ```
+
+2. Use the MannCloud ISO link in the release notes:
+
+   ```text
+   https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download
+   ```
+
+3. Download the `.sha256` and `.sha512` files from the release assets or MannCloud links, then verify the ISO.
+4. Write it with the right tool for your computer: Rufus or balenaEtcher on PC/Windows, balenaEtcher on Mac, GNOME Disks or `scripts/write-usb.sh` on Linux, or Ventoy for advanced multi-ISO USB drives.
 
 ## Install
 
