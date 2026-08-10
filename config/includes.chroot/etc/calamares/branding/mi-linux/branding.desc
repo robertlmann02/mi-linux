@@ -1,0 +1,21 @@
+componentName: mi-linux
+welcomeStyleCalamares: false
+strings:
+    productName:         MI Linux
+    shortProductName:    MI Linux
+    version:             Founder Preview
+    shortVersion:        Founder Preview
+    versionedName:       MI Linux Founder Preview
+    shortVersionedName:  MI Linux
+    bootloaderEntryName: MI Linux
+    productUrl:          https://mannindustries.org/mi-linux
+    supportUrl:          https://github.com/robertlmann02/mi-linux/issues
+    knownIssuesUrl:      https://github.com/robertlmann02/mi-linux/issues
+images:
+    productLogo:         /usr/share/mi-linux/branding/mi-linux-boot-splash.png
+    productIcon:         /usr/share/mi-linux/branding/mi-linux-boot-splash.png
+    productWelcome:      /usr/share/mi-linux/branding/mi-linux-boot-splash.png
+style:
+    sidebarBackground:   '#031326'
+    sidebarText:         '#ffffff'
+    sidebarTextSelect:   '#dff7ff'

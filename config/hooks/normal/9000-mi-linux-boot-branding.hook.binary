@@ -1,0 +1,65 @@
+#!/bin/sh
+set -e
+
+# Brand the USB/ISO boot menu so users see MI Linux, not generic Debian/Forky labels.
+if [ -d binary/boot/grub ]; then
+    if [ -f assets/mi-linux-boot-splash.png ]; then
+        mkdir -p binary/boot/grub
+        cp assets/mi-linux-boot-splash.png binary/boot/grub/splash.png
+    fi
+    if [ -f binary/boot/grub/grub.cfg ]; then
+        sed -i \
+          -e 's/menuentry "Live system (amd64)"/menuentry "Try or Install MI Linux"/' \
+          -e 's/menuentry "Live system (amd64 fail-safe mode)"/menuentry "MI Linux safe graphics mode"/' \
+          -e "s|submenu 'Utilities\.\.\.'|submenu 'MI Linux utilities...'|" \
+          -e 's/Verify integrity of the boot medium/Verify MI Linux install media/' \
+          -e 's/Debian GNU\/Linux/MI Linux/g' \
+          -e 's/Debian/MI Linux/g' \
+          -e 's/Forky Founder/Founder Preview/g' \
+          binary/boot/grub/grub.cfg
+        if ! grep -q 'MI Linux Founder Preview boot menu' binary/boot/grub/grub.cfg; then
+            tmp=$(mktemp)
+            {
+                echo '# MI Linux Founder Preview boot menu'
+                echo 'insmod all_video'
+                echo 'insmod gfxterm'
+                echo 'loadfont /boot/grub/unicode.pf2'
+                echo 'set gfxmode=auto'
+                echo 'terminal_output gfxterm'
+                echo 'background_image /boot/grub/splash.png'
+                echo 'set menu_color_normal=white/black'
+                echo 'set menu_color_highlight=black/light-cyan'
+                echo ''
+                cat binary/boot/grub/grub.cfg
+            } > "$tmp"
+            mv "$tmp" binary/boot/grub/grub.cfg
+        fi
+    fi
+fi
+
+if [ -d binary/isolinux ]; then
+    if [ -f binary/isolinux/menu.cfg ]; then
+        sed -i \
+          -e 's/menu title Boot menu/menu title MI Linux Founder Preview/' \
+          -e 's/menu label \^Utilities/menu label ^MI Linux utilities/' \
+          -e 's/menu title Utilities/menu title MI Linux utilities/' \
+          -e 's/Debian GNU\/Linux/MI Linux/g' \
+          -e 's/Debian/MI Linux/g' \
+          -e 's/Forky Founder/Founder Preview/g' \
+          binary/isolinux/menu.cfg
+    fi
+    if [ -f binary/isolinux/live.cfg ]; then
+        sed -i \
+          -e 's/menu label \^Live system.*/menu label ^Try or Install MI Linux/' \
+          -e 's/menu label Live system (amd64 fail-safe mode).*/menu label MI Linux safe graphics mode/' \
+          -e 's/Debian GNU\/Linux/MI Linux/g' \
+          -e 's/Debian/MI Linux/g' \
+          -e 's/Forky Founder/Founder Preview/g' \
+          binary/isolinux/live.cfg
+    fi
+fi
+
+find binary -maxdepth 3 -type f \( -name '*.cfg' -o -name '*.txt' \) -exec sed -i \
+  -e 's/Debian GNU\/Linux/MI Linux/g' \
+  -e 's/Debian/MI Linux/g' \
+  -e 's/Forky Founder/Founder Preview/g' {} +
