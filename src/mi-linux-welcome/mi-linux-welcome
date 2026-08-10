@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/python3 /usr/lib/mi-linux/mi-linux-welcome.py "$@"

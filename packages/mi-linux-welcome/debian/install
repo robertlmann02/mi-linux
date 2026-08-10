@@ -1,1 +1,2 @@
-../../src/mi-linux-welcome/mi-linux-welcome.py usr/bin/mi-linux-welcome
+../../src/mi-linux-welcome/mi-linux-welcome usr/bin/
+../../src/mi-linux-welcome/mi-linux-welcome.py usr/lib/mi-linux/
