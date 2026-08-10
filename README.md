@@ -26,14 +26,6 @@ This is intended to be a real installable Linux OS, not just a theme pack:
 - Gaming-ready base support without preinstalling Steam
 - Privacy-first: no telemetry, analytics, or automatic crash reporting
 
-## Sponsor this project
-
-If MI Linux helps you, you can support the project here:
-
-- GitHub Sponsors: https://github.com/sponsors/robertlmann02
-- Buy Me a Coffee: https://www.buymeacoffee.com/robertlmann02
-- PayPal: https://paypal.me/robertlmann02
-
 ## Repository layout
 
 - `auto/` — live-build helper scripts
