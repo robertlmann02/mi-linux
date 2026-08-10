@@ -50,7 +50,9 @@ Only continue if the checksums and signature match the published release informa
 
 ## Step 3: Write the USB with a graphical tool
 
-### Windows: Rufus
+Choose the section for the computer you are using to create the USB. You can create the USB on a Windows PC, a Mac, or a Linux computer.
+
+### PC users: Windows with Rufus
 
 1. Download Rufus from `https://rufus.ie/`.
 2. Insert the USB drive.
@@ -61,7 +63,9 @@ Only continue if the checksums and signature match the published release informa
 7. If Rufus asks about ISO mode or DD mode, use the recommended/default option first.
 8. Wait for Rufus to finish, then safely eject the USB.
 
-### Windows, macOS, or Linux: balenaEtcher
+### PC users: Windows with balenaEtcher
+
+Use this if you prefer a simpler Windows tool than Rufus.
 
 1. Download balenaEtcher from `https://etcher.balena.io/`.
 2. Insert the USB drive.
@@ -71,7 +75,52 @@ Only continue if the checksums and signature match the published release informa
 6. Click **Flash**.
 7. Wait for validation to finish, then safely eject the USB.
 
-### Linux: GNOME Disks
+### Mac users: macOS with balenaEtcher
+
+Use this if you are creating the MI Linux USB from a Mac. MI Linux is currently built for x86_64 PCs. A Mac can be used to create the USB, but Apple Silicon Macs are not a supported MI Linux install target for this first release.
+
+1. Download balenaEtcher from `https://etcher.balena.io/`.
+2. Insert the USB drive.
+3. Open Etcher.
+4. Select the MI Linux `.iso` file.
+5. Select the USB drive.
+6. Click **Flash**.
+7. Enter your Mac password if macOS asks for permission to write the USB.
+8. Wait for validation to finish.
+9. Safely eject the USB from Finder or Disk Utility.
+10. Move the USB to the PC where you want to boot or install MI Linux.
+
+### Mac users: macOS command-line option
+
+Most Mac users should use balenaEtcher. Advanced users can write the USB from Terminal. This erases the target disk.
+
+1. Insert the USB drive.
+2. Find the disk number:
+
+   ```bash
+   diskutil list
+   ```
+
+3. Unmount the USB disk, replacing `N` with the correct disk number:
+
+   ```bash
+   diskutil unmountDisk /dev/diskN
+   ```
+
+4. Write the ISO, replacing `N` and the ISO path. Use `rdiskN` for faster raw writing:
+
+   ```bash
+   sudo dd if=~/Downloads/mi-linux-forky-founder-amd64.iso of=/dev/rdiskN bs=4m status=progress
+   sync
+   ```
+
+5. Eject the USB:
+
+   ```bash
+   diskutil eject /dev/diskN
+   ```
+
+### Linux users: GNOME Disks
 
 1. Insert the USB drive.
 2. Open **Disks**.
@@ -157,10 +206,23 @@ That means the bytes written to the USB match the ISO.
 
 ## Step 5: Boot from the USB
 
+### Boot on a Windows PC or standard PC
+
 1. Leave the USB inserted.
 2. Reboot the computer.
 3. Open the boot menu. Common keys are `F12`, `F11`, `F10`, `Esc`, or `Del`, depending on the computer.
-4. Choose the USB drive.
+4. Choose the USB drive. It may appear as the USB brand name, `UEFI: USB`, or `USB HDD`.
+5. Boot into the MI Linux live desktop.
+6. Try the system first or click **Install MI Linux** to start Calamares.
+
+### Boot on an Intel Mac
+
+MI Linux is currently an x86_64 release. Intel Macs may boot it, but Apple Silicon Macs are not supported as an install target for this first release.
+
+1. Leave the USB inserted.
+2. Shut down or restart the Mac.
+3. Hold the **Option** key while the Mac starts.
+4. Choose the USB boot option, often shown as **EFI Boot**.
 5. Boot into the MI Linux live desktop.
 6. Try the system first or click **Install MI Linux** to start Calamares.
 

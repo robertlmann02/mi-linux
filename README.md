@@ -94,10 +94,13 @@ When MI Linux release assets are published, users can create a bootable USB dire
 3. Download the latest MI Linux `.iso` file.
 4. Download the matching `.sha256`, `.sha512`, and GPG signature files when they are provided.
 5. Verify the ISO checksums/signature.
-6. Write the ISO to a USB drive with Rufus, balenaEtcher, GNOME Disks, Ventoy, or the included Linux helper script.
+6. Write the ISO to a USB drive:
+   - PC/Windows users: use Rufus or balenaEtcher.
+   - Mac users: use balenaEtcher, or the macOS Terminal `diskutil`/`dd` method in the full guide.
+   - Linux users: use GNOME Disks, Ventoy, or the included `scripts/write-usb.sh` helper.
 7. Boot the computer from the USB and choose **Install MI Linux** from the live desktop.
 
-Full step-by-step instructions are in:
+Full step-by-step instructions for PC, Mac, and Linux users are in:
 
 ```text
 docs/CREATE-BOOTABLE-USB.md

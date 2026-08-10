@@ -18,8 +18,8 @@ Recommended:
 
 Recommended USB tools:
 
-- Balena Etcher: easiest for beginners
-- Rufus: good for Windows users
+- Rufus: good for PC/Windows users
+- Balena Etcher: easiest for beginners and recommended for Mac users
 - GNOME Disks: good for Linux users
 - Ventoy: good for advanced users/testing multiple ISOs
 
@@ -35,7 +35,7 @@ Quick GitHub flow:
 2. Click **Releases**.
 3. Download the latest `.iso` plus checksum/signature files when published.
 4. Verify the ISO.
-5. Write it with Rufus, balenaEtcher, GNOME Disks, Ventoy, or `scripts/write-usb.sh` from this repository.
+5. Write it with the right tool for your computer: Rufus or balenaEtcher on PC/Windows, balenaEtcher on Mac, GNOME Disks or `scripts/write-usb.sh` on Linux, or Ventoy for advanced multi-ISO USB drives.
 
 ## Install
 
