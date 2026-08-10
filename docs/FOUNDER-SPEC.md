@@ -135,8 +135,8 @@ Drivers/Hardware:
 - Storage: 128 GB minimum, 500 GB recommended
 - Firmware: include Debian non-free firmware by default
 - NVIDIA: detection/installer tool, not preinstalled globally
-- Kernel: latest stable kernel suitable for the release with Waydroid/binder/binderfs support and Secure Boot signing/verification path
-- Boot: UEFI + Legacy BIOS where feasible
+- Kernel: latest stable kernel suitable for the release with Waydroid/binder/binderfs support and Secure Boot support
+- Boot: UEFI + Legacy BIOS support
 - Bootloader: GRUB
 
 ## Security
@@ -144,7 +144,7 @@ Drivers/Hardware:
 - UFW enabled by default
 - default deny incoming, default allow outgoing
 - OpenSSH allowed before enabling UFW
-- MannPro-style command-line/background protection tools by default:
+- MI Linux command-line/background protection tools by default:
   - ClamAV
   - clamav-daemon/freshclam
   - rkhunter

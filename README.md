@@ -16,12 +16,12 @@ This is intended to be a real installable Linux OS, not just a theme pack:
 
 ## Release goals
 
-- Polished GNOME desktop with MI/MannPro-style bottom taskbar
+- Polished GNOME desktop with MI Linux bottom taskbar
 - Debian Testing/Forky base with a curated 3-month delayed update model
 - Wayland default, X11 available
-- Latest stable Secure Boot-signable kernel that supports Waydroid, Android binder IPC, and binderfs
-- UEFI + Legacy BIOS support where feasible
-- Secure Boot support in the first release if possible
+- Latest stable Secure Boot-supported kernel that supports Waydroid, Android binder IPC, and binderfs
+- UEFI + Legacy BIOS support
+- Secure Boot supported in the first release
 - Flatpak/Flathub enabled, no Snap installed by default
 - Gaming-ready base support without preinstalling Steam
 - Privacy-first: no telemetry, analytics, or automatic crash reporting
