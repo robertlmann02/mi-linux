@@ -33,14 +33,14 @@ Quick GitHub flow:
 
 1. Open `https://github.com/robertlmann02/mi-linux`.
 2. Click **Releases**.
-3. Download the latest `.iso` plus checksum/signature files when published.
-4. Verify the ISO.
+3. Open the Founder Preview release and use the MannCloud ISO link in the release notes.
+4. Download the `.sha256` and `.sha512` files from the release assets or MannCloud links, then verify the ISO.
 5. Write it with the right tool for your computer: Rufus or balenaEtcher on PC/Windows, balenaEtcher on Mac, GNOME Disks or `scripts/write-usb.sh` on Linux, or Ventoy for advanced multi-ISO USB drives.
 
 ## Install
 
-1. Download the ISO from `mannindustries.org/mi-linux` or GitHub Releases.
-2. Verify SHA256, SHA512, and GPG signature.
+1. Download the ISO from the GitHub Release notes / MannCloud ISO link.
+2. Verify SHA256 and SHA512; verify the GPG signature when it is provided.
 3. Write the ISO to USB.
 4. Boot from USB using UEFI or Legacy BIOS.
 5. Try the live desktop.

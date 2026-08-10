@@ -83,16 +83,22 @@ The website is not up yet. It will be published soon and will include:
 - support and bug-report links;
 - links back to this public GitHub build source.
 
-Until the website is live, this GitHub repository is the public source for the MI Linux build recipe, documentation, and early Founder Preview development.
+Until the website is live, this GitHub repository is the public source for the MI Linux build recipe, documentation, and Founder Preview release notes. The first Founder Preview release is published on GitHub, with the full ISO hosted on MannCloud:
+
+- GitHub Release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`
+- ISO download: `https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download`
+- MannCloud folder: `https://manncloud.mannindustries.org/s/e4QJdYx6R9HqRik`
+- SHA256: `https://manncloud.mannindustries.org/s/zA73PDfyYr8jxkj/download`
+- SHA512: `https://manncloud.mannindustries.org/s/JBrpKra4KnyfsiZ/download`
 
 ## Create a bootable USB from GitHub
 
-When MI Linux release assets are published, users can create a bootable USB directly from GitHub:
+Users can create a bootable USB from the GitHub release page:
 
-1. Open `https://github.com/robertlmann02/mi-linux`.
-2. Click **Releases**.
-3. Download the latest MI Linux `.iso` file.
-4. Download the matching `.sha256`, `.sha512`, and GPG signature files when they are provided.
+1. Open the Founder Preview release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`.
+2. Download the MI Linux ISO using the MannCloud ISO link in the release notes.
+3. Download the matching `.sha256` and `.sha512` files from the release assets or MannCloud links.
+4. Download the GPG signature when it is provided.
 5. Verify the ISO checksums/signature.
 6. Write the ISO to a USB drive:
    - PC/Windows users: use Rufus or balenaEtcher.
