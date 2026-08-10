@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+if command -v dconf >/dev/null 2>&1; then
+    dconf update || true
+fi
+#DEBHELPER#
+exit 0
