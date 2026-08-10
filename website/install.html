@@ -1,1 +1,16 @@
-<!doctype html><title>Install MI Linux</title><h1>Beginner Install Guide</h1><p>Use Balena Etcher, Rufus, GNOME Disks, or Ventoy to write the ISO.</p>
+<!doctype html>
+<title>Install MI Linux</title>
+<h1>Beginner Install Guide</h1>
+<p>The MI Linux website is not live yet. Until downloads are published here, use the GitHub repository and GitHub Releases.</p>
+<h2>Create a bootable USB from GitHub</h2>
+<ol>
+  <li>Open <a href="https://github.com/robertlmann02/mi-linux">github.com/robertlmann02/mi-linux</a>.</li>
+  <li>Click <strong>Releases</strong>.</li>
+  <li>Download the latest MI Linux ISO.</li>
+  <li>Download the matching SHA256, SHA512, and GPG signature files when provided.</li>
+  <li>Verify the ISO before writing it.</li>
+  <li>Use Rufus, balenaEtcher, GNOME Disks, Ventoy, or the repository helper script <code>scripts/write-usb.sh</code> to write the ISO to USB.</li>
+  <li>Boot from the USB and choose <strong>Install MI Linux</strong> from the live desktop.</li>
+</ol>
+<p>Full instructions are in <code>docs/CREATE-BOOTABLE-USB.md</code> in the GitHub repository.</p>
+<p>Writing an ISO erases the whole USB drive. Back up important files first.</p>

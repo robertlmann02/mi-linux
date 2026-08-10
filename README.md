@@ -85,6 +85,35 @@ The website is not up yet. It will be published soon and will include:
 
 Until the website is live, this GitHub repository is the public source for the MI Linux build recipe, documentation, and early Founder Preview development.
 
+## Create a bootable USB from GitHub
+
+When MI Linux release assets are published, users can create a bootable USB directly from GitHub:
+
+1. Open `https://github.com/robertlmann02/mi-linux`.
+2. Click **Releases**.
+3. Download the latest MI Linux `.iso` file.
+4. Download the matching `.sha256`, `.sha512`, and GPG signature files when they are provided.
+5. Verify the ISO checksums/signature.
+6. Write the ISO to a USB drive with Rufus, balenaEtcher, GNOME Disks, Ventoy, or the included Linux helper script.
+7. Boot the computer from the USB and choose **Install MI Linux** from the live desktop.
+
+Full step-by-step instructions are in:
+
+```text
+docs/CREATE-BOOTABLE-USB.md
+```
+
+Linux users can also clone this repository and use the included checked writer:
+
+```bash
+git clone https://github.com/robertlmann02/mi-linux.git
+cd mi-linux
+lsblk -o NAME,PATH,SIZE,MODEL,VENDOR,TRAN,RM,RO,TYPE,MOUNTPOINTS,FSTYPE,LABEL
+OVERWRITE=YES sudo -E ./scripts/write-usb.sh /path/to/mi-linux-forky-founder-amd64.iso /dev/sdX
+```
+
+Use the whole USB disk, such as `/dev/sdb`, not a partition such as `/dev/sdb1`. The helper refuses non-removable targets and verifies that the USB matches the ISO after writing.
+
 ## Plans going forward
 
 The roadmap for MI Linux includes:
@@ -107,6 +136,7 @@ The roadmap for MI Linux includes:
 - `src/mi-linux-welcome/` — GTK/GNOME Welcome app
 - `apt-repo/` — apt repository policy and publishing notes
 - `docs/` — user and release documentation
+- `docs/CREATE-BOOTABLE-USB.md` — GitHub download and bootable USB instructions
 - `website/` — static website content for `mannindustries.org/mi-linux`
 
 ## Licensing

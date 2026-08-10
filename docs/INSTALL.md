@@ -23,6 +23,20 @@ Recommended USB tools:
 - GNOME Disks: good for Linux users
 - Ventoy: good for advanced users/testing multiple ISOs
 
+For complete GitHub download, checksum verification, and bootable USB steps, see:
+
+```text
+docs/CREATE-BOOTABLE-USB.md
+```
+
+Quick GitHub flow:
+
+1. Open `https://github.com/robertlmann02/mi-linux`.
+2. Click **Releases**.
+3. Download the latest `.iso` plus checksum/signature files when published.
+4. Verify the ISO.
+5. Write it with Rufus, balenaEtcher, GNOME Disks, Ventoy, or `scripts/write-usb.sh` from this repository.
+
 ## Install
 
 1. Download the ISO from `mannindustries.org/mi-linux` or GitHub Releases.
