@@ -60,10 +60,10 @@ if [ "${OVERWRITE:-}" != "YES" ]; then
   exit 3
 fi
 
-while read -r mountpoint; do
-  [ -n "$mountpoint" ] || continue
-  umount "$mountpoint"
-done < <(lsblk -rn -o MOUNTPOINTS "$DEV" | sed '/^$/d')
+while read -r part; do
+  [ -n "$part" ] || continue
+  umount "$part" 2>/dev/null || true
+done < <(lsblk -ln -o PATH "$DEV" | tail -n +2)
 
 sync
 
