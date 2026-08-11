@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Install MI Linux
-Comment=Install MI Linux Founder Preview
-Exec=calamares
-Icon=system-software-install
-Terminal=false
-Categories=System;

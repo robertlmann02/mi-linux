@@ -61,6 +61,13 @@ if [ -d "$BINARY_DIR/boot/grub" ]; then
 fi
 
 if [ -d "$BINARY_DIR/isolinux" ]; then
+    if [ -n "$ASSET_DIR" ] && [ -f "$ASSET_DIR/mi-linux-boot-splash-640x480.png" ]; then
+        # Syslinux/ISOLINUX draws its Debian title from this background image,
+        # so replace it directly; text substitutions alone are not enough.
+        cp "$ASSET_DIR/mi-linux-boot-splash-640x480.png" "$BINARY_DIR/isolinux/splash.png"
+    elif [ -n "$ASSET_DIR" ] && [ -f "$ASSET_DIR/mi-linux-boot-splash.png" ]; then
+        cp "$ASSET_DIR/mi-linux-boot-splash.png" "$BINARY_DIR/isolinux/splash.png"
+    fi
     if [ -f "$BINARY_DIR/isolinux/menu.cfg" ]; then
         sed -i \
           -e 's/menu title Boot menu/menu title MI Linux Founder Preview/' \
@@ -70,6 +77,12 @@ if [ -d "$BINARY_DIR/isolinux" ]; then
           -e 's/Debian/MI Linux/g' \
           -e 's/Forky Founder/Founder Preview/g' \
           "$BINARY_DIR/isolinux/menu.cfg"
+    fi
+    if [ -f "$BINARY_DIR/isolinux/stdmenu.cfg" ]; then
+        sed -i \
+          -e 's/menu vshift 12/menu vshift 14/' \
+          -e 's/#76a1d0ff/#075da8ff/g' \
+          "$BINARY_DIR/isolinux/stdmenu.cfg"
     fi
     if [ -f "$BINARY_DIR/isolinux/live.cfg" ]; then
         sed -i \

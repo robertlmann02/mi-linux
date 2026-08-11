@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Calamares Installer
+Exec=sh -c "pkexec calamares"
+Comment=Hidden generic Calamares launcher; use Install MI Linux instead.
+Icon=calamares
+Terminal=false
+Categories=Qt;System;
+NoDisplay=true
+Hidden=true

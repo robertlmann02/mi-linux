@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=MI Linux
+Description=MI Linux Founder Preview boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/mi-linux
+ScriptFile=/usr/share/plymouth/themes/mi-linux/mi-linux.script

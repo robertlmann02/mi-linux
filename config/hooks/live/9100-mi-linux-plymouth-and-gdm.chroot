@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+if command -v update-alternatives >/dev/null 2>&1 && [ -f /usr/share/plymouth/themes/mi-linux/mi-linux.plymouth ]; then
+    update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/mi-linux/mi-linux.plymouth 200 || true
+    update-alternatives --set default.plymouth /usr/share/plymouth/themes/mi-linux/mi-linux.plymouth || true
+fi
+if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+    plymouth-set-default-theme mi-linux || true
+fi
+if [ -f /usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png ]; then
+    mkdir -p /usr/share/images/desktop-base
+    cp /usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png /usr/share/images/desktop-base/mi-linux-desktop-background.png
+    cat > /usr/share/images/desktop-base/desktop-background.xml <<'XML'
+<background>
+  <static>
+    <duration>86400.0</duration>
+    <file>/usr/share/images/desktop-base/mi-linux-desktop-background.png</file>
+  </static>
+</background>
+XML
+    cp /usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png /usr/share/images/desktop-base/login-background.png || true
+fi
+if command -v glib-compile-schemas >/dev/null 2>&1; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas || true
+fi
+if command -v dconf >/dev/null 2>&1; then
+    dconf update || true
+fi

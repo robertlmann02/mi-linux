@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install MI Linux
+GenericName=MI Linux Installer
+Exec=calamares-install-debian
+Comment=Install MI Linux Founder Preview to this computer
+Keywords=calamares;system;install;mi-linux;installer
+Icon=/usr/share/mi-linux/branding/mi-linux-boot-splash.png
+Terminal=false
+Categories=Qt;System;
+StartupWMClass=calamares
+StartupNotify=True

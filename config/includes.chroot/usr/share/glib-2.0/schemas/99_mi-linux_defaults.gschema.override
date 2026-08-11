@@ -1,0 +1,16 @@
+[org.gnome.desktop.background]
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png'
+picture-uri-dark='file:///usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org.gnome.desktop.screensaver]
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'
+clock-show-weekday=true

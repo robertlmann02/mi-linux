@@ -6,6 +6,8 @@ cache/
 chroot/
 *.log
 *.iso
+*.iso.sha256
+*.iso.sha512
 *.img
 *.deb
 *.changes

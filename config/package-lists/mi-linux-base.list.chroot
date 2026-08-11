@@ -2,6 +2,8 @@
 linux-image-amd64
 gnome-core
 gdm3
+plymouth-themes
+plymouth
 gnome-terminal
 nautilus
 gnome-control-center
@@ -26,6 +28,7 @@ ipp-usb
 
 # Installer and recovery
 calamares
+calamares-settings-debian
 timeshift
 
 # Security baseline
