@@ -3,6 +3,8 @@ set -e
 if [ "${1:-}" != "noauto" ]; then
   lb config noauto \
     --distribution forky \
+    --architectures amd64 \
+    --linux-flavours amd64 \
     --archive-areas "main contrib non-free non-free-firmware" \
     --binary-images iso-hybrid \
     --bootappend-live "boot=live components quiet splash" \

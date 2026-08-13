@@ -12,6 +12,7 @@ secondary-color='#020817'
 
 [org/gnome/shell]
 favorite-apps=['firefox-esr.desktop','org.gnome.Nautilus.desktop','org.gnome.Terminal.desktop','onlyoffice-desktopeditors.desktop','org.gnome.Geary.desktop','org.gnome.Software.desktop','gnome-control-center.desktop','mi-linux-welcome.desktop']
+enabled-extensions=['dash-to-panel@jderose9.github.com','ubuntu-appindicators@ubuntu.com','blur-my-shell@aunetx','arcmenu@arcmenu.com','user-theme@gnome-shell-extensions.gcampax.github.com','ding@rastersoft.com']
 
 [org/gnome/desktop/interface]
 color-scheme='prefer-dark'

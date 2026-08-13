@@ -1,0 +1,50 @@
+#!/bin/sh
+set -eu
+
+# MI Linux wrapper for running Calamares on live media.
+# Debian's stock wrapper is patched here so the desktop launcher works in the
+# GNOME live session without asking for an unavailable password.
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
+
+# Stale file left behind by live-build can confuse partitioning. Move it aside
+# only once, and restore it after Calamares exits if possible.
+FSTAB_MOVED=0
+if [ -f /etc/fstab ] && [ ! -f /etc/fstab.orig.calamares ]; then
+    sudo mv /etc/fstab /etc/fstab.orig.calamares || true
+    FSTAB_MOVED=1
+fi
+
+# Let root connect to the live user's Xwayland display when available. Calamares
+# can also run on Wayland through pkexec, so failure here is non-fatal.
+if command -v xhost >/dev/null 2>&1 && [ -n "${DISPLAY:-}" ]; then
+    xhost +si:localuser:root >/dev/null 2>&1 || true
+fi
+
+# The live user is passwordless sudo in the ISO. Use sudo first because pkexec
+# may silently fail from a desktop launcher if no polkit agent/password prompt is
+# available. Fall back to pkexec for installed/dev environments.
+if sudo -n true 2>/dev/null; then
+    sudo -E calamares
+else
+    pkexec env \
+        DISPLAY="${DISPLAY:-}" \
+        WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-}" \
+        XAUTHORITY="${XAUTHORITY:-}" \
+        XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-}" \
+        QT_AUTO_SCREEN_SCALE_FACTOR="$QT_AUTO_SCREEN_SCALE_FACTOR" \
+        QT_QPA_PLATFORM="$QT_QPA_PLATFORM" \
+        calamares
+fi
+STATUS=$?
+
+if command -v xhost >/dev/null 2>&1 && [ -n "${DISPLAY:-}" ]; then
+    xhost -si:localuser:root >/dev/null 2>&1 || true
+fi
+
+if [ "$FSTAB_MOVED" = 1 ] && [ -f /etc/fstab.orig.calamares ]; then
+    sudo mv /etc/fstab.orig.calamares /etc/fstab || true
+fi
+
+exit "$STATUS"

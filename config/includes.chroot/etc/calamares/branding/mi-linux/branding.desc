@@ -1,5 +1,11 @@
-componentName: mi-linux
-welcomeStyleCalamares: false
+---
+componentName:   mi-linux
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
 strings:
     productName:         MI Linux
     shortProductName:    MI Linux
@@ -11,11 +17,23 @@ strings:
     productUrl:          https://mannindustries.org/mi-linux
     supportUrl:          https://github.com/robertlmann02/mi-linux/issues
     knownIssuesUrl:      https://github.com/robertlmann02/mi-linux/issues
+    releaseNotesUrl:     https://github.com/robertlmann02/mi-linux/releases
+    donateUrl:           https://mannindustries.org/mi-linux
+
+sidebar: widget
+navigation: widget
+
 images:
     productLogo:         /usr/share/mi-linux/branding/mi-linux-boot-splash.png
     productIcon:         /usr/share/mi-linux/branding/mi-linux-boot-splash.png
     productWelcome:      /usr/share/mi-linux/branding/mi-linux-boot-splash.png
+
+slideshow:               show.qml
+
 style:
-    sidebarBackground:   '#031326'
-    sidebarText:         '#ffffff'
-    sidebarTextSelect:   '#dff7ff'
+   SidebarBackground:    "#031326"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#dff7ff"
+   SidebarBackgroundCurrent: "#0a5ea8"
+
+slideshowAPI: 2

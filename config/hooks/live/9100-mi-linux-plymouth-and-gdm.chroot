@@ -26,3 +26,44 @@ fi
 if command -v dconf >/dev/null 2>&1; then
     dconf update || true
 fi
+
+# Replace Debian identity shown by GNOME/System components with MI Linux.
+cat > /usr/lib/os-release <<'EOF'
+PRETTY_NAME="MI Linux Founder Preview"
+NAME="MI Linux"
+VERSION="Founder Preview"
+VERSION_ID="founder"
+VERSION_CODENAME=forky
+ID=mi-linux
+ID_LIKE=debian
+HOME_URL="https://mannindustries.org/mi-linux"
+SUPPORT_URL="https://github.com/robertlmann02/mi-linux/issues"
+BUG_REPORT_URL="https://github.com/robertlmann02/mi-linux/issues"
+EOF
+ln -sf ../usr/lib/os-release /etc/os-release
+
+# GNOME Tour displays Debian-focused first-run branding on this base. Make sure
+# users see only the MI Linux welcome experience.
+if [ -f /usr/share/applications/org.gnome.Tour.desktop ]; then
+    cat > /usr/share/applications/org.gnome.Tour.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Welcome to MI Linux
+GenericName=MI Linux Welcome
+Comment=Get started with MI Linux
+Exec=mi-linux-welcome
+Icon=help-about
+Terminal=false
+Categories=GNOME;GTK;Documentation;Utility;
+NoDisplay=true
+Hidden=true
+EOF
+fi
+if [ -x /usr/bin/gnome-tour ]; then
+    mv /usr/bin/gnome-tour /usr/bin/gnome-tour.debian-orig || true
+    cat > /usr/bin/gnome-tour <<'EOF'
+#!/bin/sh
+exec mi-linux-welcome "$@"
+EOF
+    chmod 755 /usr/bin/gnome-tour
+fi

@@ -29,6 +29,12 @@ ipp-usb
 # Installer and recovery
 calamares
 calamares-settings-debian
+libxcb-cursor0
+qml6-module-qtqml
+qml6-module-qtqml-models
+qml6-module-qtquick
+qml6-module-qtquick-window
+qt6-wayland
 timeshift
 
 # Security baseline
@@ -57,6 +63,7 @@ gnome-shell-extension-appindicator
 gnome-shell-extension-blur-my-shell
 gnome-shell-extension-arc-menu
 gnome-shell-extension-user-theme
+gnome-shell-extension-desktop-icons-ng
 
 # MI Linux packages built locally
 mi-linux-archive-keyring
