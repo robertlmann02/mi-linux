@@ -1,9 +1,141 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MI Linux</title><link rel="stylesheet" href="style.css"></head>
-<body><main>
-<h1>Mann Industries Linux</h1>
-<p><strong>MI Linux Forky Founder — Founder Preview</strong></p>
-<p>A polished Debian Testing/Forky-based GNOME desktop OS with a curated 3-month delayed update model.</p>
-<nav><a href="download.html">Download</a> <a href="install.html">Install Guide</a> <a href="tour.html">Visual Tour</a> <a href="known-issues.html">Known Issues</a> <a href="https://github.com/robertlmann02/mi-linux/issues">Report a Bug</a></nav>
-<section><h2>Highlights</h2><ul><li>GNOME desktop with MI Linux bottom taskbar</li><li>Custom Update Manager</li><li>Waydroid-ready kernel requirement</li><li>Flatpak/Flathub app store</li><li>No telemetry</li></ul></section>
-</main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MI Linux — Mann Industries Linux</title>
+  <meta name="description" content="Mann Industries Linux (MI Linux) Founder Preview: a polished Debian Testing / Forky-based GNOME desktop OS.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="MI Linux home">
+      <img src="assets/mannindustries-logo.png" alt="Mann Industries logo">
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#download">Download</a>
+      <a href="#verify">Verify</a>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/robertlmann02/mi-linux">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Founder Preview</p>
+        <h1>Mann Industries Linux</h1>
+        <p class="lede">MI Linux is a polished Debian Testing / Forky-based GNOME desktop OS built for everyday users who want modern hardware support, gaming-ready foundations, privacy-respecting defaults, and a clear update path.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso">Download ISO</a>
+          <a class="button secondary" href="https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview">Release Notes</a>
+        </div>
+        <dl class="release-facts">
+          <div><dt>Release</dt><dd>MI Linux Forky Founder</dd></div>
+          <div><dt>Base</dt><dd>Debian Testing / Forky</dd></div>
+          <div><dt>Desktop</dt><dd>GNOME</dd></div>
+          <div><dt>Status</dt><dd>Founder Preview</dd></div>
+        </dl>
+      </div>
+      <div class="hero-card" aria-label="MI Linux preview card">
+        <div class="screen-glow"></div>
+        <img class="hero-logo" src="assets/mannindustries-logo.png" alt="Mann Industries logo">
+        <div class="terminal-card">
+          <span class="dot orange"></span><span class="dot blue"></span><span class="dot gray"></span>
+          <pre>mi-linux@founder:~$ verify-release
+ISO: mi-linux-forky-founder-amd64.iso
+SHA256: available
+SHA512: available
+Source: GitHub public recipe</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="panel download-panel">
+      <div>
+        <p class="eyebrow">Download</p>
+        <h2>Get MI Linux Founder Preview</h2>
+        <p>The full ISO is hosted on MannCloud. Checksum files are published alongside it so you can verify the download before writing it to a USB drive.</p>
+      </div>
+      <div class="download-grid">
+        <a class="download-card highlight" href="https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso">
+          <strong>Founder Preview ISO</strong>
+          <span>Bootable live/install image for x86_64 PCs</span>
+        </a>
+        <a class="download-card" href="https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha256">
+          <strong>SHA256</strong>
+          <span>Verify ISO integrity</span>
+        </a>
+        <a class="download-card" href="https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha512">
+          <strong>SHA512</strong>
+          <span>Stronger checksum verification</span>
+        </a>
+        <a class="download-card" href="https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview">
+          <strong>GitHub Release</strong>
+          <span>Release notes and assets</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="section-heading">
+        <p class="eyebrow">Why MI Linux</p>
+        <h2>More than a theme. Built like a real OS.</h2>
+      </div>
+      <div class="feature-grid">
+        <article><h3>Curated Forky base</h3><p>Designed around a delayed Debian Testing / Forky model: newer than Debian Stable, calmer than raw Testing.</p></article>
+        <article><h3>Polished GNOME desktop</h3><p>Bottom taskbar direction, MI Linux identity, Firefox, ONLYOFFICE, Flatpak, Flathub, and GNOME Software.</p></article>
+        <article><h3>Gaming-ready foundation</h3><p>Planned support for i386 multiarch, Vulkan, GameMode, MangoHud, controllers, and Proton tools without overloading the base install.</p></article>
+        <article><h3>Privacy-respecting defaults</h3><p>No telemetry, no required online account, no automatic usage reporting, and user-controlled bug reporting.</p></article>
+        <article><h3>Real release artifacts</h3><p>Bootable ISO, checksums, release notes, known issues, public source, and MannCloud-hosted downloads.</p></article>
+        <article><h3>Mann Industries identity</h3><p>Branding, wallpaper, boot/install identity, welcome app, update manager, and dedicated apt repository direction.</p></article>
+      </div>
+    </section>
+
+    <section id="verify" class="panel verify-panel">
+      <div>
+        <p class="eyebrow">Verification</p>
+        <h2>Verify before you install</h2>
+        <p>After downloading the ISO, compare it with the SHA256 or SHA512 file. The checksum should match exactly before you write the USB.</p>
+      </div>
+      <pre class="code">sha256sum -c mi-linux-forky-founder-amd64.iso.sha256
+sha512sum -c mi-linux-forky-founder-amd64.iso.sha512</pre>
+    </section>
+
+    <section id="install" class="install">
+      <div class="section-heading">
+        <p class="eyebrow">Install path</p>
+        <h2>Try it live, then install with Calamares</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>Download</strong><span>Get the ISO and checksum files from MannCloud.</span></li>
+        <li><strong>Verify</strong><span>Check SHA256 or SHA512 before writing the image.</span></li>
+        <li><strong>Write USB</strong><span>Use Rufus, balenaEtcher, GNOME Disks, Ventoy, or the repo helper script.</span></li>
+        <li><strong>Boot live</strong><span>Start the USB in UEFI or Legacy BIOS and try the live desktop.</span></li>
+        <li><strong>Install</strong><span>Launch Install MI Linux and follow the Calamares installer.</span></li>
+      </ol>
+      <div class="link-row">
+        <a href="https://github.com/robertlmann02/mi-linux/blob/main/docs/INSTALL.md">Install guide</a>
+        <a href="https://github.com/robertlmann02/mi-linux/blob/main/docs/CREATE-BOOTABLE-USB.md">USB guide</a>
+        <a href="https://github.com/robertlmann02/mi-linux/blob/main/docs/KNOWN-ISSUES.md">Known issues</a>
+      </div>
+    </section>
+
+    <section class="source-band">
+      <div>
+        <p class="eyebrow">Open build recipe</p>
+        <h2>Review the project on GitHub</h2>
+        <p>Build scripts, live-build configuration, package sources, documentation, and website files are public for review and feedback.</p>
+      </div>
+      <a class="button primary" href="https://github.com/robertlmann02/mi-linux">Open GitHub repo</a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="assets/mannindustries-logo.png" alt="Mann Industries logo">
+    <p>MI Linux Forky Founder — Founder Preview. Built by Mann Industries.</p>
+    <p class="small">This private self-hosted preview is running on Robert's home infrastructure.</p>
+  </footer>
+</body>
+</html>

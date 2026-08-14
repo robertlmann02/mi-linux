@@ -8,7 +8,7 @@ Mann Industries Linux, short name **MI Linux**, is a Debian Testing/Forky-based 
 
 MI Linux is being created for people who want a polished, beginner-friendly Linux desktop without giving up modern hardware support, gaming readiness, privacy, or control over system updates. It is not just a theme pack. The goal is a real installable operating system with a live ISO, Calamares installer, MI Linux update path, documentation, checksums, signatures, and a public build recipe.
 
-> Website status: the MI Linux website at `https://mannindustries.org/mi-linux` is not live yet. It is planned and will be available soon with downloads, screenshots, release notes, install guides, verification instructions, known issues, and support links.
+> Website status: the MI Linux website is live at `https://mannindustries.org/mi-linux/`. A direct subdomain is also available at `https://mi-linux.mannindustries.org/`. The site is self-hosted on MannCloud and includes downloads, checksums, install guidance, known issues, and source links.
 
 ## Who is this for?
 
@@ -70,25 +70,14 @@ The official website is planned for:
 https://mannindustries.org/mi-linux
 ```
 
-The website is not up yet. It will be published soon and will include:
-
-- download links;
-- screenshots and a visual tour;
-- beginner-friendly install guide;
-- USB creation instructions;
-- SHA256, SHA512, and GPG verification steps;
-- release notes;
-- known issues;
-- recommended apps;
-- support and bug-report links;
-- links back to this public GitHub build source.
-
-Until the website is live, this GitHub repository is the public source for the MI Linux build recipe, documentation, and Founder Preview release notes. The first Founder Preview release is published on GitHub, with the full ISO hosted on MannCloud:
+The website is live and includes download links, checksums, install guidance, known issues, release notes, support/bug-report links, and links back to this public GitHub build source. The first Founder Preview release is published on GitHub, with the full ISO hosted on MannCloud:
 
 - GitHub Release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`
-- ISO download: `https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download`
-- SHA256: `https://manncloud.mannindustries.org/s/zA73PDfyYr8jxkj/download`
-- SHA512: `https://manncloud.mannindustries.org/s/JBrpKra4KnyfsiZ/download`
+- Website: `https://mannindustries.org/mi-linux/`
+- Direct website subdomain: `https://mi-linux.mannindustries.org/`
+- ISO download: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso`
+- SHA256: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha256`
+- SHA512: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha512`
 
 ## Create a bootable USB from GitHub
 
@@ -127,7 +116,7 @@ Use the whole USB disk, such as `/dev/sdb`, not a partition such as `/dev/sdb1`.
 The roadmap for MI Linux includes:
 
 1. **Founder Preview ISO testing** — boot the live ISO, verify the desktop, test installation, confirm update behavior, and document known issues.
-2. **Public website launch** — publish `mannindustries.org/mi-linux` with screenshots, install instructions, release notes, checksums, signatures, and support links.
+2. **Public website launch** — live at `https://mannindustries.org/mi-linux/` with install guidance, release links, checksums, known issues, and source links.
 3. **MI Linux apt repository** — bring `apt.mannindustries.org` online with signed `forky-founder` and `forky-tester` suites.
 4. **Custom Update Manager** — ship a GTK/GNOME MI Linux Update Manager that shows channel status, applies the 3-month delay policy, handles non-security update prompts, and recommends Timeshift snapshots before larger updates.
 5. **Welcome app and Recommended Apps** — provide a clear first-run experience with optional browsers, gaming apps, Windows-app tools, creative tools, developer tools, NVIDIA driver setup, and Waydroid choices.
