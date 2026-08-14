@@ -7,7 +7,7 @@ Hosting decision: the update server is MannCloud. The public apt hostname remain
 Suites:
 
 - `forky-founder` — default Founder Preview channel, curated and delayed about 3 months behind raw Debian Testing/Forky.
-- `forky-tester` — testing/early-adopter channel, included in installed sources but commented out.
+- `forky-tester` — testing/early-adopter channel, included in installed sources but commented out. It is intentionally indexed separately from `forky-founder` and only contains packages staged in `packages-tester/` or a configured tester source.
 
 Installed source example:
 
@@ -27,11 +27,12 @@ sudo ./scripts/publish-apt-repo-manncloud.sh
 
 The publisher:
 
-1. Copies built `mi-linux-*.deb` packages from the local repo `packages/` directory by default. Set `SRC_HOST` and `SRC_DIR` only when intentionally publishing from a remote builder.
-2. Creates/uses the dedicated MI Linux archive signing key under `/opt/manncloud/mi-linux-archive-gpg`.
-3. Publishes the public key at `https://apt.mannindustries.org/mi-linux-archive-keyring.asc` and `.gpg`.
-4. Generates `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
-5. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
+1. Copies built `mi-linux-*.deb` packages from the local repo `packages/` directory into the `forky-founder` index by default.
+2. Copies `forky-tester` packages only from `packages-tester/`, `TESTER_SRC_HOST`, or `TESTER_SRC_DIR`; founder packages do not automatically appear in tester.
+3. Creates/uses the dedicated MI Linux archive signing key under `/opt/manncloud/mi-linux-archive-gpg`.
+4. Publishes the public key at `https://apt.mannindustries.org/mi-linux-archive-keyring.asc` and `.gpg`.
+5. Generates separate `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
+6. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
 
 MannCloud Caddy must have a site block for `apt.mannindustries.org` serving `/srv/mi-linux-apt`, with Docker Compose mounting `./apt-repo:/srv/mi-linux-apt:ro` into the Caddy container.
 
