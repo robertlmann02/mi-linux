@@ -47,7 +47,7 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 - Debian live-build based ISO
 - Live desktop with Calamares installer
 - Debian Testing/Forky base with a curated 3-month delayed update model
-- MI Linux apt repository at `https://apt.mannindustries.org`
+- Live MI Linux apt repository at `https://apt.mannindustries.org`
 - Release-specific apt suites: `forky-founder` and `forky-tester`
 - Dedicated archive signing key/keyring package
 - Custom MI Linux Update Manager
@@ -117,7 +117,7 @@ The roadmap for MI Linux includes:
 
 1. **Founder Preview ISO testing** — boot the live ISO, verify the desktop, test installation, confirm update behavior, and document known issues.
 2. **Public website launch** — live at `https://mannindustries.org/mi-linux/` with install guidance, release links, checksums, known issues, and source links.
-3. **MI Linux apt repository** — bring `apt.mannindustries.org` online with signed `forky-founder` and `forky-tester` suites.
+3. **MI Linux apt repository** — live at `https://apt.mannindustries.org` with signed `forky-founder` and `forky-tester` suites.
 4. **Custom Update Manager** — ship a GTK/GNOME MI Linux Update Manager that shows channel status, applies the 3-month delay policy, handles non-security update prompts, and recommends Timeshift snapshots before larger updates.
 5. **Welcome app and Recommended Apps** — provide a clear first-run experience with optional browsers, gaming apps, Windows-app tools, creative tools, developer tools, NVIDIA driver setup, and Waydroid choices.
 6. **Secure Boot and Waydroid validation** — verify the selected kernel, Secure Boot path, binder/binderfs support, and Waydroid install experience on real hardware.
@@ -134,6 +134,7 @@ The roadmap for MI Linux includes:
 - `apt-repo/` — apt repository policy and publishing notes
 - `docs/` — user and release documentation
 - `docs/CREATE-BOOTABLE-USB.md` — GitHub download and bootable USB instructions
+- `docs/UPDATE-SERVER.md` — MI Linux apt repository/update server instructions
 - `website/` — static website content for `mannindustries.org/mi-linux`
 
 ## Licensing

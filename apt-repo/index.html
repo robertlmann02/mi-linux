@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MI Linux Update Server</title>
+  <style>
+    :root{color-scheme:dark;--bg:#050813;--panel:#0d1728;--text:#eaf2ff;--muted:#9fb0ca;--line:rgba(255,255,255,.14);--orange:#ff821c;--blue:#3b82f6}
+    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,rgba(255,130,28,.18),transparent 28rem),radial-gradient(circle at 80% 5%,rgba(59,130,246,.20),transparent 30rem),var(--bg);color:var(--text);line-height:1.55}
+    main{max-width:980px;margin:0 auto;padding:clamp(2rem,6vw,5rem) 1rem}
+    .panel{background:rgba(13,23,40,.86);border:1px solid var(--line);border-radius:24px;padding:clamp(1.5rem,4vw,3rem);box-shadow:0 24px 80px rgba(0,0,0,.35)}
+    h1{font-size:clamp(2.4rem,6vw,5rem);line-height:1;margin:0 0 1rem;letter-spacing:-.05em} h2{margin-top:2rem} p,li{color:var(--muted);font-size:1.04rem} a{color:#ffb14f;font-weight:800} code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace} pre{overflow:auto;background:#020610;border:1px solid var(--line);border-radius:16px;padding:1rem;color:#d8e8ff}.badge{display:inline-block;color:#180a00;background:var(--orange);font-weight:900;border-radius:999px;padding:.35rem .7rem;margin-bottom:1rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.card{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.045);padding:1rem}.card strong{display:block;color:var(--text)}
+  </style>
+</head>
+<body>
+<main>
+  <section class="panel">
+    <span class="badge">Live update server</span>
+    <h1>MI Linux apt repository</h1>
+    <p>This is the signed update server for Mann Industries Linux / MI Linux Forky Founder. The default Founder Preview channel is <code>forky-founder</code>; the early tester channel is <code>forky-tester</code>.</p>
+
+    <div class="grid">
+      <div class="card"><strong>Endpoint</strong><span>https://apt.mannindustries.org</span></div>
+      <div class="card"><strong>Default suite</strong><span>forky-founder</span></div>
+      <div class="card"><strong>Component</strong><span>main</span></div>
+      <div class="card"><strong>Architecture</strong><span>amd64</span></div>
+    </div>
+
+    <h2>Deb822 source</h2>
+    <pre>Types: deb
+URIs: https://apt.mannindustries.org
+Suites: forky-founder
+Components: main
+Signed-By: /usr/share/keyrings/mi-linux-archive-keyring.gpg</pre>
+
+    <h2>Public key</h2>
+    <p>Install the MI Linux archive keyring package when available, or download the public key directly:</p>
+    <ul>
+      <li><a href="/mi-linux-archive-keyring.asc">mi-linux-archive-keyring.asc</a></li>
+      <li><a href="/mi-linux-archive-keyring.gpg">mi-linux-archive-keyring.gpg</a></li>
+    </ul>
+
+    <h2>Repository metadata</h2>
+    <ul>
+      <li><a href="/dists/forky-founder/InRelease">forky-founder InRelease</a></li>
+      <li><a href="/dists/forky-founder/main/binary-amd64/Packages.gz">forky-founder Packages.gz</a></li>
+      <li><a href="/dists/forky-tester/InRelease">forky-tester InRelease</a></li>
+      <li><a href="/dists/forky-tester/main/binary-amd64/Packages.gz">forky-tester Packages.gz</a></li>
+    </ul>
+
+    <p><a href="https://mannindustries.org/mi-linux/">Back to MI Linux website</a></p>
+  </section>
+</main>
+</body>
+</html>

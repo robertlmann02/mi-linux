@@ -16,6 +16,7 @@
       <a href="#download">Download</a>
       <a href="#verify">Verify</a>
       <a href="#features">Features</a>
+      <a href="#updates">Update Server</a>
       <a href="#install">Install</a>
       <a href="https://github.com/robertlmann02/mi-linux">GitHub</a>
     </nav>
@@ -101,6 +102,19 @@ Source: GitHub public recipe</pre>
       </div>
       <pre class="code">sha256sum -c mi-linux-forky-founder-amd64.iso.sha256
 sha512sum -c mi-linux-forky-founder-amd64.iso.sha512</pre>
+    </section>
+
+    <section id="updates" class="panel verify-panel">
+      <div>
+        <p class="eyebrow">Update server</p>
+        <h2>Signed MI Linux apt repository</h2>
+        <p>Installed systems use the MI Linux update server at <a href="https://apt.mannindustries.org">apt.mannindustries.org</a>. The Founder Preview channel is <code>forky-founder</code>, with a separate <code>forky-tester</code> channel for early testing.</p>
+      </div>
+      <pre class="code">Types: deb
+URIs: https://apt.mannindustries.org
+Suites: forky-founder
+Components: main
+Signed-By: /usr/share/keyrings/mi-linux-archive-keyring.gpg</pre>
     </section>
 
     <section id="install" class="install">
