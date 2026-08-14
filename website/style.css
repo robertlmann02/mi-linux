@@ -162,7 +162,16 @@ pre { white-space: pre-wrap; color: #cfe2ff; font-family: ui-monospace, SFMono-R
 .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 article { min-height: 220px; }
 article h3 { color: var(--orange-2); }
-.code { margin: 0; padding: 1.25rem; border-radius: 18px; background: #020610; border: 1px solid var(--line); }
+.code {
+  margin: 0;
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: #020610;
+  border: 1px solid var(--line);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; counter-reset: step; }
 .steps li { counter-increment: step; display: grid; grid-template-columns: auto 1fr; gap: .9rem; align-items: start; padding: 1rem; border-radius: 18px; background: rgba(255,255,255,.045); border: 1px solid var(--line); }
 .steps li::before { content: counter(step); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--orange); color: #180a00; font-weight: 900; }
