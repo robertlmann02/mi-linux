@@ -4,7 +4,7 @@ Suites: forky-founder
 Components: main
 Signed-By: /usr/share/keyrings/mi-linux-archive-keyring.gpg
 
-# Testing channel for advanced users only. Uncomment intentionally.
+# Current quarterly tester channel for advanced users only. Uncomment intentionally.
 # Types: deb
 # URIs: https://apt.mannindustries.org
 # Suites: forky-tester

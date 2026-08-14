@@ -7,7 +7,7 @@ Hosting decision: the update server is MannCloud. The public apt hostname remain
 Suites:
 
 - `forky-founder` — default Founder Preview channel, curated and delayed about 3 months behind raw Debian Testing/Forky.
-- `forky-tester` — testing/early-adopter channel, included in installed sources but commented out. It is intentionally indexed separately from `forky-founder` and only contains packages staged in `packages-tester/` or a configured tester source.
+- `forky-tester` — current quarterly Testing/Forky channel, included in installed sources but commented out. It is intentionally indexed separately from `forky-founder` and only contains packages staged in `packages-tester/` or a configured tester source.
 
 Installed source example:
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """MI Linux quarterly delayed rolling-release automation helper.
 
-This script is intentionally conservative. It computes the delayed snapshot target,
-checks the public update server, verifies signed apt metadata, and writes an
-operator report. Publishing/rebuilding can be layered on top only when these gates
+This script is intentionally conservative. It computes the founder delayed
+snapshot target plus the tester current target, checks the public update server,
+verifies signed apt metadata, and writes an operator report. Publishing/rebuilding can be layered on top only when these gates
 stay green.
 """
 from __future__ import annotations
@@ -147,7 +147,8 @@ def kernel_policy_check() -> dict:
 
 
 def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
-    snapshot_date = subtract_months(release_date, 3)
+    founder_snapshot_date = subtract_months(release_date, 3)
+    tester_snapshot_date = release_date
     out = OUT_ROOT / release_date.isoformat()
     out.mkdir(parents=True, exist_ok=True)
     checks = {
@@ -155,8 +156,9 @@ def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
         "mode": mode,
         "release_date": release_date.isoformat(),
         "quarter": quarter_name(release_date),
-        "delayed_snapshot_date": snapshot_date.isoformat(),
-        "snapshot_policy": "release date minus three months",
+        "founder_snapshot_date": founder_snapshot_date.isoformat(),
+        "tester_snapshot_date": tester_snapshot_date.isoformat(),
+        "snapshot_policy": "forky-founder is release date minus three months; forky-tester is current release date",
         "apt_repository": public_repo_checks(),
         "apt_client": apt_client_check(),
         "kernel_policy": kernel_policy_check(),
@@ -172,7 +174,8 @@ def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
     md.write_text(
         f"# MI Linux quarterly update report: {release_date.isoformat()}\n\n"
         f"- Quarter: {checks['quarter']}\n"
-        f"- Delayed Debian snapshot target: {snapshot_date.isoformat()}\n"
+        f"- Founder delayed Debian snapshot target: {founder_snapshot_date.isoformat()}\n"
+        f"- Tester current Debian/Forky target: {tester_snapshot_date.isoformat()}\n"
         f"- Default suite: forky-founder\n"
         f"- Tester suite: forky-tester\n"
         f"- Apt client update gate: {'PASS' if checks['apt_client']['update_ok'] else 'FAIL'}\n"
