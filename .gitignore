@@ -12,3 +12,5 @@ chroot/
 *.deb
 *.changes
 *.buildinfo
+out/
+selfhost-site/
