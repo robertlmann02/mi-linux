@@ -6,7 +6,7 @@
 
 Mann Industries Linux, short name **MI Linux**, is a Debian Testing/Forky-based desktop operating system project from Mann Industries. The first public release is **MI Linux Forky Founder — Founder Preview**.
 
-MI Linux is being created for people who want a polished, beginner-friendly Linux desktop without giving up modern hardware support, gaming readiness, privacy, or control over system updates. It is not just a theme pack. The goal is a real installable operating system with a live ISO, Calamares installer, MI Linux update path, documentation, checksums, signatures, and a public build recipe.
+MI Linux is being created for people who want a polished, beginner-friendly Linux desktop without giving up modern hardware support, gaming-ready performance, privacy, or control over system updates. It is not just a theme pack. The goal is a real installable operating system with a live ISO, Calamares installer, MI Linux update path, documentation, checksums, signatures, and a public build recipe.
 
 > Website status: the MI Linux website is live at `https://mannindustries.org/mi-linux/`. A direct subdomain is also available at `https://mi-linux.mannindustries.org/`. The site is self-hosted on MannCloud and includes downloads, checksums, install guidance, known issues, and source links.
 
@@ -34,7 +34,7 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 - **MI Linux update channel:** systems use MI Linux apt suites such as `forky-founder` and `forky-tester`, with a dedicated archive signing key and a custom Update Manager planned around the delayed-update policy.
 - **Polished GNOME desktop:** GNOME is configured around a familiar bottom taskbar, MI Linux menu identity, AppIndicator support, Blur my Shell, User Themes, ArcMenu, and Dash to Panel.
 - **Beginner-friendly installer:** the live ISO boots into a desktop and uses Calamares for graphical installation.
-- **Gaming-ready foundation:** i386 multiarch, Vulkan support, GameMode, MangoHud, controller support, and Proton-management support are part of the plan while Steam stays optional.
+- **Gaming ready:** i386 multiarch, Vulkan support, GameMode, MangoHud, controller support, and Proton-management support are part of the plan while Steam stays optional.
 - **Waydroid-ready direction:** MI Linux targets a latest stable Secure Boot-supported kernel with Waydroid, Android binder IPC, and binderfs support.
 - **Secure Boot supported:** MI Linux is built to support Secure Boot on compatible UEFI systems.
 - **Debian packages plus Flatpak:** app discovery uses Debian packages, Flatpak/Flathub, and GNOME Software by default.
