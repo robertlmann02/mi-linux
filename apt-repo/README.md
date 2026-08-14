@@ -27,7 +27,7 @@ sudo ./scripts/publish-apt-repo-manncloud.sh
 
 The publisher:
 
-1. Copies built `mi-linux-*.deb` packages from MannPro `/home/robertlmann02/builds/mi-linux/packages`.
+1. Copies built `mi-linux-*.deb` packages from the local repo `packages/` directory by default. Set `SRC_HOST` and `SRC_DIR` only when intentionally publishing from a remote builder.
 2. Creates/uses the dedicated MI Linux archive signing key under `/opt/manncloud/mi-linux-archive-gpg`.
 3. Publishes the public key at `https://apt.mannindustries.org/mi-linux-archive-keyring.asc` and `.gpg`.
 4. Generates `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.

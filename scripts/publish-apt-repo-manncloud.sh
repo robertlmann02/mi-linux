@@ -2,12 +2,15 @@
 set -Eeuo pipefail
 
 # Publish the MI Linux apt repository to MannCloud.
-# Run on MannsPi5Ai after building MI Linux packages on MannPro.
+# Default source is this repo's local ./packages directory. Set SRC_HOST plus
+# SRC_DIR only when intentionally publishing packages built on a remote builder.
 
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+PROJECT_ROOT=$(cd -- "$SCRIPT_DIR/.." && pwd)
 REPO=${REPO:-/opt/manncloud/apt-repo}
 GPGHOME=${GPGHOME:-/opt/manncloud/mi-linux-archive-gpg}
-SRC_HOST=${SRC_HOST:-robertlmann02@10.0.0.7}
-SRC_DIR=${SRC_DIR:-/home/robertlmann02/builds/mi-linux/packages}
+SRC_HOST=${SRC_HOST:-}
+SRC_DIR=${SRC_DIR:-$PROJECT_ROOT/packages}
 KEY_UID=${KEY_UID:-mi-linux-archive@mannindustries.org}
 
 if ! sudo -n true 2>/dev/null; then
@@ -26,9 +29,17 @@ sudo chown -R root:root "$REPO" "$GPGHOME"
 sudo chmod 755 "$REPO"
 sudo chmod 700 "$GPGHOME"
 
-scp -q -o BatchMode=yes -o ConnectTimeout=10 "$SRC_HOST:$SRC_DIR"/'mi-linux-*.deb' "$TMPDIR"/
+if [ -n "$SRC_HOST" ]; then
+  scp -q -o BatchMode=yes -o ConnectTimeout=10 "$SRC_HOST:$SRC_DIR"/'mi-linux-*.deb' "$TMPDIR"/
+else
+  cp "$SRC_DIR"/mi-linux-*.deb "$TMPDIR"/
+fi
 if ! compgen -G "$TMPDIR/mi-linux-*.deb" >/dev/null; then
-  echo "No MI Linux .deb packages copied from $SRC_HOST:$SRC_DIR" >&2
+  if [ -n "$SRC_HOST" ]; then
+    echo "No MI Linux .deb packages copied from $SRC_HOST:$SRC_DIR" >&2
+  else
+    echo "No MI Linux .deb packages found in $SRC_DIR" >&2
+  fi
   exit 1
 fi
 sudo install -m 0644 "$TMPDIR"/mi-linux-*.deb "$REPO/pool/main/m/mi-linux/"
