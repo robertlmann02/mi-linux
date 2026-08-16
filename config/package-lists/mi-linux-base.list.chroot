@@ -11,6 +11,8 @@ gnome-software
 gnome-software-plugin-flatpak
 flatpak
 firefox-esr
+onlyoffice-desktopeditors
+gnome-tweaks
 geary
 rhythmbox
 vlc
@@ -41,6 +43,7 @@ timeshift
 ufw
 clamav
 clamav-daemon
+clamtk
 rkhunter
 chkrootkit
 unattended-upgrades

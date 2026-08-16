@@ -8,6 +8,22 @@ Rules-Requires-Root: no
 
 Package: mi-linux-gaming-meta
 Architecture: all
-Depends: ${misc:Depends}
-Description: mi linux gaming meta for MI Linux
- Founder Preview package skeleton for Mann Industries Linux.
+Depends: ${misc:Depends},
+ mesa-vulkan-drivers,
+ vulkan-tools,
+ gamemode,
+ mangohud,
+ steam-devices
+Recommends:
+ waydroid,
+ lutris,
+ heroic-games-launcher,
+ protonup-qt,
+ wine,
+ winetricks,
+ bottles
+Description: MI Linux gaming readiness meta package
+ Installs the lightweight default gaming-readiness stack for MI Linux and
+ recommends heavier optional gaming, Windows-app, and Android-app tools for
+ discovery through APT/GNOME Software/Welcome instead of forcing them onto
+ every base install.

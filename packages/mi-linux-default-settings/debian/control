@@ -8,6 +8,14 @@ Rules-Requires-Root: no
 
 Package: mi-linux-default-settings
 Architecture: all
-Depends: ${misc:Depends}
-Description: mi linux default settings for MI Linux
- Founder Preview package skeleton for Mann Industries Linux.
+Depends: ${misc:Depends},
+ firefox-esr,
+ onlyoffice-desktopeditors,
+ geary,
+ gnome-software,
+ gnome-control-center,
+ mi-linux-welcome
+Description: MI Linux GNOME default settings
+ Provides the default MI Linux GNOME wallpaper, dock favorites, extension list,
+ and desktop preferences. Dependencies match the launchers pinned in the
+ default favorites so a fresh install does not show broken app icons.
