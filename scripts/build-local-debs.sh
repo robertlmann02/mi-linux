@@ -5,10 +5,15 @@ mkdir -p "$ROOT/config/packages.chroot"
 
 ONLYOFFICE_DEB="$ROOT/config/packages.chroot/onlyoffice-desktopeditors_amd64.deb"
 ONLYOFFICE_URL="https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb"
-if [ ! -s "$ONLYOFFICE_DEB" ]; then
-  echo "Downloading ONLYOFFICE Desktop Editors for inclusion in the ISO..."
+if [ ! -s "$ONLYOFFICE_DEB" ] || ! ar t "$ONLYOFFICE_DEB" >/dev/null 2>&1; then
+  echo "Preparing ONLYOFFICE Desktop Editors for inclusion in the ISO..."
   tmp="$ONLYOFFICE_DEB.tmp"
-  curl -fL -C - --retry 3 --connect-timeout 30 -o "$tmp" "$ONLYOFFICE_URL"
+  if [ -s "$ONLYOFFICE_DEB" ] && ! ar t "$ONLYOFFICE_DEB" >/dev/null 2>&1; then
+    mv "$ONLYOFFICE_DEB" "$tmp"
+  fi
+  if [ ! -s "$tmp" ]; then
+    curl -fL -C - --retry 3 --connect-timeout 30 -o "$tmp" "$ONLYOFFICE_URL"
+  fi
   work=$(mktemp -d)
   dpkg-deb -R "$tmp" "$work"
   # Avoid optional font/EULA packages being pulled into unattended ISO builds.
