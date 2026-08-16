@@ -9,8 +9,16 @@ if [ ! -s "$ONLYOFFICE_DEB" ]; then
   echo "Downloading ONLYOFFICE Desktop Editors for inclusion in the ISO..."
   tmp="$ONLYOFFICE_DEB.tmp"
   curl -fL -C - --retry 3 --connect-timeout 30 -o "$tmp" "$ONLYOFFICE_URL"
-  dpkg-deb -I "$tmp" >/dev/null
-  mv "$tmp" "$ONLYOFFICE_DEB"
+  work=$(mktemp -d)
+  dpkg-deb -R "$tmp" "$work"
+  # Avoid optional font/EULA packages being pulled into unattended ISO builds.
+  sed -i '/^Recommends:/d' "$work/DEBIAN/control"
+  dpkg-deb -b "$work" "$tmp.repacked"
+  rm -rf "$work"
+  dpkg-deb -I "$tmp.repacked" >/dev/null
+  ar t "$tmp.repacked" >/dev/null
+  mv "$tmp.repacked" "$ONLYOFFICE_DEB"
+  rm -f "$tmp"
 fi
 for pkg in "$ROOT"/packages/*; do
   [ -d "$pkg/debian" ] || continue
