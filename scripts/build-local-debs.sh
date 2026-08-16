@@ -8,7 +8,7 @@ ONLYOFFICE_URL="https://download.onlyoffice.com/install/desktop/editors/linux/on
 if [ ! -s "$ONLYOFFICE_DEB" ]; then
   echo "Downloading ONLYOFFICE Desktop Editors for inclusion in the ISO..."
   tmp="$ONLYOFFICE_DEB.tmp"
-  curl -fL --retry 3 --connect-timeout 30 -o "$tmp" "$ONLYOFFICE_URL"
+  curl -fL -C - --retry 3 --connect-timeout 30 -o "$tmp" "$ONLYOFFICE_URL"
   dpkg-deb -I "$tmp" >/dev/null
   mv "$tmp" "$ONLYOFFICE_DEB"
 fi
