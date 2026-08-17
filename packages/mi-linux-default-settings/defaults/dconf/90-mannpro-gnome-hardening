@@ -13,12 +13,12 @@ color-scheme="prefer-dark"
 button-layout="appmenu:minimize,maximize,close"
 
 [org/gnome/desktop/background]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
-picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
+picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
+picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
 picture-options="zoom"
 
 [org/gnome/desktop/screensaver]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
+picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
 
 [org/gnome/shell/extensions/dash-to-panel]
 panel-position="BOTTOM"
@@ -32,6 +32,8 @@ trans-use-border=false
 appicon-margin=4
 appicon-padding=6
 leftbox-padding=7
+show-apps-icon-side-padding=0
+panel-element-positions='{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}],"SAM-0x01000e00":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
 
 [org/gnome/shell/extensions/blur-my-shell/panel]
 blur=true
