@@ -1,2 +1,3 @@
-defaults/dconf/00-mi-linux-defaults etc/dconf/db/local.d/
+defaults/dconf/* etc/dconf/db/local.d/
+defaults/dconf-locks/* etc/dconf/db/local.d/locks/
 defaults/profile/user etc/dconf/profile/
