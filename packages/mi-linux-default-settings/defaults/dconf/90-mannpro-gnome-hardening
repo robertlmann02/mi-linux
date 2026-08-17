@@ -13,12 +13,12 @@ color-scheme="prefer-dark"
 button-layout="appmenu:minimize,maximize,close"
 
 [org/gnome/desktop/background]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_12_linux_vanguard_1920x1080.jpg"
-picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_12_linux_vanguard_1920x1080.jpg"
+picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
+picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
 picture-options="zoom"
 
 [org/gnome/desktop/screensaver]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_12_linux_vanguard_1920x1080.jpg"
+picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
 
 [org/gnome/shell/extensions/dash-to-panel]
 panel-position="BOTTOM"
@@ -42,5 +42,19 @@ override-background=true
 corner-radius=0
 
 [org/gnome/shell/extensions/arcmenu]
-menu-button-icon="Custom_Icon"
-custom-menu-button-icon="/usr/share/icons/hicolor/256x256/apps/mannindustries-menu-emblem.png"
+menu-button-icon="/usr/share/icons/hicolor/256x256/apps/mannindustries-menu-emblem.png"
+menu-button-appearance="Icon_Text"
+menu-button-text="Linux"
+menu-button-icon-size=30
+menu-layout="windows"
+position-in-panel="Left"
+force-menu-location="BottomLeft"
+show-activities-button=false
+gnome-dash-show-applications=false
+override-menu-theme=true
+menu-background-color="rgba(20,20,22,0.42)"
+menu-border-color="rgba(255,255,255,0.18)"
+menu-separator-color="rgba(255,255,255,0.1)"
+menu-item-hover-bg-color="rgba(21,83,158,0.72)"
+menu-item-active-bg-color="rgba(25,98,163,0.78)"
+menu-foreground-color="rgb(223,223,223)"
