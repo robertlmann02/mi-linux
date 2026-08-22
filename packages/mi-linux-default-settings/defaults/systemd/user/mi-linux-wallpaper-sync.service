@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync GNOME desktop wallpaper to lock screen and GDM login
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mi-linux-wallpaper-sync-user

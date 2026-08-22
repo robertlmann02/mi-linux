@@ -1,5 +1,13 @@
+mi-linux-default-settings (0.1.0-2) forky-founder; urgency=medium
+
+  * Add wallpaper synchronization so lock and login screens follow the desktop wallpaper.
+  * Patch the GDM shell theme to avoid a grey login background on GNOME Shell 50.
+  * Install GDM dconf defaults, user services, and a limited wallpaper sync helper.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Fri, 21 Aug 2026 21:54:00 -0400
+
 mi-linux-default-settings (0.1.0-1) forky-founder; urgency=medium
 
   * Initial Founder Preview package skeleton.
 
- -- Mann Industries <Robert.Mann@mannindustries.org>  Sun, 09 Aug 2026 00:00:00 -0400
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 09 Aug 2026 00:00:00 -0400

@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+WALL="/var/lib/mi-linux/wallpaper-sync/current-wallpaper.jpg"
+BASE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
+if [[ ! -f "$BASE" ]] || ! command -v gresource >/dev/null 2>&1 || ! command -v glib-compile-resources >/dev/null 2>&1; then
+  exit 0
+fi
+if gresource extract "$BASE" /org/gnome/shell/theme/gnome-shell-dark.css 2>/dev/null | grep -q 'MI Linux dynamic GDM wallpaper override'; then
+  exit 0
+fi
+BACKUP_DIR="/var/backups/mi-linux-gdm-theme/$(date +%Y%m%d-%H%M%S)"
+WORK="$(mktemp -d)"
+cleanup(){ rm -rf "$WORK"; }
+trap cleanup EXIT
+install -d -m 0755 "$BACKUP_DIR"
+cp -a "$BASE" "$BACKUP_DIR/gnome-shell-theme.gresource"
+cd "$WORK"
+mkdir -p files
+gresource list "$BASE" | while IFS= read -r res; do
+  rel="${res#/}"
+  mkdir -p "files/$(dirname "$rel")"
+  gresource extract "$BASE" "$res" > "files/$rel"
+done
+for css in files/org/gnome/shell/theme/gnome-shell-dark.css files/org/gnome/shell/theme/gnome-shell-light.css; do
+  [[ -f "$css" ]] || continue
+  cat >>"$css" <<EOF
+
+/* MI Linux dynamic GDM wallpaper override.
+   The wallpaper sync service keeps this fixed path matched to the current desktop wallpaper. */
+#lockDialogGroup,
+.screen-shield-background {
+  background-color: #000000;
+  background-image: url("file://$WALL");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.unlock-dialog {
+  background-color: transparent;
+}
+EOF
+done
+{
+  echo '<?xml version="1.0" encoding="UTF-8"?>'
+  echo '<gresources>'
+  echo '  <gresource prefix="/">'
+  find files -type f | sort | while IFS= read -r f; do
+    rel="${f#files/}"
+    printf '    <file>%s</file>\n' "$rel"
+  done
+  echo '  </gresource>'
+  echo '</gresources>'
+} > gnome-shell-theme.gresource.xml
+(cd files && glib-compile-resources ../gnome-shell-theme.gresource.xml --target="$WORK/gnome-shell-theme.gresource" --sourcedir=. --generate)
+gresource extract "$WORK/gnome-shell-theme.gresource" /org/gnome/shell/theme/gnome-shell-dark.css | grep -q 'MI Linux dynamic GDM wallpaper override'
+install -m 0644 "$WORK/gnome-shell-theme.gresource" "$BASE"

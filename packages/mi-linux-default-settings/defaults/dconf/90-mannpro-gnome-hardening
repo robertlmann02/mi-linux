@@ -18,7 +18,8 @@ picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_m
 picture-options="zoom"
 
 [org/gnome/desktop/screensaver]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
+picture-uri="file:///var/lib/mi-linux/wallpaper-sync/current-wallpaper.jpg"
+picture-options="zoom"
 
 [org/gnome/shell/extensions/dash-to-panel]
 panel-position="BOTTOM"

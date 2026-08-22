@@ -3,5 +3,11 @@ set -e
 if command -v dconf >/dev/null 2>&1; then
     dconf update || true
 fi
+if [ -x /usr/lib/mi-linux/mi-linux-wallpaper-sync-root ] && [ -f /usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png ]; then
+    /usr/lib/mi-linux/mi-linux-wallpaper-sync-root /usr/share/backgrounds/mi-linux/mi-linux-wallpaper.png zoom || true
+fi
+if [ -x /usr/lib/mi-linux/mi-linux-gdm-wallpaper-theme ]; then
+    /usr/lib/mi-linux/mi-linux-gdm-wallpaper-theme || true
+fi
 #DEBHELPER#
 exit 0

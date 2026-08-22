@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SRC="${1:-}"
+OPTIONS="${2:-zoom}"
+case "$OPTIONS" in
+  none|wallpaper|centered|scaled|stretched|zoom|spanned) ;;
+  *) OPTIONS="zoom" ;;
+esac
+if [[ -z "$SRC" || ! -f "$SRC" ]]; then
+  echo "Source wallpaper not found: $SRC" >&2
+  exit 2
+fi
+case "$(file -b --mime-type "$SRC" 2>/dev/null || true)" in
+  image/*) ;;
+  *) echo "Source is not an image: $SRC" >&2; exit 3 ;;
+esac
+DEST_DIR=/var/lib/mi-linux/wallpaper-sync
+install -d -m 0755 "$DEST_DIR"
+TMP="$DEST_DIR/.current-wallpaper.jpg.tmp"
+DEST="$DEST_DIR/current-wallpaper.jpg"
+cp "$SRC" "$TMP"
+chmod 0644 "$TMP"
+chown root:root "$TMP"
+mv "$TMP" "$DEST"
+URI="file://$DEST"
+install -d -m 0755 /etc/dconf/profile /etc/dconf/db/gdm.d
+cat >/etc/dconf/profile/gdm <<'EOF'
+user-db:user
+system-db:gdm
+file-db:/usr/share/gdm/greeter-dconf-defaults
+EOF
+rm -f /etc/dconf/db/gdm.d/00-mi-linux-wallpaper-sync
+cat >/etc/dconf/db/gdm.d/99-mi-linux-wallpaper-sync <<EOF
+[org/gnome/desktop/background]
+picture-uri='$URI'
+picture-uri-dark='$URI'
+picture-options='$OPTIONS'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org/gnome/desktop/screensaver]
+picture-uri='$URI'
+picture-options='$OPTIONS'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'
+EOF
+dconf update || true
+if id Debian-gdm >/dev/null 2>&1; then
+  install -d -o Debian-gdm -g Debian-gdm -m 0700 /var/lib/gdm3/.cache /var/lib/gdm3/.config /var/lib/gdm3/.local/share || true
+  chown Debian-gdm:Debian-gdm /var/lib/gdm3 || true
+  sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.desktop.background picture-uri "$URI" >/dev/null 2>&1 || true
+  sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.desktop.background picture-uri-dark "$URI" >/dev/null 2>&1 || true
+  sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.desktop.background picture-options "$OPTIONS" >/dev/null 2>&1 || true
+  sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.desktop.screensaver picture-uri "$URI" >/dev/null 2>&1 || true
+  sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.desktop.screensaver picture-options "$OPTIONS" >/dev/null 2>&1 || true
+fi
+echo "$DEST"

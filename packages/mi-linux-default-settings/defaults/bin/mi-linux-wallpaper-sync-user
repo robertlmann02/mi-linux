@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+LOCK="${XDG_RUNTIME_DIR:-/tmp}/mi-linux-wallpaper-sync.lock"
+exec 9>"$LOCK"
+flock -n 9 || exit 0
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+uri="$(gsettings get org.gnome.desktop.background picture-uri | sed -E "s/^'(.*)'$/\1/")"
+if [[ -z "$uri" || "$uri" == "''" ]]; then
+  uri="$(gsettings get org.gnome.desktop.background picture-uri-dark | sed -E "s/^'(.*)'$/\1/")"
+fi
+options="$(gsettings get org.gnome.desktop.background picture-options | sed -E "s/^'(.*)'$/\1/")"
+[[ -n "$options" ]] || options="zoom"
+if [[ "$uri" != file://* ]]; then
+  echo "Skipping non-file wallpaper URI: $uri" >&2
+  exit 0
+fi
+src="${uri#file://}"
+src="$(python3 -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))' "$src")"
+if [[ ! -f "$src" ]]; then
+  echo "Wallpaper file missing: $src" >&2
+  exit 1
+fi
+dest="$(sudo -n /usr/lib/mi-linux/mi-linux-wallpaper-sync-root "$src" "$options")"
+gsettings set org.gnome.desktop.screensaver picture-uri "file://$dest"
+gsettings set org.gnome.desktop.screensaver picture-options "$options"
+echo "Lock screen and login wallpaper now match the desktop wallpaper."

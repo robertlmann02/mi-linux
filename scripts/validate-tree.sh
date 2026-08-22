@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 sh -n auto/config auto/build auto/clean config/hooks/live/*.chroot config/includes.chroot/usr/local/sbin/mi-linux-security-scan config/includes.chroot/usr/bin/add-calamares-desktop-icon config/includes.chroot/usr/bin/calamares-install-debian
+bash -n packages/mi-linux-default-settings/defaults/bin/mi-linux-wallpaper-sync-user packages/mi-linux-default-settings/defaults/sbin/mi-linux-wallpaper-sync-root packages/mi-linux-default-settings/defaults/sbin/mi-linux-gdm-wallpaper-theme
+sh -n packages/mi-linux-default-settings/debian/postinst
 PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile src/mi-linux-update-manager/mi-linux-update-manager.py src/mi-linux-welcome/mi-linux-welcome.py
 find . \( -path './chroot' -o -path './cache' \) -prune -o -type d -name __pycache__ -prune -exec rm -rf {} +
 if find . \( -path './chroot' -o -path './cache' \) -prune -o \( -path '*/__pycache__/*' -o -name '*.pyc' \) -print | grep .; then

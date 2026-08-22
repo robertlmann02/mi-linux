@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic safety sync for GNOME wallpaper to lock screen and GDM login
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=mi-linux-wallpaper-sync.service
+
+[Install]
+WantedBy=timers.target

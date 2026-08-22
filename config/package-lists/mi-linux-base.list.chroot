@@ -48,6 +48,7 @@ rkhunter
 chkrootkit
 unattended-upgrades
 apt-listchanges
+libgio-2.0-dev-bin
 
 # Hardware/gaming base
 firmware-linux

@@ -1,3 +1,13 @@
 defaults/dconf/* etc/dconf/db/local.d/
 defaults/dconf-locks/* etc/dconf/db/local.d/locks/
+defaults/dconf-gdm/* etc/dconf/db/gdm.d/
 defaults/profile/user etc/dconf/profile/
+defaults/profile/gdm etc/dconf/profile/
+defaults/bin/* usr/bin/
+defaults/sbin/* usr/lib/mi-linux/
+defaults/sudoers/* etc/sudoers.d/
+defaults/systemd/user/*.service etc/xdg/systemd/user/
+defaults/systemd/user/*.path etc/xdg/systemd/user/
+defaults/systemd/user/*.timer etc/xdg/systemd/user/
+defaults/systemd/user/default.target.wants/* etc/xdg/systemd/user/default.target.wants/
+defaults/systemd/user/timers.target.wants/* etc/xdg/systemd/user/timers.target.wants/

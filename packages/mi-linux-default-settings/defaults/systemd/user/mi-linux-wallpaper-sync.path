@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch GNOME wallpaper setting changes
+
+[Path]
+PathChanged=%h/.config/dconf/user
+Unit=mi-linux-wallpaper-sync.service
+
+[Install]
+WantedBy=default.target

@@ -1,13 +1,22 @@
 Source: mi-linux-update-manager
 Section: misc
 Priority: optional
-Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Maintainer: Mann Industries <mi-linux-maintainers@mannindustries.org>
 Standards-Version: 4.7.0
 Build-Depends: debhelper-compat (= 13)
 Rules-Requires-Root: no
 
 Package: mi-linux-update-manager
 Architecture: all
-Depends: ${misc:Depends}
-Description: mi linux update manager for MI Linux
- Founder Preview package skeleton for Mann Industries Linux.
+Depends: ${misc:Depends},
+ python3,
+ python3-gi,
+ gir1.2-gtk-4.0,
+ apt,
+ sudo,
+ gnome-software,
+ timeshift
+Description: MI Linux graphical update manager
+ GTK/GNOME update manager for MI Linux. It checks for available updates,
+ recommends a Timeshift snapshot, installs approved updates with safe apt lock
+ handling, and explains results in plain language for new Linux users.

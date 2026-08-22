@@ -1,7 +1,7 @@
 Source: mi-linux-default-settings
 Section: misc
 Priority: optional
-Maintainer: Mann Industries <Robert.Mann@mannindustries.org>
+Maintainer: Mann Industries <mi-linux-maintainers@mannindustries.org>
 Standards-Version: 4.7.0
 Build-Depends: debhelper-compat (= 13)
 Rules-Requires-Root: no
@@ -9,6 +9,11 @@ Rules-Requires-Root: no
 Package: mi-linux-default-settings
 Architecture: all
 Depends: ${misc:Depends},
+ dconf-cli,
+ libgio-2.0-dev-bin,
+ python3,
+ sudo,
+ file,
  firefox-esr,
  onlyoffice-desktopeditors,
  geary,
@@ -17,5 +22,6 @@ Depends: ${misc:Depends},
  mi-linux-welcome
 Description: MI Linux GNOME default settings
  Provides the default MI Linux GNOME wallpaper, dock favorites, extension list,
- and desktop preferences. Dependencies match the launchers pinned in the
- default favorites so a fresh install does not show broken app icons.
+ lock/login wallpaper synchronization, and desktop preferences. Dependencies
+ match the launchers pinned in the default favorites so a fresh install does not
+ show broken app icons.

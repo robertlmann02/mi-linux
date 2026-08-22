@@ -1,0 +1,15 @@
+[org/gnome/desktop/background]
+picture-uri='file:///var/lib/mi-linux/wallpaper-sync/current-wallpaper.jpg'
+picture-uri-dark='file:///var/lib/mi-linux/wallpaper-sync/current-wallpaper.jpg'
+picture-options='zoom'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///var/lib/mi-linux/wallpaper-sync/current-wallpaper.jpg'
+picture-options='zoom'
+primary-color='#075da8'
+secondary-color='#020817'
+
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'

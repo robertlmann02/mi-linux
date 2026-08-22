@@ -62,6 +62,18 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 - Secure Boot, UEFI, and Legacy BIOS support
 - Checksums and GPG signatures for ISO releases
 
+## Recent fixes and why they matter
+
+The current source includes fixes from installed-system testing that are intended for future builds and package updates:
+
+- **Lock screen follows the desktop wallpaper:** MI Linux now installs a wallpaper sync helper and user service. When a user changes the desktop wallpaper, the lock screen is updated to match instead of staying on an older image.
+- **Login screen follows the same wallpaper:** GDM receives matching dconf defaults, a readable synced wallpaper copy, and a GNOME Shell theme override. This prevents the login screen from falling back to a plain grey background on GNOME Shell 50.
+- **Update Manager uses plain language:** the GTK Update Manager now reports results such as “Updates were installed successfully” or “Your system is up to date” instead of showing technical exit codes.
+- **Update Manager handles common apt conflicts:** update installation now stops the background PackageKit updater when needed, waits for apt locks, uses noninteractive config handling, and keeps existing config choices unless the package can safely use its default.
+- **Package metadata was tightened:** the affected MI Linux packages now declare the runtime tools they actually use, so fresh installs and package updates have the required components available.
+
+These changes were added because a beginner-friendly desktop should make update and wallpaper behavior predictable without requiring users to understand Linux service names, apt locks, dconf databases, or shell exit codes.
+
 ## Website and downloads
 
 The official website is planned for:
