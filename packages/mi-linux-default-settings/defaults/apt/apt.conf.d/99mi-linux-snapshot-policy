@@ -1,0 +1,5 @@
+// MI Linux uses Debian snapshots for the Founder channel so normal
+// systems stay on the quarterly three-month delayed package target.
+// Snapshot Release files are intentionally historical, so apt must not
+// reject them only because their Valid-Until date has passed.
+Acquire::Check-Valid-Until "false";

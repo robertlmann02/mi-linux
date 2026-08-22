@@ -30,6 +30,15 @@ Examples:
 
 This keeps MI Linux rolling, but not raw rolling for normal users. Testers can validate the current quarterly package set first; normal Founder-channel users get the same general stream after a three-month buffer.
 
+## Installed apt sources
+
+Founder systems use Debian snapshot URLs for the delayed target, not live `deb.debian.org` Forky. For the 2026-09-01 cycle, the default Debian sources point to:
+
+- `https://snapshot.debian.org/archive/debian/20260601T000000Z/` for `forky` and `forky-updates`.
+- `https://snapshot.debian.org/archive/debian-security/20260601T000000Z/` for `forky-security`.
+
+Apt `Check-Valid-Until` is disabled for those snapshot sources because historical snapshot Release files are intentionally past their original validity window. The current-quarter tester snapshot is documented in the same source file but remains commented out unless a user intentionally opts in.
+
 ## Kernel policy
 
 MI Linux should track the latest stable kernel that satisfies all of these release gates:

@@ -9,5 +9,11 @@ fi
 if [ -x /usr/lib/mi-linux/mi-linux-gdm-wallpaper-theme ]; then
     /usr/lib/mi-linux/mi-linux-gdm-wallpaper-theme || true
 fi
+# live-build and older installs can leave a legacy sources.list that tracks
+# current raw Debian/Forky. MI Linux Founder should use the Deb822 delayed
+# snapshot sources in /etc/apt/sources.list.d/debian.sources instead.
+if [ -f /etc/apt/sources.list ] && grep -Eq 'deb\.debian\.org|security\.debian\.org|snapshot\.debian\.org' /etc/apt/sources.list; then
+    mv /etc/apt/sources.list /etc/apt/sources.list.mi-linux-pre-snapshot-policy || true
+fi
 #DEBHELPER#
 exit 0

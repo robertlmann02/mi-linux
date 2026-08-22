@@ -26,6 +26,8 @@ OUT_ROOT = REPO_ROOT / "out" / "quarterly-release"
 APT_BASE = "https://apt.mannindustries.org"
 KEY_FP = "0094056963428AE05D79A4DB027156E99ED09243"
 SUITES = ["forky-founder", "forky-tester"]
+DEBIAN_SNAPSHOT_BASE = "https://snapshot.debian.org/archive/debian"
+DEBIAN_SECURITY_SNAPSHOT_BASE = "https://snapshot.debian.org/archive/debian-security"
 
 
 def run(cmd: list[str], *, input_bytes: bytes | None = None, timeout: int = 120) -> dict:
@@ -86,7 +88,9 @@ def public_repo_checks() -> dict:
     return result
 
 
-def apt_client_check() -> dict:
+def apt_client_check(founder_snapshot_date: dt.date | None = None, tester_snapshot_date: dt.date | None = None) -> dict:
+    founder_stamp = (founder_snapshot_date or dt.date.today()).strftime("%Y%m%dT000000Z")
+    tester_stamp = (tester_snapshot_date or dt.date.today()).strftime("%Y%m%dT000000Z")
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
         for rel in [
@@ -95,7 +99,11 @@ def apt_client_check() -> dict:
         ]:
             (root / rel).mkdir(parents=True, exist_ok=True)
         (root / "var/lib/dpkg/status").write_text("")
+        (root / "etc/apt/apt.conf.d/99mi-linux-snapshot-policy").write_text('Acquire::Check-Valid-Until "false";\n')
         (root / "etc/apt/keyrings/mi-linux-archive-keyring.gpg").write_bytes(fetch(f"{APT_BASE}/mi-linux-archive-keyring.gpg"))
+        debian_key = Path("/usr/share/keyrings/debian-archive-keyring.gpg")
+        if debian_key.exists():
+            (root / "etc/apt/keyrings/debian-archive-keyring.gpg").write_bytes(debian_key.read_bytes())
         (root / "etc/apt/sources.list.d/mi-linux.sources").write_text(
             "Types: deb\n"
             f"URIs: {APT_BASE}\n"
@@ -103,6 +111,22 @@ def apt_client_check() -> dict:
             "Components: main\n"
             "Architectures: amd64\n"
             f"Signed-By: {root}/etc/apt/keyrings/mi-linux-archive-keyring.gpg\n"
+        )
+        (root / "etc/apt/sources.list.d/debian.sources").write_text(
+            "Types: deb\n"
+            f"URIs: {DEBIAN_SNAPSHOT_BASE}/{founder_stamp}/\n"
+            "Suites: forky forky-updates\n"
+            "Components: main contrib non-free non-free-firmware\n"
+            "Architectures: amd64\n"
+            "Check-Valid-Until: no\n"
+            f"Signed-By: {root}/etc/apt/keyrings/debian-archive-keyring.gpg\n\n"
+            "Types: deb\n"
+            f"URIs: {DEBIAN_SECURITY_SNAPSHOT_BASE}/{founder_stamp}/\n"
+            "Suites: forky-security\n"
+            "Components: main contrib non-free non-free-firmware\n"
+            "Architectures: amd64\n"
+            "Check-Valid-Until: no\n"
+            f"Signed-By: {root}/etc/apt/keyrings/debian-archive-keyring.gpg\n"
         )
         common = [
             "-o", f"Dir={root}",
@@ -114,9 +138,29 @@ def apt_client_check() -> dict:
             "-o", "Apt::Architecture=amd64",
             "-o", "Debug::NoLocking=1",
         ]
-        update = run(["apt-get", *common, "update"], timeout=180)
-        policy = run(["apt-cache", *common, "policy", "mi-linux-branding", "mi-linux-archive-keyring"], timeout=120)
-        return {"update_ok": update["returncode"] == 0, "update_output": update["output"], "policy_output": policy["output"]}
+        update = run(["apt-get", *common, "update"], timeout=240)
+        policy = run(["apt-cache", *common, "policy", "bash", "mi-linux-branding", "mi-linux-default-settings"], timeout=120)
+        list_names = []
+        if (root / "var/lib/apt/lists").exists():
+            list_names = sorted(p.name for p in (root / "var/lib/apt/lists").iterdir() if p.is_file())
+        expected = [
+            f"snapshot.debian.org_archive_debian_{founder_stamp}_dists_forky_InRelease",
+            f"snapshot.debian.org_archive_debian_{founder_stamp}_dists_forky-updates_InRelease",
+            f"snapshot.debian.org_archive_debian-security_{founder_stamp}_dists_forky-security_InRelease",
+            "apt.mannindustries.org_dists_forky-founder_InRelease",
+        ]
+        raw_current_seen = any("deb.debian.org" in n or "security.debian.org" in n for n in list_names)
+        expected_seen = all(any(n.startswith(e) or n == e for n in list_names) for e in expected)
+        return {
+            "update_ok": update["returncode"] == 0,
+            "uses_expected_founder_snapshot": expected_seen,
+            "raw_current_debian_seen": raw_current_seen,
+            "founder_snapshot_stamp": founder_stamp,
+            "tester_snapshot_stamp": tester_stamp,
+            "apt_list_files_sample": list_names[:40],
+            "update_output": update["output"],
+            "policy_output": policy["output"],
+        }
 
 
 def kernel_policy_check() -> dict:
@@ -160,12 +204,14 @@ def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
         "tester_snapshot_date": tester_snapshot_date.isoformat(),
         "snapshot_policy": "forky-founder is release date minus three months; forky-tester is current release date",
         "apt_repository": public_repo_checks(),
-        "apt_client": apt_client_check(),
+        "apt_client": apt_client_check(founder_snapshot_date, tester_snapshot_date),
         "kernel_policy": kernel_policy_check(),
     }
     checks["gates_green"] = bool(
         all(s["signature_ok"] for s in checks["apt_repository"]["suites"].values())
         and checks["apt_client"]["update_ok"]
+        and checks["apt_client"].get("uses_expected_founder_snapshot")
+        and not checks["apt_client"].get("raw_current_debian_seen")
     )
     report = out / "quarterly-update-report.json"
     report.write_text(json.dumps(checks, indent=2, sort_keys=True))
@@ -179,6 +225,7 @@ def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
         f"- Default suite: forky-founder\n"
         f"- Tester suite: forky-tester\n"
         f"- Apt client update gate: {'PASS' if checks['apt_client']['update_ok'] else 'FAIL'}\n"
+        f"- Founder Debian snapshot gate: {'PASS' if checks['apt_client'].get('uses_expected_founder_snapshot') and not checks['apt_client'].get('raw_current_debian_seen') else 'FAIL'}\n"
         f"- Repository signature gates: {'PASS' if all(s['signature_ok'] for s in checks['apt_repository']['suites'].values()) else 'FAIL'}\n"
         f"- Overall gates: {'PASS' if checks['gates_green'] else 'FAIL'}\n\n"
         "## Current published packages\n\n"

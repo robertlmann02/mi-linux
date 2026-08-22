@@ -34,6 +34,8 @@ The publisher:
 5. Generates separate `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
 6. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
 
+Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-09-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-06-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
+
 MannCloud Caddy must have a site block for `apt.mannindustries.org` serving `/srv/mi-linux-apt`, with Docker Compose mounting `./apt-repo:/srv/mi-linux-apt:ro` into the Caddy container.
 
 DNS requirement before public HTTPS works:

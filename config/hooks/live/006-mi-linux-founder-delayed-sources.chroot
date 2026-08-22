@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+# Keep installed MI Linux systems on the Founder delayed Debian snapshot.
+# live-build creates /etc/apt/sources.list from its build mirrors; that is
+# useful while building, but it would make installed systems track current
+# raw Forky. Remove it from the final image so the Deb822 snapshot sources
+# shipped in /etc/apt/sources.list.d/debian.sources are authoritative.
+rm -f /etc/apt/sources.list
+mkdir -p /etc/apt/apt.conf.d /etc/apt/sources.list.d
+cat >/etc/apt/apt.conf.d/99mi-linux-snapshot-policy <<'EOF'
+Acquire::Check-Valid-Until "false";
+EOF
+cat >/etc/apt/sources.list.d/debian.sources <<'EOF'
+# MI Linux Founder channel: Debian/Forky packages are pinned to the
+# quarterly delayed snapshot target. For the 2026-09-01 MI Linux cycle,
+# Founder uses the 2026-06-01 Debian snapshot.
+Types: deb
+URIs: https://snapshot.debian.org/archive/debian/20260601T000000Z/
+Suites: forky forky-updates
+Components: main contrib non-free non-free-firmware
+Check-Valid-Until: no
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://snapshot.debian.org/archive/debian-security/20260601T000000Z/
+Suites: forky-security
+Components: main contrib non-free non-free-firmware
+Check-Valid-Until: no
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+# Current quarterly tester channel for advanced users only. Uncomment
+# intentionally when testing the current quarterly Debian/Forky target.
+# Types: deb
+# URIs: https://snapshot.debian.org/archive/debian/20260901T000000Z/
+# Suites: forky forky-updates
+# Components: main contrib non-free non-free-firmware
+# Check-Valid-Until: no
+# Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+#
+# Types: deb
+# URIs: https://snapshot.debian.org/archive/debian-security/20260901T000000Z/
+# Suites: forky-security
+# Components: main contrib non-free non-free-firmware
+# Check-Valid-Until: no
+# Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
