@@ -47,9 +47,9 @@
           <span class="dot orange"></span><span class="dot blue"></span><span class="dot gray"></span>
           <pre>mi-linux@founder:~$ verify-release
 ISO: mi-linux-forky-founder-amd64.iso
-Size: 2,490,040,320 bytes
-SHA256: 8970674a65feb7f2...
-SHA512: 4acf57493ee82cf9...
+Size: 3,178,332,160 bytes
+SHA256: f357ce90ba864b56...
+SHA512: 68243169f7d58a89...
 Source: GitHub public recipe</pre>
         </div>
       </div>
@@ -106,8 +106,19 @@ Source: GitHub public recipe</pre>
         <article><h3>Gaming ready</h3><p>Planned support for i386 multiarch, Vulkan, GameMode, MangoHud, controllers, and Proton tools without overloading the base install.</p></article>
         <article><h3>Privacy-respecting defaults</h3><p>No telemetry, no required online account, no automatic usage reporting, and user-controlled bug reporting.</p></article>
         <article><h3>Real release artifacts</h3><p>Bootable ISO, checksums, release notes, known issues, public source, and MannCloud-hosted downloads.</p></article>
-        <article><h3>Mann Industries identity</h3><p>Branding, wallpaper, boot and install identity, welcome app, update manager, and a dedicated apt repository.</p></article>
+        <article><h3>Mann Industries identity</h3><p>Branding, wallpaper, full-screen boot/shutdown art, welcome app, update manager, and a dedicated apt repository.</p></article>
       </div>
+    </section>
+
+    <section id="release-update" class="panel verify-panel">
+      <div>
+        <p class="eyebrow">Latest update</p>
+        <h2>Founder Preview refresh: cleaner startup, login, lock screen, and updates</h2>
+        <p>This ISO refresh adds a full-screen MI Linux boot and shutdown image, lock and login wallpaper sync, and a friendlier Update Manager that uses plain language while handling common apt lock conflicts more safely.</p>
+      </div>
+      <pre class="code">Current ISO: mi-linux-forky-founder-amd64.iso
+Build: 2026-08-22 Founder Preview refresh
+Source commit: f3d51beaa72619b654ba5846f45ae6e92b847242</pre>
     </section>
 
     <section id="verify" class="panel verify-panel">
@@ -116,9 +127,9 @@ Source: GitHub public recipe</pre>
         <h2>Verify before you install</h2>
         <p>After downloading the ISO, compare it with the SHA256 or SHA512 file. The checksum should match exactly before you write the USB.</p>
       </div>
-      <pre class="code">Size: 2,490,040,320 bytes
-SHA256: 8970674a65feb7f2801c94ee3a344aba<wbr>7518ce3281bb83bd38ba5ad40d45439d
-SHA512: 4acf57493ee82cf92d6da9daa98236aa<wbr>0ff8448c042ea64d75ac9db82c76ab0f<wbr>6b96ed17f5b75bab9b29fc326d1db5a1<wbr>285afcb8bea6ca80f3e7c64a92736ffa
+      <pre class="code">Size: 3,178,332,160 bytes
+SHA256: f357ce90ba864b5697824133fd15d13b<wbr>0c2fdb4b571a0d381ded3a9653ba92f9
+SHA512: 68243169f7d58a898c7440cc1bf82d58<wbr>c194d7a537fe6838c7eb140b9b4d813a<wbr>6a6f2d78bb007b94dd9667346a01b059<wbr>9c3b50eb1bd00326c95d4ad31b4ed637
 
 sha256sum -c mi-linux-forky-founder-amd64.iso.sha256
 sha512sum -c mi-linux-forky-founder-amd64.iso.sha512</pre>
