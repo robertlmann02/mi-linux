@@ -195,3 +195,38 @@ footer img { width: min(360px, 72vw); display: block; margin: 0 auto 1rem; }
   .release-facts, .download-grid, .feature-grid { grid-template-columns: 1fr; }
   .hero-card { min-height: 420px; }
 }
+
+.tour-hero { min-height: 680px; }
+.tour-shot {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255,255,255,.045);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.tour-shot img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #020610;
+}
+.tour-shot figcaption {
+  padding: .9rem 1rem 1rem;
+  color: var(--muted);
+  font-size: .95rem;
+  border-top: 1px solid var(--line);
+}
+.hero-shot { align-self: center; }
+.tour-section { align-items: start; }
+.tour-grid.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.tour-shot.wide img { aspect-ratio: 16 / 9; }
+.tour-cards article { min-height: 180px; }
+@media (max-width: 760px) {
+  .tour-grid.two { grid-template-columns: 1fr; }
+}
