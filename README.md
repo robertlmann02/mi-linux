@@ -71,6 +71,7 @@ The current source includes fixes from installed-system testing that are intende
 - **Update Manager uses plain language:** the GTK Update Manager now reports results such as “Updates were installed successfully” or “Your system is up to date” instead of showing technical exit codes.
 - **Update Manager handles common apt conflicts:** update installation now stops the background PackageKit updater when needed, waits for apt locks, uses noninteractive config handling, and keeps existing config choices unless the package can safely use its default.
 - **Package metadata was tightened:** the affected MI Linux packages now declare the runtime tools they actually use, so fresh installs and package updates have the required components available.
+- **Boot and shutdown image fills the screen:** the Plymouth boot/shutdown theme now scales the MI Linux splash art to the active display size instead of centering it at its original pixel dimensions. This keeps the startup and shutdown screens from looking like a small image on high-resolution displays.
 
 These changes were added because a beginner-friendly desktop should make update and wallpaper behavior predictable without requiring users to understand Linux service names, apt locks, dconf databases, or shell exit codes.
 
