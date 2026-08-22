@@ -1,3 +1,9 @@
+mi-linux-wallpapers (0.1.0-2) forky-founder; urgency=medium
+
+  * Rebuild from current source to keep wallpaper package versions aligned with the MI Linux repository.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Fri, 21 Aug 2026 22:20:00 -0400
+
 mi-linux-wallpapers (0.1.0-1) forky-founder; urgency=medium
 
   * Initial Founder Preview package skeleton.

@@ -1,3 +1,9 @@
+mi-linux-archive-keyring (0.1.0-2) forky-founder; urgency=medium
+
+  * Rebuild from current source so ISO builds never try to downgrade the archive keyring package.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Fri, 21 Aug 2026 22:20:00 -0400
+
 mi-linux-archive-keyring (0.1.0-1) forky-founder; urgency=medium
 
   * Initial Founder Preview package skeleton.

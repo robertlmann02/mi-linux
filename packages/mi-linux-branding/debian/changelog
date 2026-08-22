@@ -1,3 +1,9 @@
+mi-linux-branding (0.1.0-2) forky-founder; urgency=medium
+
+  * Rebuild current boot and visual branding package for the full-screen splash ISO.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Fri, 21 Aug 2026 22:20:00 -0400
+
 mi-linux-branding (0.1.0-1) forky-founder; urgency=medium
 
   * Initial Founder Preview package skeleton.
