@@ -1,3 +1,9 @@
+mi-linux-gnome-theme (0.1.0-4) forky-founder; urgency=medium
+
+  * Rebuild local ISO package above published repo version for ISO-1 fixes.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 09:04:23 -0400
+
 mi-linux-gnome-theme (0.1.0-2) forky-founder; urgency=medium
 
   * Rebuild from current source so ISO builds never try to downgrade the GNOME theme package.
