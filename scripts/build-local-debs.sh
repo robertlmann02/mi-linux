@@ -3,6 +3,11 @@ set -eu
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 mkdir -p "$ROOT/config/packages.chroot"
 
+# Keep live-build from seeing stale lower-version local packages.
+# If both 0.1.0-1 and a newer rebuilt .deb are present, apt can select the
+# stale one during binary archives and fail with a downgrade error.
+rm -f "$ROOT"/packages/mi-linux-*.deb "$ROOT"/config/packages.chroot/mi-linux-*.deb
+
 ONLYOFFICE_DEB="$ROOT/config/packages.chroot/onlyoffice-desktopeditors_amd64.deb"
 ONLYOFFICE_URL="https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb"
 if [ ! -s "$ONLYOFFICE_DEB" ] || ! ar t "$ONLYOFFICE_DEB" >/dev/null 2>&1; then
