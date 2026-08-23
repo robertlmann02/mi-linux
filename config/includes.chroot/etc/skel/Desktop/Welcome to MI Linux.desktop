@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Welcome to MI Linux
+GenericName=MI Linux Welcome
+Exec=mi-linux-welcome
+Comment=Get started with MI Linux and install recommended apps
+Icon=help-about
+Terminal=false
+Categories=System;
+StartupNotify=true

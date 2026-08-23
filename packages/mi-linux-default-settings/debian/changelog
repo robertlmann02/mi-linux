@@ -1,3 +1,9 @@
+mi-linux-default-settings (0.1.0-8) forky-founder; urgency=medium
+
+  * Put Welcome on the desktop and point defaults at MannCloud wallpapers.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 12:05:00 -0400
+
 mi-linux-default-settings (0.1.0-7) forky-founder; urgency=medium
 
   * Autostart Welcome after login until the user disables it.
