@@ -22,3 +22,14 @@ clock-show-weekday=true
 [org/gnome/shell/extensions/dash-to-panel]
 panel-position='BOTTOM'
 panel-size=44
+
+
+[org/gnome/shell/extensions/arcmenu]
+menu-button-icon='/usr/share/icons/hicolor/256x256/apps/mannindustries-menu-emblem.png'
+menu-button-appearance='Icon_Text'
+menu-button-text='MI Linux'
+menu-button-icon-size=30
+menu-layout='windows'
+position-in-panel='Left'
+force-menu-location='BottomLeft'
+override-menu-theme=true

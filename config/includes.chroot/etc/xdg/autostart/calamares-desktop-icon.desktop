@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Add MI Linux Installer Desktop Icon
-Exec=add-calamares-desktop-icon
+Exec=sh -c 'sleep 3; add-calamares-desktop-icon'
 StartupNotify=false
 NoDisplay=true
-X-GNOME-Autostart-Phase=Initialization
 X-KDE-autostart-phase=1

@@ -8,6 +8,11 @@ set -eu
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
 
+# Force the installer UI to open in English by default on live media.
+export LANG=C.UTF-8
+export LANGUAGE=en_US:en
+export LC_ALL=C.UTF-8
+
 # Stale file left behind by live-build can confuse partitioning. Move it aside
 # only once, and restore it after Calamares exits if possible.
 FSTAB_MOVED=0

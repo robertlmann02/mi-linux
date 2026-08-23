@@ -1,20 +1,23 @@
 #!/bin/sh
-set -eu
+set -u
 
-# Create an "Install MI Linux" launcher on the live user's desktop.
-# This replaces Debian's stock helper and intentionally avoids all Debian
-# wording in the live session.
+# Ensure the live desktop always gets a visible trusted installer launcher.
+# GNOME/DING can start before xdg-user-dirs is ready, so retry briefly.
 
-DESKTOP=$(xdg-user-dir DESKTOP 2>/dev/null || printf '%s/Desktop' "$HOME")
-mkdir -p "$DESKTOP"
+for _try in 1 2 3 4 5; do
+    DESKTOP=$(xdg-user-dir DESKTOP 2>/dev/null || printf '%s/Desktop' "$HOME")
+    [ -n "$DESKTOP" ] || DESKTOP="$HOME/Desktop"
+    mkdir -p "$DESKTOP" 2>/dev/null && break
+    sleep 1
+done
 
 SOURCE=/usr/share/applications/calamares-install-debian.desktop
 TARGET="$DESKTOP/Install MI Linux.desktop"
 
 if [ -f "$SOURCE" ]; then
-    cp "$SOURCE" "$TARGET"
+    cp -f "$SOURCE" "$TARGET"
 else
-    cat > "$TARGET" <<'EOF'
+    cat > "$TARGET" <<'LAUNCHER_EOF'
 [Desktop Entry]
 Type=Application
 Version=1.0
@@ -27,23 +30,21 @@ Icon=/usr/share/mi-linux/branding/mi-linux-boot-splash.png
 Terminal=false
 Categories=Qt;System;
 StartupWMClass=calamares
-StartupNotify=True
-EOF
+StartupNotify=true
+LAUNCHER_EOF
 fi
 
 chmod 755 "$TARGET"
 
-# Mark launcher trusted where the desktop supports Gio metadata. GNOME 44+
-# generally honors executable .desktop files; this also helps Xfce/Cinnamon.
 if command -v gio >/dev/null 2>&1; then
     gio set -t string "$TARGET" metadata::trusted true 2>/dev/null || true
-    gio set -t string "$TARGET" metadata::xfce-exe-checksum "$(sha256sum "$TARGET" | awk '{print $1}')" 2>/dev/null || true
+    if command -v sha256sum >/dev/null 2>&1; then
+        gio set -t string "$TARGET" metadata::xfce-exe-checksum "$(sha256sum "$TARGET" | awk '{print $1}')" 2>/dev/null || true
+    fi
 fi
 
 touch "$TARGET"
 
-# Preload Calamares binaries/libraries using idle disk cycles so first launch is
-# faster. This must not fail the desktop-icon creation path.
 if [ -x /usr/bin/calamares ]; then
     ionice -c 3 cat /usr/bin/calamares >/dev/null 2>&1 || true
     ldd /usr/bin/calamares 2>/dev/null | awk '/=> \/[^ ]+/ {print $3}' | while read -r file; do
