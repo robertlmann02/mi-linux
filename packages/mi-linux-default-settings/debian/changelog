@@ -1,3 +1,9 @@
+mi-linux-default-settings (0.1.0-6) forky-founder; urgency=medium
+
+  * Point ArcMenu at the shipped MI menu emblem asset.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 10:45:00 -0400
+
 mi-linux-default-settings (0.1.0-4) forky-founder; urgency=medium
 
   * Rebuild local ISO package above published repo version for ISO-1 fixes.

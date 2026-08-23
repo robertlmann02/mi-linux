@@ -1,3 +1,9 @@
+mi-linux-branding (0.1.0-6) forky-founder; urgency=medium
+
+  * Ship hicolor menu emblem paths and branding icon.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 10:45:00 -0400
+
 mi-linux-branding (0.1.0-5) forky-founder; urgency=medium
 
   * Ship the Mann Industries menu emblem used by the live ArcMenu button.

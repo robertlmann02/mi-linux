@@ -25,7 +25,7 @@ panel-size=44
 
 
 [org/gnome/shell/extensions/arcmenu]
-menu-button-icon='/usr/share/icons/hicolor/256x256/apps/mannindustries-menu-emblem.png'
+menu-button-icon='/usr/share/mi-linux/branding/mannindustries-menu-emblem.png'
 menu-button-appearance='Icon_Text'
 menu-button-text='MI Linux'
 menu-button-icon-size=30

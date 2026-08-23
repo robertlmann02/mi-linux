@@ -1,4 +1,11 @@
 assets/mi-linux-boot-splash.png usr/share/mi-linux/branding/
 assets/mi-linux-boot-splash.svg usr/share/mi-linux/branding/
 assets/mannindustries-menu-emblem.png usr/share/mi-linux/branding/
-assets/hicolor/*/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/
+assets/hicolor/16x16/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/16x16/apps/
+assets/hicolor/22x22/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/22x22/apps/
+assets/hicolor/24x24/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/24x24/apps/
+assets/hicolor/32x32/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/32x32/apps/
+assets/hicolor/48x48/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/48x48/apps/
+assets/hicolor/64x64/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/64x64/apps/
+assets/hicolor/128x128/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/128x128/apps/
+assets/hicolor/256x256/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/256x256/apps/
