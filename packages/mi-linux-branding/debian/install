@@ -1,2 +1,4 @@
 assets/mi-linux-boot-splash.png usr/share/mi-linux/branding/
 assets/mi-linux-boot-splash.svg usr/share/mi-linux/branding/
+assets/mannindustries-menu-emblem.png usr/share/mi-linux/branding/
+assets/hicolor/*/apps/mannindustries-menu-emblem.png usr/share/icons/hicolor/

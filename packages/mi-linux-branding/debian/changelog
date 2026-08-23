@@ -1,3 +1,9 @@
+mi-linux-branding (0.1.0-5) forky-founder; urgency=medium
+
+  * Ship the Mann Industries menu emblem used by the live ArcMenu button.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 10:25:00 -0400
+
 mi-linux-branding (0.1.0-4) forky-founder; urgency=medium
 
   * Rebuild local ISO package above published repo version for ISO-1 fixes.
