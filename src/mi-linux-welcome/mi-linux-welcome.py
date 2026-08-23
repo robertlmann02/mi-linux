@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """GTK/GNOME MI Linux Welcome app for Founder Preview."""
+import os
+from pathlib import Path
 import shutil
 import subprocess
 
@@ -70,6 +72,31 @@ def has_nvidia_gpu():
     return 'NVIDIA' in out or '10de:' in out.lower()
 
 
+def autostart_override_path():
+    config_home = Path(os.environ.get('XDG_CONFIG_HOME', Path.home() / '.config'))
+    return config_home / 'autostart' / 'mi-linux-welcome.desktop'
+
+
+def welcome_autostart_enabled():
+    override = autostart_override_path()
+    if not override.exists():
+        return True
+    try:
+        return 'Hidden=true' not in override.read_text()
+    except Exception:
+        return True
+
+
+def set_welcome_autostart(enabled):
+    override = autostart_override_path()
+    override.parent.mkdir(parents=True, exist_ok=True)
+    if enabled:
+        if override.exists():
+            override.unlink()
+        return
+    override.write_text('[Desktop Entry]\nType=Application\nName=Welcome to MI Linux\nExec=mi-linux-welcome\nHidden=true\n')
+
+
 def command_exists(name):
     return shutil.which(name) is not None
 
@@ -101,6 +128,12 @@ class Welcome(Gtk.Application):
         self.status.set_xalign(0)
         self.status.set_wrap(True)
         box.append(self.status)
+
+        startup_box = Gtk.CheckButton(label='Show Welcome at startup')
+        startup_box.set_active(welcome_autostart_enabled())
+        startup_box.set_tooltip_text('Leave this checked while setting up MI Linux. Uncheck it when you do not want Welcome to open after login.')
+        startup_box.connect('toggled', self.on_startup_toggled)
+        box.append(startup_box)
 
         quick = Gtk.Label(label='Quick Actions')
         quick.add_css_class('title-2')
@@ -180,6 +213,14 @@ class Welcome(Gtk.Application):
     def set_status(self, text):
         if self.status:
             self.status.set_text(text)
+
+    def on_startup_toggled(self, button):
+        enabled = button.get_active()
+        set_welcome_autostart(enabled)
+        if enabled:
+            self.set_status('Welcome will open automatically after login.')
+        else:
+            self.set_status('Welcome will no longer open automatically after login. You can still open it from the menu or favorites.')
 
     def run_plain(self, cmd):
         try:

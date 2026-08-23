@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Welcome to MI Linux
+Comment=Open MI Linux Welcome after login until disabled
+Exec=sh -c 'sleep 4; mi-linux-welcome'
+Icon=help-about
+Terminal=false
+X-GNOME-Autostart-enabled=true
+OnlyShowIn=GNOME;

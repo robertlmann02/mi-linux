@@ -1,3 +1,9 @@
+mi-linux-welcome (0.1.0-7) forky-founder; urgency=medium
+
+  * Add a startup checkbox for disabling the Welcome popup.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 11:10:00 -0400
+
 mi-linux-welcome (0.1.0-6) forky-founder; urgency=medium
 
   * Make Recommended Apps installable and add NVIDIA driver guidance.

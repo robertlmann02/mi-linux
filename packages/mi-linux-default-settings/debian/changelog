@@ -1,3 +1,9 @@
+mi-linux-default-settings (0.1.0-7) forky-founder; urgency=medium
+
+  * Autostart Welcome after login until the user disables it.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 11:10:00 -0400
+
 mi-linux-default-settings (0.1.0-6) forky-founder; urgency=medium
 
   * Point ArcMenu at the shipped MI menu emblem asset.
