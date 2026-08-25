@@ -37,18 +37,18 @@ Quick GitHub flow:
    https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview
    ```
 
-2. Use the MannCloud ISO link in the release notes:
+2. Use the Cloudflare R2 ISO link in the release notes:
 
    ```text
-   https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download
+   https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso
    ```
 
-3. Download the `.sha256` and `.sha512` files from the release assets or MannCloud links, then verify the ISO.
+3. Download the `.sha256`, `.sha512`, and `.sig` files from the release/R2 links, then verify the ISO.
 4. Write it with the right tool for your computer: Rufus or balenaEtcher on PC/Windows, balenaEtcher on Mac, GNOME Disks or `scripts/write-usb.sh` on Linux, or Ventoy for advanced multi-ISO USB drives.
 
 ## Install
 
-1. Download the ISO from the GitHub Release notes / MannCloud ISO link.
+1. Download the ISO from the GitHub Release notes / Cloudflare R2 ISO link.
 2. Verify SHA256 and SHA512; verify the GPG signature when it is provided.
 3. Write the ISO to USB.
 4. Boot from USB using UEFI or Legacy BIOS.

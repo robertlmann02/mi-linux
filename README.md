@@ -83,21 +83,22 @@ The official website is planned for:
 https://mannindustries.org/mi-linux
 ```
 
-The website is live and includes download links, checksums, install guidance, known issues, release notes, support/bug-report links, and links back to this public GitHub build source. The first Founder Preview release is published on GitHub, with the full ISO hosted on MannCloud:
+The website is live and includes download links, checksums, install guidance, known issues, release notes, support/bug-report links, and links back to this public GitHub build source. The first Founder Preview release is published on GitHub, with the full ISO hosted on Cloudflare R2 because it is too large for GitHub Releases:
 
 - GitHub Release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`
 - Website: `https://mannindustries.org/mi-linux/`
 - Direct website subdomain: `https://mi-linux.mannindustries.org/`
-- ISO download: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso`
-- SHA256: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha256`
-- SHA512: `https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso.sha512`
+- ISO download: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso`
+- SHA256: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha256`
+- SHA512: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha512`
+- GPG signature: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sig`
 
 ## Create a bootable USB from GitHub
 
 Users can create a bootable USB from the GitHub release page:
 
 1. Open the Founder Preview release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`.
-2. Download the MI Linux ISO using the MannCloud ISO link in the release notes.
+2. Download the MI Linux ISO using the Cloudflare R2 ISO link in the release notes.
 3. Download the matching `.sha256` and `.sha512` files from the release assets or MannCloud links.
 4. Download the GPG signature when it is provided.
 5. Verify the ISO checksums/signature.

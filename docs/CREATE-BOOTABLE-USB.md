@@ -7,7 +7,7 @@ Writing an ISO erases the whole USB drive. Back up anything important on the USB
 ## What you need
 
 - A 16 GB or larger USB drive
-- The MI Linux `.iso` file from the GitHub Release notes / MannCloud ISO link
+- The MI Linux `.iso` file from the GitHub Release notes / Cloudflare R2 ISO link
 - The matching checksum files, when published:
   - `.sha256`
   - `.sha512`
@@ -24,20 +24,21 @@ Writing an ISO erases the whole USB drive. Back up anything important on the USB
 
 2. Click **Releases** on the right side of the GitHub page.
 3. Open the latest MI Linux Forky Founder release.
-4. Download the ISO from the MannCloud ISO link in the release notes:
+4. Download the ISO from the Cloudflare R2 ISO link in the release notes:
 
    ```text
-   https://manncloud.mannindustries.org/s/Zn5m6Sm6syjb2A6/download
+   https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso
    ```
 
-5. Download the matching `.sha256` and `.sha512` files from the GitHub release assets or these MannCloud checksum links:
+5. Download the matching `.sha256`, `.sha512`, and `.sig` files from GitHub/R2 links:
 
    ```text
-   https://manncloud.mannindustries.org/s/zA73PDfyYr8jxkj/download
-   https://manncloud.mannindustries.org/s/JBrpKra4KnyfsiZ/download
+   https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha256
+   https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha512
+   https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sig
    ```
 
-6. Download the GPG signature when it is provided. The ISO is hosted on MannCloud because the current Founder Preview ISO is larger than GitHub Releases' single-file asset limit.
+6. The full ISO is hosted on Cloudflare R2 because the current Founder Preview ISO is larger than GitHub Releases' single-file asset limit.
 
 ## Step 2: Verify the download
 
