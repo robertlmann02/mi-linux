@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mi-linux.mannindustries.org/sitemap.xml
+Sitemap: https://mannindustries.org/mi-linux/sitemap.xml
