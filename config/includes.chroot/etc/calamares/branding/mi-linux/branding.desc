@@ -18,7 +18,7 @@ strings:
     supportUrl:          https://github.com/robertlmann02/mi-linux/issues
     knownIssuesUrl:      https://github.com/robertlmann02/mi-linux/issues
     releaseNotesUrl:     https://github.com/robertlmann02/mi-linux/releases
-    donateUrl:           https://mannindustries.org/mi-linux
+    donateUrl:           https://buymeacoffee.com/robertlmann02
 
 sidebar: widget
 navigation: widget

@@ -92,6 +92,15 @@ The website is live and includes download links, checksums, install guidance, kn
 - SHA256: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha256`
 - SHA512: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sha512`
 - GPG signature: `https://pub-8cb27617fff04109ab14c6a58945ce2d.r2.dev/founder-preview/mi-linux-forky-founder-amd64.iso.sig`
+- Support MI Linux: `https://buymeacoffee.com/robertlmann02`
+
+## Support MI Linux
+
+If MI Linux helped you, you can support development, hosting, download bandwidth, test hardware, and future builds here:
+
+```text
+https://buymeacoffee.com/robertlmann02
+```
 
 ## Create a bootable USB from GitHub
 
