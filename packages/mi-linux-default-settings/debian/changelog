@@ -1,3 +1,9 @@
+mi-linux-default-settings (0.1.0-9) forky-founder; urgency=medium
+
+  * Allow unattended-upgrades to install signed MI Linux Founder-channel package updates.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sat, 29 Aug 2026 20:42:56 -0400
+
 mi-linux-default-settings (0.1.0-8) forky-founder; urgency=medium
 
   * Put Welcome on the desktop and point defaults at MannCloud wallpapers.
