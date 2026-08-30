@@ -12,5 +12,7 @@ fi
 find . \
   \( -path './.git' -o -path './chroot' -o -path './cache' -o -path './binary' -o -path './config/binary' -o -path './config/bootstrap' -o -path './config/chroot' -o -path './config/common' -o -path './config/source' \) -prune -o \
   -type f ! -name validate-tree.sh -print0 \
-  | xargs -0 grep -InE 'gho_[A-Za-z0-9_]+|github_pat_|BEGIN (RSA|OPENSSH|PRIVATE) KEY|TOKEN=|SECRET=' && exit 1 || true
+  | xargs -0 grep -InE 'gho_[A-Za-z0-9_]+|github_pat_|BEGIN (RSA|OPENSSH|PRIVATE) KEY|TOKEN=|SECRET=' \
+  | grep -Ev "(your-r2-secret-access-key|scoped-cloudflare-api-token)'$" \
+  && exit 1 || true
 echo 'MI Linux tree validation passed'

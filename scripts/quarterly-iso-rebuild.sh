@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # Build a fresh MI Linux ISO every quarterly release cycle.
 # Intended runner: MannsPi5Ai user/systemd timer.
-# Intended builder: MannPro x86_64 over SSH.
+# Intended builder: MannMiniPC x86_64 over SSH.
 set -euo pipefail
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 PI_REPO="${MI_LINUX_PI_REPO:-/home/robertlmann02/mi-linux}"
-BUILDER_HOST="${MI_LINUX_BUILDER_HOST:-10.0.0.7}"
+BUILDER_HOST="${MI_LINUX_BUILDER_HOST:-mannminipc.local}"
 BUILDER_USER="${MI_LINUX_BUILDER_USER:-robertlmann02}"
-BUILDER_REPO="${MI_LINUX_BUILDER_REPO:-/mnt/steam-ssd/mi-linux-build/mi-linux}"
-REMOTE_URL="${MI_LINUX_REMOTE_URL:-git@github.com:robertlmann02/mi-linux.git}"
+BUILDER_REPO="${MI_LINUX_BUILDER_REPO:-/home/robertlmann02/mi-linux-build/mi-linux}"
+REMOTE_URL="${MI_LINUX_REMOTE_URL:-https://github.com/robertlmann02/mi-linux.git}"
 BRANCH="${MI_LINUX_BRANCH:-main}"
 LOCAL_CANDIDATE_ROOT="${MI_LINUX_LOCAL_CANDIDATE_ROOT:-/home/robertlmann02/mi-linux-quarterly-candidates}"
 LOG_ROOT="${MI_LINUX_LOG_ROOT:-/home/robertlmann02/mi-linux-quarterly-rebuild-logs}"

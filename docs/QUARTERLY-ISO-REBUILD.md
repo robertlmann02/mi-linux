@@ -11,10 +11,10 @@ The timer intentionally runs after the quarterly update target day. That gives t
 ## Runner and builder
 
 - Timer/runner host: MannsPi5Ai / Pi5.
-- ISO builder host: MannPro, reached over SSH as `robertlmann02@10.0.0.7`.
-- Builder workspace: `/mnt/steam-ssd/mi-linux-build/mi-linux`.
+- ISO builder host: MannMiniPC, reached over SSH as `robertlmann02@mannminipc.local`.
+- Builder workspace: `/home/robertlmann02/mi-linux-build/mi-linux`.
 
-The ISO build must happen on MannPro because MI Linux publishes an amd64 image and MannsPi5Ai is ARM64.
+The ISO build must happen on MannMiniPC because MI Linux publishes an amd64 image and MannsPi5Ai is ARM64. MannMiniPC is x86_64 and can take the quarterly automatic build time without tying up MannPro.
 
 ## Script
 
@@ -28,7 +28,7 @@ Useful overrides:
 
 ```bash
 MI_LINUX_RELEASE_DATE=2026-09-01 /home/robertlmann02/mi-linux/scripts/quarterly-iso-rebuild.sh
-MI_LINUX_BUILDER_HOST=mannpro.local /home/robertlmann02/mi-linux/scripts/quarterly-iso-rebuild.sh
+MI_LINUX_BUILDER_HOST=mannminipc.local /home/robertlmann02/mi-linux/scripts/quarterly-iso-rebuild.sh
 ```
 
 ## What the script does
@@ -36,12 +36,12 @@ MI_LINUX_BUILDER_HOST=mannpro.local /home/robertlmann02/mi-linux/scripts/quarter
 1. Computes the quarterly release date.
 2. Fetches `origin/main` so pushed quarterly recipe/update changes are included.
 3. Verifies the builder is reachable and `x86_64`.
-4. Clones or resets the MannPro builder workspace to `origin/main`.
+4. Clones or resets the MannMiniPC builder workspace to `origin/main`.
 5. Runs `scripts/validate-tree.sh`.
 6. Runs `scripts/mi-linux-quarterly-update.py --mode prepare` for the release date.
 7. Runs live-build clean/config/build.
 8. Stores the candidate ISO and checksums under:
-   - MannPro: `out/quarterly-iso/YYYY-MM-DD/`
+   - MannMiniPC: `out/quarterly-iso/YYYY-MM-DD/`
    - Pi5: `/home/robertlmann02/mi-linux-quarterly-candidates/YYYY-MM-DD/`
    - MannCloud candidate directory, when Pi5 passwordless sudo is available: `/opt/manncloud/downloads/mi-linux/quarterly-candidates/YYYY-MM-DD/`
 9. Verifies SHA256 and SHA512 after copying back to Pi5.
@@ -50,4 +50,4 @@ MI_LINUX_BUILDER_HOST=mannpro.local /home/robertlmann02/mi-linux/scripts/quarter
 
 This automation creates a verified candidate ISO. It does not replace the public stable Founder Preview download name by itself. Public replacement still needs release verification: VM boot, desktop branding, Calamares install, installed apt sources, Secure Boot/Waydroid kernel checks, checksums/signature, website links, and GitHub Release update.
 
-If MannPro is offline, SSH fails, validation fails, live-build fails, or checksums fail, the script exits non-zero and leaves the current public ISO untouched.
+If MannMiniPC is offline, SSH fails, validation fails, live-build fails, or checksums fail, the script exits non-zero and leaves the current public ISO untouched.
