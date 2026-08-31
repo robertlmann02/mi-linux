@@ -77,13 +77,7 @@ These changes were added because a beginner-friendly desktop should make update 
 
 ## Website and downloads
 
-The official website is planned for:
-
-```text
-https://mannindustries.org/mi-linux
-```
-
-The website is live and includes download links, checksums, install guidance, known issues, release notes, support/bug-report links, and links back to this public GitHub build source. The first Founder Preview release is published on GitHub, with the full ISO hosted on Cloudflare R2 because it is too large for GitHub Releases:
+The official website is live at `https://mannindustries.org/mi-linux/` and `https://mi-linux.mannindustries.org/`. It includes download links, checksums, install guidance, known issues, release notes, support/bug-report links, and links back to this public GitHub build source. The first Founder Preview release is published on GitHub, with the full ISO hosted on Cloudflare R2 because it is too large for GitHub Releases:
 
 - GitHub Release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`
 - Website: `https://mannindustries.org/mi-linux/`
@@ -101,6 +95,19 @@ If MI Linux helped you, you can support development, hosting, download bandwidth
 ```text
 https://buymeacoffee.com/robertlmann02
 ```
+
+MI Linux may add tasteful sponsor placements later, but the download path should stay clean and trustworthy. Good fits are Linux hardware, open-source tooling, privacy, developer, hosting, and gaming-related sponsors. Avoid popups, autoplay/video ads, deceptive buttons, or generic ads beside ISO downloads.
+
+## Search indexing
+
+Site-side search indexing files are published at:
+
+```text
+https://mi-linux.mannindustries.org/robots.txt
+https://mi-linux.mannindustries.org/sitemap.xml
+```
+
+Google Search Console still requires manual account verification. The checklist is in `docs/GOOGLE-SEARCH-CONSOLE.md`.
 
 ## Create a bootable USB from GitHub
 
