@@ -6,7 +6,7 @@ The MI Linux update server is live at:
 https://apt.mannindustries.org
 ```
 
-It is a signed Debian-style apt repository hosted on MannCloud/Caddy.
+It is a signed Debian-style apt repository hosted behind a public HTTPS endpoint.
 
 ## Channels
 

@@ -8,11 +8,11 @@ set -euo pipefail
 
 BUCKET="${MI_LINUX_R2_BUCKET:-mi-linux-downloads}"
 PREFIX="${MI_LINUX_R2_PREFIX:-founder-preview}"
-ISO="${MI_LINUX_ISO:-/opt/manncloud/downloads/mi-linux/founder-preview/mi-linux-forky-founder-amd64.iso}"
+ISO="${MI_LINUX_ISO:-$PWD/out/mi-linux-forky-founder-amd64.iso}"
 SHA256_FILE="${MI_LINUX_SHA256:-${ISO}.sha256}"
 SHA512_FILE="${MI_LINUX_SHA512:-${ISO}.sha512}"
 SIG_FILE="${MI_LINUX_SIG:-${ISO}.sig}"
-WEBSITE_DIR="${MI_LINUX_WEBSITE_DIR:-/home/robertlmann02/mi-linux/website}"
+WEBSITE_DIR="${MI_LINUX_WEBSITE_DIR:-$PWD/website}"
 WRANGLER="${WRANGLER:-npx --yes wrangler@latest}"
 RCLONE="${RCLONE:-rclone --config /dev/null}"
 DRY_RUN=0
@@ -107,7 +107,7 @@ if [[ "$UPDATE_WEBSITE" == "1" ]]; then
     echo "UPDATE_WEBSITE=1 requires MI_LINUX_R2_PUBLIC_BASE, e.g. https://pub-xxxx.r2.dev" >&2
     exit 3
   fi
-  OLD_BASE='https://manncloud.mannindustries.org/downloads/mi-linux/founder-preview'
+  OLD_BASE='https://downloads.example.com/mi-linux/founder-preview'
   NEW_BASE="${PUBLIC_BASE%/}/$PREFIX"
   for f in "$WEBSITE_DIR"/*.html; do
     [[ -f "$f" ]] || continue

@@ -8,7 +8,7 @@ Mann Industries Linux, short name **MI Linux**, is a Debian Testing/Forky-based 
 
 MI Linux is being created for people who want a polished, beginner-friendly Linux desktop without giving up modern hardware support, gaming-ready performance, privacy, or control over system updates. It is not just a theme pack. The goal is a real installable operating system with a live ISO, Calamares installer, MI Linux update path, documentation, checksums, signatures, and a public build recipe.
 
-> Website status: the MI Linux website is live at `https://mannindustries.org/mi-linux/`. A direct subdomain is also available at `https://mi-linux.mannindustries.org/`. The site is self-hosted on MannCloud and includes downloads, checksums, install guidance, known issues, and source links.
+> Website status: the MI Linux website is live at `https://mannindustries.org/mi-linux/`. A direct subdomain is also available at `https://mi-linux.mannindustries.org/`. The site is published with downloads, checksums, install guidance, known issues, and source links.
 
 ## Who is this for?
 
@@ -115,7 +115,7 @@ Users can create a bootable USB from the GitHub release page:
 
 1. Open the Founder Preview release: `https://github.com/robertlmann02/mi-linux/releases/tag/v0.1.0-founder-preview`.
 2. Download the MI Linux ISO using the Cloudflare R2 ISO link in the release notes.
-3. Download the matching `.sha256` and `.sha512` files from the release assets or MannCloud links.
+3. Download the matching `.sha256` and `.sha512` files from the release assets or public download links.
 4. Download the GPG signature when it is provided.
 5. Verify the ISO checksums/signature.
 6. Write the ISO to a USB drive:

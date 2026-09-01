@@ -2,7 +2,7 @@
 
 Official endpoint: `https://apt.mannindustries.org`
 
-Hosting decision: the update server is MannCloud. The public apt hostname remains `apt.mannindustries.org`; MannCloud/Pi5 Caddy serves the static signed repository from `/opt/manncloud/apt-repo`.
+Hosting decision: the public apt hostname is `apt.mannindustries.org`; the configured public HTTPS host serves the static signed repository from a deployment path such as `/srv/mi-linux-apt`.
 
 Suites:
 
@@ -19,29 +19,28 @@ Components: main
 Signed-By: /usr/share/keyrings/mi-linux-archive-keyring.gpg
 ```
 
-Current MannCloud publisher:
+Generic publisher:
 
 ```bash
-sudo ./scripts/publish-apt-repo-manncloud.sh
+sudo ./scripts/publish-apt-repo.sh
 ```
 
 The publisher:
 
 1. Copies built `mi-linux-*.deb` packages from the local repo `packages/` directory into the `forky-founder` index by default.
 2. Copies `forky-tester` packages only from `packages-tester/`, `TESTER_SRC_HOST`, or `TESTER_SRC_DIR`; founder packages do not automatically appear in tester.
-3. Creates/uses the dedicated MI Linux archive signing key under `/opt/manncloud/mi-linux-archive-gpg`.
+3. Creates/uses a dedicated MI Linux archive signing key under the configured `GPGHOME` path.
 4. Publishes the public key at `https://apt.mannindustries.org/mi-linux-archive-keyring.asc` and `.gpg`.
 5. Generates separate `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
 6. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
 
 Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-09-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-06-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
 
-MannCloud Caddy must have a site block for `apt.mannindustries.org` serving `/srv/mi-linux-apt`, with Docker Compose mounting `./apt-repo:/srv/mi-linux-apt:ro` into the Caddy container.
+The HTTPS host should serve `apt.mannindustries.org` from the deployed apt repository root, for example `/srv/mi-linux-apt`.
 
 DNS requirement before public HTTPS works:
 
-- Add `apt.mannindustries.org` as an `A` or `CNAME` record pointing to the same public MannCloud endpoint as `manncloud.mannindustries.org`.
-- Current MannCloud public A record observed during setup: `208.104.249.7`.
+- Add `apt.mannindustries.org` as an `A` or `CNAME` record pointing to the public repository host.
 
 Verification after DNS is live:
 

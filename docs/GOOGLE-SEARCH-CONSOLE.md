@@ -36,7 +36,7 @@ The sitemap currently includes:
 1. Open Google Search Console: `https://search.google.com/search-console/`.
 2. Add a URL-prefix property for `https://mi-linux.mannindustries.org/`.
 3. Choose HTML file or DNS verification.
-4. If Google gives an HTML verification file, place that exact file in `website/` and deploy it to `/opt/manncloud/sites/mi-linux/`.
+4. If Google gives an HTML verification file, place that exact file in `website/` and deploy it to the configured public website root.
 5. If Google gives a DNS TXT record, add it at the DNS provider and wait for propagation.
 6. After verification, open Sitemaps and submit `https://mi-linux.mannindustries.org/sitemap.xml`.
 7. Use URL Inspection and request indexing for:

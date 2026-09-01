@@ -1,6 +1,6 @@
 mi-linux-wallpapers (0.1.0-8) forky-founder; urgency=medium
 
-  * Ship only the MannCloud Brand Assets wallpaper folder.
+  * Ship only the curated MI Linux wallpaper folder.
 
  -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 23 Aug 2026 12:05:00 -0400
 

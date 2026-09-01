@@ -3,7 +3,7 @@ set -Eeuo pipefail
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-# Publish the MI Linux apt repository to MannCloud.
+# Publish the MI Linux apt repository to the configured public repository root.
 # Default source is this repo's local ./packages directory for forky-founder.
 # forky-tester is intentionally separate: it only publishes packages from
 # TESTER_SRC_DIR (default: ./packages-tester) or TESTER_SRC_HOST:TESTER_SRC_DIR.
@@ -12,8 +12,8 @@ export LANG=C.UTF-8
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 PROJECT_ROOT=$(cd -- "$SCRIPT_DIR/.." && pwd)
-REPO=${REPO:-/opt/manncloud/apt-repo}
-GPGHOME=${GPGHOME:-/opt/manncloud/mi-linux-archive-gpg}
+REPO=${REPO:-/srv/mi-linux-apt}
+GPGHOME=${GPGHOME:-/srv/mi-linux-archive-gpg}
 SRC_HOST=${SRC_HOST:-}
 SRC_DIR=${SRC_DIR:-$PROJECT_ROOT/packages}
 TESTER_SRC_HOST=${TESTER_SRC_HOST:-}
@@ -21,7 +21,7 @@ TESTER_SRC_DIR=${TESTER_SRC_DIR:-$PROJECT_ROOT/packages-tester}
 KEY_UID=${KEY_UID:-mi-linux-archive@mannindustries.org}
 
 if ! sudo -n true 2>/dev/null; then
-  echo "This publisher needs passwordless sudo on MannCloud/Pi5." >&2
+  echo "This publisher needs passwordless sudo on the repository host." >&2
   exit 1
 fi
 
