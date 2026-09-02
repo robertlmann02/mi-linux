@@ -39,11 +39,14 @@ if [ -d "$BINARY_DIR/boot/grub" ]; then
           -e 's/Debian GNU\/Linux/MI Linux/g' \
           -e 's/Debian/MI Linux/g' \
           -e 's/Forky Founder/Founder Preview/g' \
+          -e 's/[[:space:]]\+findiso=${iso_path}//g' \
           "$BINARY_DIR/boot/grub/grub.cfg"
         if ! grep -q 'MI Linux Founder Preview boot menu' "$BINARY_DIR/boot/grub/grub.cfg"; then
             tmp=$(mktemp)
             {
                 echo '# MI Linux Founder Preview boot menu'
+                echo 'set default=0'
+                echo 'set timeout=5'
                 echo 'insmod all_video'
                 echo 'insmod gfxterm'
                 echo 'loadfont /boot/grub/unicode.pf2'
@@ -56,6 +59,12 @@ if [ -d "$BINARY_DIR/boot/grub" ]; then
                 cat "$BINARY_DIR/boot/grub/grub.cfg"
             } > "$tmp"
             mv "$tmp" "$BINARY_DIR/boot/grub/grub.cfg"
+        else
+            if grep -q '^set timeout=' "$BINARY_DIR/boot/grub/grub.cfg"; then
+                sed -i 's/^set timeout=.*/set timeout=5/' "$BINARY_DIR/boot/grub/grub.cfg"
+            else
+                sed -i '/^set default=/a set timeout=5' "$BINARY_DIR/boot/grub/grub.cfg"
+            fi
         fi
     fi
 fi
@@ -83,6 +92,16 @@ if [ -d "$BINARY_DIR/isolinux" ]; then
           -e 's/menu vshift 12/menu vshift 14/' \
           -e 's/#76a1d0ff/#075da8ff/g' \
           "$BINARY_DIR/isolinux/stdmenu.cfg"
+    fi
+    if [ -f "$BINARY_DIR/isolinux/isolinux.cfg" ]; then
+        # Do not leave BIOS/Legacy boot sitting at the graphical menu forever.
+        # Auto-boot the default live entry after 5 seconds, while still allowing
+        # users to interrupt and choose safe graphics/utilities.
+        if grep -q '^timeout ' "$BINARY_DIR/isolinux/isolinux.cfg"; then
+            sed -i 's/^timeout .*/timeout 50/' "$BINARY_DIR/isolinux/isolinux.cfg"
+        else
+            printf '\ntimeout 50\n' >> "$BINARY_DIR/isolinux/isolinux.cfg"
+        fi
     fi
     if [ -f "$BINARY_DIR/isolinux/live.cfg" ]; then
         sed -i \
