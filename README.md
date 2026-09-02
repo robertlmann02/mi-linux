@@ -30,7 +30,7 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 
 ## How MI Linux stands out
 
-- **Curated Debian Testing/Forky base:** MI Linux tracks Debian Testing/Forky through a controlled, roughly 3-month delayed update model instead of sending normal users directly into raw Testing updates.
+- **Curated Debian Testing/Forky base:** MI Linux tracks Debian Testing/Forky through a controlled, roughly 6-month delayed update model instead of sending normal users directly into raw Testing updates.
 - **MI Linux update channel:** systems use MI Linux apt suites such as `forky-founder` and `forky-tester`, with a dedicated archive signing key and a custom Update Manager planned around the delayed-update policy.
 - **Polished GNOME desktop:** GNOME is configured around a familiar bottom taskbar, MI Linux menu identity, AppIndicator support, Blur my Shell, User Themes, ArcMenu, and Dash to Panel.
 - **Beginner-friendly installer:** the live ISO boots into a desktop and uses Calamares for graphical installation.
@@ -46,7 +46,7 @@ MI Linux is designed to sit in the middle: more current than Debian Stable, calm
 
 - Debian live-build based ISO
 - Live desktop with Calamares installer
-- Debian Testing/Forky base with a curated 3-month delayed update model
+- Debian Testing/Forky base with a curated 6-month delayed update model
 - Live MI Linux apt repository at `https://apt.mannindustries.org`
 - Release-specific apt suites: `forky-founder` and `forky-tester`
 - Dedicated archive signing key/keyring package
@@ -148,10 +148,10 @@ The roadmap for MI Linux includes:
 1. **Founder Preview ISO testing** — boot the live ISO, verify the desktop, test installation, confirm update behavior, and document known issues.
 2. **Public website launch** — live at `https://mannindustries.org/mi-linux/` with install guidance, release links, checksums, known issues, and source links.
 3. **MI Linux apt repository** — live at `https://apt.mannindustries.org` with signed `forky-founder` and `forky-tester` suites.
-4. **Custom Update Manager** — ship a GTK/GNOME MI Linux Update Manager that shows channel status, applies the 3-month delay policy, handles non-security update prompts, and recommends Timeshift snapshots before larger updates.
+4. **Custom Update Manager** — ship a GTK/GNOME MI Linux Update Manager that shows channel status, applies the 6-month delay policy, handles non-security update prompts, and recommends Timeshift snapshots before larger updates.
 5. **Welcome app and Recommended Apps** — provide a clear first-run experience with optional browsers, gaming apps, Windows-app tools, creative tools, developer tools, NVIDIA driver setup, and Waydroid choices.
 6. **Secure Boot and Waydroid validation** — verify the selected kernel, Secure Boot path, binder/binderfs support, and Waydroid install experience on real hardware.
-7. **Quarterly releases** — publish updated ISOs on a 3-month cadence after testing and documenting changes.
+7. **Quarterly releases** — publish updated ISOs quarterly after testing and documenting changes.
 8. **Community feedback** — use GitHub Issues for first-release bug reports and improve hardware notes after real users report results.
 
 ## Repository layout

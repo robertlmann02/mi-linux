@@ -12,7 +12,7 @@
 ## Base and update model
 
 - Base: Debian Testing / Forky
-- Update model: curated/delayed, about 3 months behind direct Debian Testing/Forky
+- Update model: curated/delayed, about 6 months behind direct Debian Testing/Forky
 - Release cadence: quarterly
 - Apt repo: https://apt.mannindustries.org
 - Apt suites:

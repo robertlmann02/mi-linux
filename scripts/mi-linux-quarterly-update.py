@@ -191,7 +191,7 @@ def kernel_policy_check() -> dict:
 
 
 def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
-    founder_snapshot_date = subtract_months(release_date, 3)
+    founder_snapshot_date = subtract_months(release_date, 6)
     tester_snapshot_date = release_date
     out = OUT_ROOT / release_date.isoformat()
     out.mkdir(parents=True, exist_ok=True)
@@ -202,7 +202,7 @@ def write_report(release_date: dt.date, mode: str) -> tuple[Path, dict]:
         "quarter": quarter_name(release_date),
         "founder_snapshot_date": founder_snapshot_date.isoformat(),
         "tester_snapshot_date": tester_snapshot_date.isoformat(),
-        "snapshot_policy": "forky-founder is release date minus three months; forky-tester is current release date",
+        "snapshot_policy": "forky-founder is release date minus six months; forky-tester is current release date",
         "apt_repository": public_repo_checks(),
         "apt_client": apt_client_check(founder_snapshot_date, tester_snapshot_date),
         "kernel_policy": kernel_policy_check(),

@@ -1,15 +1,15 @@
 # MI Linux Founder channel: Debian/Forky packages are pinned to the
 # quarterly delayed snapshot target. For the 2026-09-01 MI Linux cycle,
-# Founder uses the 2026-06-01 Debian snapshot.
+# Founder uses the 2026-03-01 Debian snapshot.
 Types: deb
-URIs: https://snapshot.debian.org/archive/debian/20260601T000000Z/
+URIs: https://snapshot.debian.org/archive/debian/20260301T000000Z/
 Suites: forky forky-updates
 Components: main contrib non-free non-free-firmware
 Check-Valid-Until: no
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 Types: deb
-URIs: https://snapshot.debian.org/archive/debian-security/20260601T000000Z/
+URIs: https://snapshot.debian.org/archive/debian-security/20260301T000000Z/
 Suites: forky-security
 Components: main contrib non-free non-free-firmware
 Check-Valid-Until: no

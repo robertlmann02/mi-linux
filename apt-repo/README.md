@@ -6,7 +6,7 @@ Hosting decision: the public apt hostname is `apt.mannindustries.org`; the confi
 
 Suites:
 
-- `forky-founder` — default Founder Preview channel, curated and delayed about 3 months behind raw Debian Testing/Forky.
+- `forky-founder` — default Founder Preview channel, curated and delayed about 6 months behind raw Debian Testing/Forky.
 - `forky-tester` — current quarterly Testing/Forky channel, included in installed sources but commented out. It is intentionally indexed separately from `forky-founder` and only contains packages staged in `packages-tester/` or a configured tester source.
 
 Installed source example:
@@ -34,7 +34,7 @@ The publisher:
 5. Generates separate `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
 6. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
 
-Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-09-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-06-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
+Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-09-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-03-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
 
 The HTTPS host should serve `apt.mannindustries.org` from the deployed apt repository root, for example `/srv/mi-linux-apt`.
 

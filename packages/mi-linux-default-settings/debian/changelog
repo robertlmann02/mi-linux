@@ -32,7 +32,7 @@ mi-linux-default-settings (0.1.0-3) forky-founder; urgency=medium
 
   * Ship delayed Debian snapshot sources for the Founder channel.
   * Disable apt Valid-Until checks for historical snapshot metadata.
-  * Move legacy raw Debian sources aside on upgrade so Founder systems keep the three-month delay.
+  * Move legacy raw Debian sources aside on upgrade so Founder systems keep the six-month delay.
 
  -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sat, 22 Aug 2026 06:50:00 -0400
 

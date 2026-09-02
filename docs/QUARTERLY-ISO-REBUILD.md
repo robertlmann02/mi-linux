@@ -1,6 +1,6 @@
 # MI Linux quarterly ISO rebuild automation
 
-MI Linux rebuilds a fresh candidate ISO every three months so the install media picks up the quarterly update set.
+MI Linux rebuilds a fresh candidate ISO every quarter so the install media picks up the six-month-delayed Founder update set.
 
 ## Schedule
 
