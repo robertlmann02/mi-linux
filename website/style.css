@@ -233,6 +233,14 @@ footer img { width: min(360px, 72vw); display: block; margin: 0 auto 1rem; }
 }
 .tour-shot.wide img { aspect-ratio: 16 / 9; }
 .tour-cards article { min-height: 180px; }
+.website-shot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.website-shot-grid .tour-shot img { aspect-ratio: 6 / 5; }
+.website-shot-grid .mobile-shot { max-width: 440px; justify-self: center; }
+.website-shot-grid .mobile-shot img { aspect-ratio: 39 / 120; object-fit: cover; object-position: top; }
 @media (max-width: 760px) {
-  .tour-grid.two { grid-template-columns: 1fr; }
+  .tour-grid.two, .website-shot-grid { grid-template-columns: 1fr; }
 }
