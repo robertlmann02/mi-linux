@@ -232,6 +232,8 @@ footer img { width: min(360px, 72vw); display: block; margin: 0 auto 1rem; }
   gap: 1rem;
 }
 .tour-shot.wide img { aspect-ratio: 16 / 9; }
+.desktop-tour-grid { align-items: stretch; }
+.taskbar-detail img { aspect-ratio: 16 / 2; object-fit: contain; background: #050912; }
 .tour-cards article { min-height: 180px; }
 .os-shot-grid {
   display: grid;
