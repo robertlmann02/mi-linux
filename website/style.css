@@ -141,7 +141,7 @@ pre { white-space: pre-wrap; color: #cfe2ff; font-family: ui-monospace, SFMono-R
   background: var(--panel);
   box-shadow: 0 16px 60px rgba(0,0,0,.18);
 }
-.download-panel, .verify-panel, .about-panel, .source-band, .support-panel { display: grid; grid-template-columns: minmax(0, .8fr) minmax(320px, 1fr); gap: 2rem; align-items: center; }
+.download-panel, .verify-panel, .about-panel, .source-band, .support-panel, .custom-builds-panel { display: grid; grid-template-columns: minmax(0, .8fr) minmax(320px, 1fr); gap: 2rem; align-items: center; }
 .panel p, article p, .source-band p { color: var(--muted); font-size: 1.05rem; }
 .about-panel strong { color: var(--text); }
 .download-grid, .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .95rem; }
@@ -158,8 +158,9 @@ pre { white-space: pre-wrap; color: #cfe2ff; font-family: ui-monospace, SFMono-R
 }
 .download-card strong { font-size: 1.18rem; }
 .download-card span, .support-card span { color: var(--muted); }
-.support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .95rem; }
+.support-grid, .build-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .95rem; }
 .support-card { min-height: 180px; }
+.build-grid article { min-height: 210px; }
 .support-card .button { width: fit-content; }
 .standalone-support { margin: 1.5rem 0; }
 .download-card.highlight { border-color: rgba(255,130,28,.45); background: linear-gradient(145deg, rgba(255,130,28,.20), rgba(255,255,255,.055)); }
@@ -189,7 +190,7 @@ footer { text-align: center; padding: 3rem 1rem 4rem; color: var(--muted); }
 footer img { width: min(360px, 72vw); display: block; margin: 0 auto 1rem; }
 .small { color: var(--faint); font-size: .9rem; }
 @media (max-width: 980px) {
-  .hero, .download-panel, .verify-panel, .about-panel, .source-band, .support-panel { grid-template-columns: 1fr; }
+  .hero, .download-panel, .verify-panel, .about-panel, .source-band, .support-panel, .custom-builds-panel { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 680px) {
@@ -197,7 +198,7 @@ footer img { width: min(360px, 72vw); display: block; margin: 0 auto 1rem; }
   .support-grid { grid-template-columns: 1fr; }
   nav { display: none; }
   .hero { min-height: auto; padding-top: 3rem; }
-  .release-facts, .download-grid, .feature-grid { grid-template-columns: 1fr; }
+  .release-facts, .download-grid, .feature-grid, .build-grid { grid-template-columns: 1fr; }
   .hero-card { min-height: 420px; }
 }
 
