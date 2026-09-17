@@ -34,9 +34,13 @@ position-in-panel='Left'
 force-menu-location='BottomLeft'
 override-menu-theme=true
 
-[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/]
-use-theme-colors=false
-use-transparent-background=true
-background-transparency-percent=18
-background-color='#171421'
-foreground-color='#f6f5f4'
+
+[org/gnome/desktop/session]
+idle-delay=uint32 1800
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+sleep-inactive-ac-timeout=0
+sleep-inactive-battery-type='nothing'
+sleep-inactive-battery-timeout=0
+idle-dim=true

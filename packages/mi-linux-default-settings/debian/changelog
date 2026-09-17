@@ -1,3 +1,11 @@
+mi-linux-default-settings (0.1.0-12) forky-founder; urgency=medium
+
+  * Make GNOME Settings surfaces translucent for new users.
+  * Disable automatic suspend on AC and battery.
+  * Set display idle timeout to 30 minutes.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Thu, 17 Sep 2026 18:47:02 -0400
+
 mi-linux-default-settings (0.1.0-11) forky-founder; urgency=medium
 
   * Ship transparent Xfce Terminal defaults and pin it as Terminal.

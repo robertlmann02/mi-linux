@@ -1,0 +1,27 @@
+/* MI Linux: make GNOME Settings/libadwaita surfaces translucent. */
+window.background,
+window.background > contents,
+window.background .background,
+preferenceswindow,
+preferencespage,
+preferencesgroup,
+window#root,
+.navigation-sidebar,
+.sidebar,
+.view,
+.content,
+headerbar {
+  background-color: rgba(23, 20, 33, 0.82);
+}
+
+window.background label,
+window.background image,
+window.background button,
+window.background entry,
+window.background row,
+window.background list,
+window.background stack,
+window.background scrolledwindow,
+window.background viewport {
+  color: #f6f5f4;
+}

@@ -1,0 +1,5 @@
+/* MI Linux: translucent GTK3 fallback for legacy settings/control panels. */
+window, .background, headerbar, .sidebar, .view, .content {
+  background-color: rgba(23, 20, 33, 0.82);
+  color: #f6f5f4;
+}
