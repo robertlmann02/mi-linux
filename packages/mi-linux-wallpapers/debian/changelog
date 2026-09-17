@@ -1,3 +1,9 @@
+mi-linux-wallpapers (0.1.0-9) forky-founder; urgency=medium
+
+  * Add GNOME background properties so Settings shows only MI Linux wallpapers.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Thu, 17 Sep 2026 12:00:00 -0400
+
 mi-linux-wallpapers (0.1.0-8) forky-founder; urgency=medium
 
   * Ship only the curated MI Linux wallpaper folder.

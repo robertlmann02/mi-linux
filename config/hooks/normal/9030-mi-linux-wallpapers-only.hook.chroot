@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+# Keep GNOME Settings > Appearance focused on MI Linux curated wallpapers.
+mkdir -p /usr/share/gnome-background-properties
+find /usr/share/gnome-background-properties -type f ! -name mi-linux-wallpapers.xml -delete 2>/dev/null || true
+rm -rf /usr/share/backgrounds/gnome /usr/share/desktop-base/active-theme/wallpaper 2>/dev/null || true
