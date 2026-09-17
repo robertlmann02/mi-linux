@@ -33,3 +33,10 @@ menu-layout='windows'
 position-in-panel='Left'
 force-menu-location='BottomLeft'
 override-menu-theme=true
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/]
+use-theme-colors=false
+use-transparent-background=true
+background-transparency-percent=18
+background-color='#171421'
+foreground-color='#f6f5f4'

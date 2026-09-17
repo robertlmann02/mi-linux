@@ -22,3 +22,10 @@ clock-show-weekday=true
 [org/gnome/shell/extensions/dash-to-panel]
 panel-position='BOTTOM'
 panel-size=44
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/]
+use-theme-colors=false
+use-transparent-background=true
+background-transparency-percent=18
+background-color='#171421'
+foreground-color='#f6f5f4'
