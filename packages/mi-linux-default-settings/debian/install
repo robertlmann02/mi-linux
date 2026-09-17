@@ -14,3 +14,4 @@ defaults/systemd/user/*.timer etc/xdg/systemd/user/
 defaults/systemd/user/default.target.wants/* etc/xdg/systemd/user/default.target.wants/
 defaults/systemd/user/timers.target.wants/* etc/xdg/systemd/user/timers.target.wants/
 defaults/autostart/*.desktop etc/xdg/autostart/
+defaults/skel/.config/xfce4/terminal/terminalrc etc/skel/.config/xfce4/terminal/

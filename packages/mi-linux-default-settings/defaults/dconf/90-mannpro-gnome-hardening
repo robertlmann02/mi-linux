@@ -2,7 +2,7 @@
 enabled-extensions=["dash-to-panel@jderose9.github.com", "ubuntu-appindicators@ubuntu.com", "blur-my-shell@aunetx", "arcmenu@arcmenu.com", "user-theme@gnome-shell-extensions.gcampax.github.com", "ding@rastersoft.com"]
 disable-user-extensions=false
 disable-extension-version-validation=false
-favorite-apps=["org.gnome.Nautilus.desktop", "firefox-esr.desktop", "onlyoffice-desktopeditors.desktop", "org.gnome.Geary.desktop", "org.gnome.Rhythmbox3.desktop", "org.gnome.Settings.desktop", "org.gnome.Software.desktop", "org.gnome.Boxes.desktop", "virt-manager.desktop"]
+favorite-apps=["xfce4-terminal.desktop", "org.gnome.Nautilus.desktop", "firefox-esr.desktop", "onlyoffice-desktopeditors.desktop", "org.gnome.Geary.desktop", "org.gnome.Rhythmbox3.desktop", "org.gnome.Settings.desktop", "org.gnome.Software.desktop", "org.gnome.Boxes.desktop", "virt-manager.desktop"]
 
 [org/gnome/desktop/interface]
 gtk-theme="ZorinBlue-Dark"

@@ -1,3 +1,9 @@
+mi-linux-default-settings (0.1.0-11) forky-founder; urgency=medium
+
+  * Ship transparent Xfce Terminal defaults and pin it as Terminal.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Thu, 17 Sep 2026 18:32:38 -0400
+
 mi-linux-default-settings (0.1.0-10) forky-founder; urgency=medium
 
   * Make GNOME Terminal use MI Linux transparent dark profile defaults.
