@@ -72,8 +72,9 @@ The current source includes fixes from installed-system testing that are intende
 - **Update Manager handles common apt conflicts:** update installation now stops the background PackageKit updater when needed, waits for apt locks, uses noninteractive config handling, and keeps existing config choices unless the package can safely use its default.
 - **Package metadata was tightened:** the affected MI Linux packages now declare the runtime tools they actually use, so fresh installs and package updates have the required components available.
 - **Boot and shutdown image fills the screen:** the Plymouth boot/shutdown theme now scales the MI Linux splash art to the active display size instead of centering it at its original pixel dimensions. This keeps the startup and shutdown screens from looking like a small image on high-resolution displays.
+- **Stable GNOME desktop policy:** MI Linux now documents the Zorin-style approach for keeping the familiar bottom-taskbar desktop stable: package the GNOME Shell extensions, ship system dconf defaults, lock critical taskbar/menu keys, and verify GNOME Shell extension compatibility before promoting desktop updates. See `docs/STABLE-GNOME-DESKTOP.md`.
 
-These changes were added because a beginner-friendly desktop should make update and wallpaper behavior predictable without requiring users to understand Linux service names, apt locks, dconf databases, or shell exit codes.
+These changes were added because a beginner-friendly desktop should make update, wallpaper, and taskbar/menu behavior predictable without requiring users to understand Linux service names, apt locks, dconf databases, or GNOME Shell extension internals.
 
 ## Website and downloads
 
@@ -164,6 +165,7 @@ The roadmap for MI Linux includes:
 - `apt-repo/` — apt repository policy and publishing notes
 - `docs/` — user and release documentation
 - `docs/CREATE-BOOTABLE-USB.md` — GitHub download and bootable USB instructions
+- `docs/STABLE-GNOME-DESKTOP.md` — stable GNOME taskbar/menu policy and verification checklist
 - `docs/UPDATE-SERVER.md` — MI Linux apt repository/update server instructions
 - `website/` — static website content for `mannindustries.org/mi-linux`
 
