@@ -3,7 +3,7 @@ componentName:   mi-linux
 welcomeStyleCalamares: true
 welcomeExpandingLogo: true
 windowExpanding: normal
-windowSize: 800px,580px
+windowSize: 960px,680px
 windowPlacement: center
 
 strings:

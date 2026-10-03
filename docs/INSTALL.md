@@ -54,7 +54,8 @@ Quick GitHub flow:
 4. Boot from USB using UEFI or Legacy BIOS.
 5. Try the live desktop.
 6. Click Install MI Linux.
-7. Use Calamares to choose disk, filesystem, and optional full-disk encryption.
-8. Reboot into MI Linux.
-9. Open Welcome app.
-10. Create a Timeshift snapshot before major/non-security updates.
+7. Use the MI Linux installer to choose language, keyboard, target disk, user account, filesystem, and optional full-disk encryption.
+8. Review the summary carefully. Installation does not begin until you confirm the point-of-no-return prompt.
+9. Reboot into MI Linux.
+10. Open Welcome app.
+11. Create a Timeshift snapshot before major/non-security updates.
