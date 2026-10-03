@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+# Create the MI Linux live user in the image itself so display-manager
+# autologin does not depend on live-config timing. live-config may still
+# adjust the account during boot.
+if ! getent passwd user >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -c "MI Linux Live User" user
+fi
+
+# Passwordless local live account; the ISO is ephemeral and also grants
+# passwordless sudo for installer launch in /etc/sudoers.d.
+passwd -d user
+
+for group in sudo audio video plugdev netdev cdrom floppy dip; do
+    if getent group "$group" >/dev/null 2>&1; then
+        usermod -aG "$group" user
+    fi
+done
