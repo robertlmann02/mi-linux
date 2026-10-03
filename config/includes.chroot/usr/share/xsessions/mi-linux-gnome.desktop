@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=MI Linux GNOME
+Comment=MI Linux live GNOME session
+Exec=gnome-session
+TryExec=gnome-session
+Type=Application
+DesktopNames=GNOME
