@@ -14,7 +14,7 @@ fi
 printf 'user:root\n' | chpasswd || true
 usermod -aG sudo,audio,video,plugdev,netdev user 2>/dev/null || true
 
-mkdir -p /usr/share/xsessions /etc/lightdm /etc/sudoers.d
+mkdir -p /usr/share/xsessions /etc/lightdm/lightdm.conf.d /etc/sudoers.d
 cat > /usr/share/xsessions/mi-linux-gnome.desktop <<'EOF'
 [Desktop Entry]
 Name=MI Linux GNOME
@@ -37,6 +37,13 @@ autologin-user-timeout=0
 
 [SeatDefaults]
 greeter-session=slick-greeter
+autologin-guest=false
+autologin-user=user
+autologin-user-timeout=0
+EOF
+
+cat > /etc/lightdm/lightdm.conf.d/live-config.conf <<'EOF'
+[Seat:*]
 autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0

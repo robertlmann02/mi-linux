@@ -1,6 +1,7 @@
 # Core desktop
 linux-image-amd64
 gnome-core
+live-boot
 live-config
 live-config-systemd
 lightdm
