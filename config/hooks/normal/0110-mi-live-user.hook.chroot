@@ -8,9 +8,32 @@ if ! getent passwd user >/dev/null 2>&1; then
     useradd -m -s /bin/bash -c "MI Linux Live User" user
 fi
 
-# Live account password for manual LightDM fallback. Autologin and
-# passwordless sudo still handle the normal live/installer path.
-printf 'user:root\n' | chpasswd
+# Live media should not depend on a typed password. Keep the live account
+# unlocked for LightDM autologin/passwordless greeter fallback.
+passwd -d user >/dev/null 2>&1 || true
+usermod -U user >/dev/null 2>&1 || true
+
+for group in autologin nopasswdlogin; do
+    if ! getent group "$group" >/dev/null 2>&1; then
+        groupadd -r "$group"
+    fi
+    usermod -aG "$group" user
+done
+
+# Newer systemd/LightDM combinations may try to start a user manager for the
+# lightdm service account; make sure the service account is not expired.
+chage -E -1 lightdm >/dev/null 2>&1 || true
+
+if [ -f /etc/pam.d/lightdm ] && ! grep -q 'pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm; then
+    tmpfile="$(mktemp)"
+    {
+        sed -n '1p' /etc/pam.d/lightdm
+        printf '%s\n' 'auth sufficient pam_succeed_if.so user ingroup nopasswdlogin'
+        sed -n '2,$p' /etc/pam.d/lightdm
+    } > "$tmpfile"
+    cat "$tmpfile" > /etc/pam.d/lightdm
+    rm -f "$tmpfile"
+fi
 
 cat > /home/user/.dmrc <<'EOF'
 [Desktop]
@@ -25,7 +48,7 @@ EOF
 chown user:user /home/user/.xsession
 chmod 0755 /home/user/.xsession
 
-for group in sudo audio video plugdev netdev cdrom floppy dip; do
+for group in sudo audio video plugdev netdev cdrom floppy dip autologin nopasswdlogin; do
     if getent group "$group" >/dev/null 2>&1; then
         usermod -aG "$group" user
     fi

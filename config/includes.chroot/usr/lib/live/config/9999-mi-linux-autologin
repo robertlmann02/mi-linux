@@ -9,10 +9,33 @@ if ! getent passwd user >/dev/null 2>&1; then
     useradd -m -s /bin/bash -c "MI Linux Live User" user
 fi
 
-# Keep a known manual LightDM fallback password for the ephemeral live user
-# in case autologin is delayed or unavailable in VM/firmware combinations.
-printf 'user:root\n' | chpasswd || true
-usermod -aG sudo,audio,video,plugdev,netdev user 2>/dev/null || true
+# Live media should not depend on a typed password. Keep the live account
+# unlocked for LightDM autologin/passwordless greeter fallback.
+passwd -d user >/dev/null 2>&1 || true
+usermod -U user >/dev/null 2>&1 || true
+
+for group in autologin nopasswdlogin; do
+    if ! getent group "$group" >/dev/null 2>&1; then
+        groupadd -r "$group"
+    fi
+    usermod -aG "$group" user
+done
+
+# Avoid expired LightDM service-account PAM failures such as user@972.service.
+chage -E -1 lightdm >/dev/null 2>&1 || true
+
+if [ -f /etc/pam.d/lightdm ] && ! grep -q 'pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm; then
+    tmpfile="$(mktemp)"
+    {
+        sed -n '1p' /etc/pam.d/lightdm
+        printf '%s\n' 'auth sufficient pam_succeed_if.so user ingroup nopasswdlogin'
+        sed -n '2,$p' /etc/pam.d/lightdm
+    } > "$tmpfile"
+    cat "$tmpfile" > /etc/pam.d/lightdm
+    rm -f "$tmpfile"
+fi
+
+usermod -aG sudo,audio,video,plugdev,netdev,autologin,nopasswdlogin user 2>/dev/null || true
 
 mkdir -p /usr/share/xsessions /etc/lightdm/lightdm.conf.d /etc/sudoers.d
 cat > /usr/share/xsessions/lightdm-xsession.desktop <<'EOF'
