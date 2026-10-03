@@ -31,7 +31,14 @@ fi
 # may silently fail from a desktop launcher if no polkit agent/password prompt is
 # available. Fall back to pkexec for installed/dev environments.
 if sudo -n true 2>/dev/null; then
-    sudo -E calamares
+    sudo -EH \
+        DISPLAY="${DISPLAY:-}" \
+        WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-}" \
+        XAUTHORITY="${XAUTHORITY:-}" \
+        XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-}" \
+        QT_AUTO_SCREEN_SCALE_FACTOR="$QT_AUTO_SCREEN_SCALE_FACTOR" \
+        QT_QPA_PLATFORM="$QT_QPA_PLATFORM" \
+        calamares
 else
     pkexec env \
         DISPLAY="${DISPLAY:-}" \

@@ -30,7 +30,7 @@ chmod 0644 /home/user/.dmrc
 mkdir -p /etc/gdm3 /var/lib/AccountsService/users
 cat > /etc/gdm3/daemon.conf <<'EOF'
 [daemon]
-AutomaticLoginEnable=true
+AutomaticLoginEnable=True
 AutomaticLogin=user
 
 [security]
