@@ -12,6 +12,13 @@ fi
 # passwordless sudo still handle the normal live/installer path.
 printf 'user:root\n' | chpasswd
 
+cat > /home/user/.dmrc <<'EOF'
+[Desktop]
+Session=mi-linux-gnome
+EOF
+chown user:user /home/user/.dmrc
+chmod 0644 /home/user/.dmrc
+
 for group in sudo audio video plugdev netdev cdrom floppy dip; do
     if getent group "$group" >/dev/null 2>&1; then
         usermod -aG "$group" user

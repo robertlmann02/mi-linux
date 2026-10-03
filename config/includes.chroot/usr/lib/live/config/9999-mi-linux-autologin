@@ -34,12 +34,16 @@ greeter-session=slick-greeter
 autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0
+user-session=mi-linux-gnome
+autologin-session=mi-linux-gnome
 
 [SeatDefaults]
 greeter-session=slick-greeter
 autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0
+user-session=mi-linux-gnome
+autologin-session=mi-linux-gnome
 EOF
 
 cat > /etc/lightdm/lightdm.conf.d/live-config.conf <<'EOF'
@@ -48,6 +52,14 @@ autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0
 EOF
+
+install -d -o user -g user /home/user
+cat > /home/user/.dmrc <<'EOF'
+[Desktop]
+Session=mi-linux-gnome
+EOF
+chown user:user /home/user/.dmrc
+chmod 0644 /home/user/.dmrc
 
 cat > /etc/sudoers.d/90-mi-linux-live-user <<'EOF'
 user ALL=(ALL) NOPASSWD: ALL
