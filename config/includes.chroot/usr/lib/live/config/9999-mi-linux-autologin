@@ -29,10 +29,14 @@ chown user:user /home/user/.dmrc
 chmod 0644 /home/user/.dmrc
 
 mkdir -p /etc/gdm3 /var/lib/AccountsService/users /etc/sudoers.d
-cat > /etc/gdm3/daemon.conf <<'EOF'
+for gdm_conf in /etc/gdm3/daemon.conf /etc/gdm3/custom.conf; do
+cat > "$gdm_conf" <<'EOF'
 [daemon]
 AutomaticLoginEnable=True
 AutomaticLogin=user
+TimedLoginEnable=True
+TimedLogin=user
+TimedLoginDelay=1
 
 [security]
 
@@ -42,6 +46,7 @@ AutomaticLogin=user
 
 [debug]
 EOF
+done
 
 cat > /var/lib/AccountsService/users/user <<'EOF'
 [User]
