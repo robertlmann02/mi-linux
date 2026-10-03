@@ -1,6 +1,8 @@
 # Core desktop
 linux-image-amd64
 gnome-core
+live-config
+live-config-systemd
 lightdm
 slick-greeter
 plymouth-themes
