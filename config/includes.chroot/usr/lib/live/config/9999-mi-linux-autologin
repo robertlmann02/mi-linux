@@ -9,7 +9,9 @@ if ! getent passwd user >/dev/null 2>&1; then
     useradd -m -s /bin/bash -c "MI Linux Live User" user
 fi
 
-passwd -d user >/dev/null 2>&1 || true
+# Keep a known manual LightDM fallback password for the ephemeral live user
+# in case autologin is delayed or unavailable in VM/firmware combinations.
+printf 'user:root\n' | chpasswd || true
 usermod -aG sudo,audio,video,plugdev,netdev user 2>/dev/null || true
 
 mkdir -p /usr/share/xsessions /etc/lightdm /etc/sudoers.d

@@ -8,9 +8,9 @@ if ! getent passwd user >/dev/null 2>&1; then
     useradd -m -s /bin/bash -c "MI Linux Live User" user
 fi
 
-# Passwordless local live account; the ISO is ephemeral and also grants
-# passwordless sudo for installer launch in /etc/sudoers.d.
-passwd -d user
+# Live account password for manual LightDM fallback. Autologin and
+# passwordless sudo still handle the normal live/installer path.
+printf 'user:root\n' | chpasswd
 
 for group in sudo audio video plugdev netdev cdrom floppy dip; do
     if getent group "$group" >/dev/null 2>&1; then
