@@ -15,7 +15,7 @@ printf 'user:root\n' | chpasswd || true
 usermod -aG sudo,audio,video,plugdev,netdev user 2>/dev/null || true
 
 mkdir -p /usr/share/xsessions /etc/lightdm/lightdm.conf.d /etc/sudoers.d
-cat > /usr/share/xsessions/mi-linux-gnome.desktop <<'EOF'
+cat > /usr/share/xsessions/lightdm-xsession.desktop <<'EOF'
 [Desktop Entry]
 Name=MI Linux GNOME
 Comment=MI Linux live GNOME session
@@ -34,16 +34,16 @@ greeter-session=slick-greeter
 autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0
-user-session=mi-linux-gnome
-autologin-session=mi-linux-gnome
+user-session=lightdm-xsession
+autologin-session=lightdm-xsession
 
 [SeatDefaults]
 greeter-session=slick-greeter
 autologin-guest=false
 autologin-user=user
 autologin-user-timeout=0
-user-session=mi-linux-gnome
-autologin-session=mi-linux-gnome
+user-session=lightdm-xsession
+autologin-session=lightdm-xsession
 EOF
 
 cat > /etc/lightdm/lightdm.conf.d/live-config.conf <<'EOF'
@@ -56,10 +56,16 @@ EOF
 install -d -o user -g user /home/user
 cat > /home/user/.dmrc <<'EOF'
 [Desktop]
-Session=mi-linux-gnome
+Session=lightdm-xsession
 EOF
 chown user:user /home/user/.dmrc
 chmod 0644 /home/user/.dmrc
+
+cat > /home/user/.xsession <<'EOF'
+exec gnome-session
+EOF
+chown user:user /home/user/.xsession
+chmod 0755 /home/user/.xsession
 
 cat > /etc/sudoers.d/90-mi-linux-live-user <<'EOF'
 user ALL=(ALL) NOPASSWD: ALL

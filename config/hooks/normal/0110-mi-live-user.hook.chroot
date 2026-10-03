@@ -14,10 +14,16 @@ printf 'user:root\n' | chpasswd
 
 cat > /home/user/.dmrc <<'EOF'
 [Desktop]
-Session=mi-linux-gnome
+Session=lightdm-xsession
 EOF
 chown user:user /home/user/.dmrc
 chmod 0644 /home/user/.dmrc
+
+cat > /home/user/.xsession <<'EOF'
+exec gnome-session
+EOF
+chown user:user /home/user/.xsession
+chmod 0755 /home/user/.xsession
 
 for group in sudo audio video plugdev netdev cdrom floppy dip; do
     if getent group "$group" >/dev/null 2>&1; then
