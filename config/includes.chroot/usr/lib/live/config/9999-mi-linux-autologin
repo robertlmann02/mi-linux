@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# Live-boot repair hook: ensure the live account and LightDM autologin are
+# Live-boot repair hook: ensure the live account and GDM Wayland autologin are
 # present after live-config has done its own user/display-manager setup.
 # This runs inside the booted live system before the display manager starts.
 
@@ -10,85 +10,46 @@ if ! getent passwd user >/dev/null 2>&1; then
 fi
 
 # Live media should not depend on a typed password. Keep the live account
-# unlocked for LightDM autologin/passwordless greeter fallback.
+# unlocked for display-manager autologin/passwordless fallback.
 passwd -d user >/dev/null 2>&1 || true
 usermod -U user >/dev/null 2>&1 || true
 
-for group in autologin nopasswdlogin; do
-    if ! getent group "$group" >/dev/null 2>&1; then
-        groupadd -r "$group"
+for group in sudo audio video plugdev netdev cdrom floppy dip autologin nopasswdlogin; do
+    if getent group "$group" >/dev/null 2>&1; then
+        usermod -aG "$group" user
     fi
-    usermod -aG "$group" user
 done
-
-# Avoid expired LightDM service-account PAM failures such as user@972.service.
-chage -E -1 lightdm >/dev/null 2>&1 || true
-
-if [ -f /etc/pam.d/lightdm ] && ! grep -q 'pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm; then
-    tmpfile="$(mktemp)"
-    {
-        sed -n '1p' /etc/pam.d/lightdm
-        printf '%s\n' 'auth sufficient pam_succeed_if.so user ingroup nopasswdlogin'
-        sed -n '2,$p' /etc/pam.d/lightdm
-    } > "$tmpfile"
-    cat "$tmpfile" > /etc/pam.d/lightdm
-    rm -f "$tmpfile"
-fi
-
-usermod -aG sudo,audio,video,plugdev,netdev,autologin,nopasswdlogin user 2>/dev/null || true
-
-mkdir -p /usr/share/xsessions /etc/lightdm/lightdm.conf.d /etc/sudoers.d
-cat > /usr/share/xsessions/lightdm-xsession.desktop <<'EOF'
-[Desktop Entry]
-Name=MI Linux GNOME
-Comment=MI Linux live GNOME session
-Exec=gnome-session
-TryExec=gnome-session
-Type=Application
-DesktopNames=GNOME
-EOF
-
-cat > /etc/lightdm/lightdm.conf <<'EOF'
-[LightDM]
-run-directory=/run/lightdm
-
-[Seat:*]
-greeter-session=slick-greeter
-autologin-guest=false
-autologin-user=user
-autologin-user-timeout=0
-user-session=lightdm-xsession
-autologin-session=lightdm-xsession
-
-[SeatDefaults]
-greeter-session=slick-greeter
-autologin-guest=false
-autologin-user=user
-autologin-user-timeout=0
-user-session=lightdm-xsession
-autologin-session=lightdm-xsession
-EOF
-
-cat > /etc/lightdm/lightdm.conf.d/live-config.conf <<'EOF'
-[Seat:*]
-autologin-guest=false
-autologin-user=user
-autologin-user-timeout=0
-EOF
 
 install -d -o user -g user /home/user
 cat > /home/user/.dmrc <<'EOF'
 [Desktop]
-Session=lightdm-xsession
+Session=gnome
 EOF
 chown user:user /home/user/.dmrc
 chmod 0644 /home/user/.dmrc
 
-cat > /home/user/.xsession <<'EOF'
-exec gnome-session
+mkdir -p /etc/gdm3 /var/lib/AccountsService/users /etc/sudoers.d
+cat > /etc/gdm3/daemon.conf <<'EOF'
+[daemon]
+AutomaticLoginEnable=true
+AutomaticLogin=user
+
+[security]
+
+[xdmcp]
+
+[chooser]
+
+[debug]
 EOF
-chown user:user /home/user/.xsession
-chmod 0755 /home/user/.xsession
+
+cat > /var/lib/AccountsService/users/user <<'EOF'
+[User]
+Session=gnome
+XSession=gnome
+SystemAccount=false
+EOF
+chmod 0644 /var/lib/AccountsService/users/user
 
 cat > /etc/sudoers.d/90-mi-linux-live-user <<'EOF'
 user ALL=(ALL) NOPASSWD: ALL

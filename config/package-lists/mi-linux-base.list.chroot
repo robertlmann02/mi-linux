@@ -4,8 +4,7 @@ gnome-core
 live-boot
 live-config
 live-config-systemd
-lightdm
-slick-greeter
+gdm3
 plymouth-themes
 plymouth
 gnome-terminal

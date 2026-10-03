@@ -9,47 +9,43 @@ if ! getent passwd user >/dev/null 2>&1; then
 fi
 
 # Live media should not depend on a typed password. Keep the live account
-# unlocked for LightDM autologin/passwordless greeter fallback.
+# unlocked for display-manager autologin/passwordless fallback.
 passwd -d user >/dev/null 2>&1 || true
 usermod -U user >/dev/null 2>&1 || true
-
-for group in autologin nopasswdlogin; do
-    if ! getent group "$group" >/dev/null 2>&1; then
-        groupadd -r "$group"
-    fi
-    usermod -aG "$group" user
-done
-
-# Newer systemd/LightDM combinations may try to start a user manager for the
-# lightdm service account; make sure the service account is not expired.
-chage -E -1 lightdm >/dev/null 2>&1 || true
-
-if [ -f /etc/pam.d/lightdm ] && ! grep -q 'pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm; then
-    tmpfile="$(mktemp)"
-    {
-        sed -n '1p' /etc/pam.d/lightdm
-        printf '%s\n' 'auth sufficient pam_succeed_if.so user ingroup nopasswdlogin'
-        sed -n '2,$p' /etc/pam.d/lightdm
-    } > "$tmpfile"
-    cat "$tmpfile" > /etc/pam.d/lightdm
-    rm -f "$tmpfile"
-fi
-
-cat > /home/user/.dmrc <<'EOF'
-[Desktop]
-Session=lightdm-xsession
-EOF
-chown user:user /home/user/.dmrc
-chmod 0644 /home/user/.dmrc
-
-cat > /home/user/.xsession <<'EOF'
-exec gnome-session
-EOF
-chown user:user /home/user/.xsession
-chmod 0755 /home/user/.xsession
 
 for group in sudo audio video plugdev netdev cdrom floppy dip autologin nopasswdlogin; do
     if getent group "$group" >/dev/null 2>&1; then
         usermod -aG "$group" user
     fi
 done
+
+install -d -o user -g user /home/user
+cat > /home/user/.dmrc <<'EOF'
+[Desktop]
+Session=gnome
+EOF
+chown user:user /home/user/.dmrc
+chmod 0644 /home/user/.dmrc
+
+mkdir -p /etc/gdm3 /var/lib/AccountsService/users
+cat > /etc/gdm3/daemon.conf <<'EOF'
+[daemon]
+AutomaticLoginEnable=true
+AutomaticLogin=user
+
+[security]
+
+[xdmcp]
+
+[chooser]
+
+[debug]
+EOF
+
+cat > /var/lib/AccountsService/users/user <<'EOF'
+[User]
+Session=gnome
+XSession=gnome
+SystemAccount=false
+EOF
+chmod 0644 /var/lib/AccountsService/users/user
