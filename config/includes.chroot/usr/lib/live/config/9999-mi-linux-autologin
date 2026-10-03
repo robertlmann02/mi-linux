@@ -31,19 +31,19 @@ run-directory=/run/lightdm
 
 [Seat:*]
 greeter-session=slick-greeter
-user-session=mi-linux-gnome
+user-session=gnome
 autologin-user=user
 autologin-user-timeout=0
-autologin-session=mi-linux-gnome
+autologin-session=gnome
 allow-guest=false
 session-wrapper=/etc/X11/Xsession
 
 [SeatDefaults]
 greeter-session=slick-greeter
-user-session=mi-linux-gnome
+user-session=gnome
 autologin-user=user
 autologin-user-timeout=0
-autologin-session=mi-linux-gnome
+autologin-session=gnome
 allow-guest=false
 session-wrapper=/etc/X11/Xsession
 EOF
