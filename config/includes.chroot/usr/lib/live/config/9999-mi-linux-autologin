@@ -1,0 +1,52 @@
+#!/bin/sh
+set -e
+
+# Live-boot repair hook: ensure the live account and LightDM autologin are
+# present after live-config has done its own user/display-manager setup.
+# This runs inside the booted live system before the display manager starts.
+
+if ! getent passwd user >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -c "MI Linux Live User" user
+fi
+
+passwd -d user >/dev/null 2>&1 || true
+usermod -aG sudo,audio,video,plugdev,netdev user 2>/dev/null || true
+
+mkdir -p /usr/share/xsessions /etc/lightdm /etc/sudoers.d
+cat > /usr/share/xsessions/mi-linux-gnome.desktop <<'EOF'
+[Desktop Entry]
+Name=MI Linux GNOME
+Comment=MI Linux live GNOME session
+Exec=gnome-session
+TryExec=gnome-session
+Type=Application
+DesktopNames=GNOME
+EOF
+
+cat > /etc/lightdm/lightdm.conf <<'EOF'
+[LightDM]
+run-directory=/run/lightdm
+
+[Seat:*]
+greeter-session=slick-greeter
+user-session=mi-linux-gnome
+autologin-user=user
+autologin-user-timeout=0
+autologin-session=mi-linux-gnome
+allow-guest=false
+session-wrapper=/etc/X11/Xsession
+
+[SeatDefaults]
+greeter-session=slick-greeter
+user-session=mi-linux-gnome
+autologin-user=user
+autologin-user-timeout=0
+autologin-session=mi-linux-gnome
+allow-guest=false
+session-wrapper=/etc/X11/Xsession
+EOF
+
+cat > /etc/sudoers.d/90-mi-linux-live-user <<'EOF'
+user ALL=(ALL) NOPASSWD: ALL
+EOF
+chmod 0440 /etc/sudoers.d/90-mi-linux-live-user
