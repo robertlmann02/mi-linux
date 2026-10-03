@@ -1,7 +1,8 @@
 # Core desktop
 linux-image-amd64
 gnome-core
-gdm3
+lightdm
+slick-greeter
 plymouth-themes
 plymouth
 gnome-terminal

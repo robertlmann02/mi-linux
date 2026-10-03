@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+# Prefer LightDM for the live ISO. It autologins the Debian live user more
+# reliably than GDM in headless/QEMU and avoids the greeter timeout loop.
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable gdm3.service 2>/dev/null || true
+    systemctl enable lightdm.service 2>/dev/null || true
+fi
+printf '/usr/sbin/lightdm\n' > /etc/X11/default-display-manager
