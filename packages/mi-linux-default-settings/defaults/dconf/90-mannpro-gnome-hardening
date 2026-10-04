@@ -5,8 +5,8 @@ disable-extension-version-validation=false
 favorite-apps=["xfce4-terminal.desktop", "org.gnome.Nautilus.desktop", "firefox-esr.desktop", "onlyoffice-desktopeditors.desktop", "org.gnome.Geary.desktop", "org.gnome.Rhythmbox3.desktop", "org.gnome.Settings.desktop", "org.gnome.Software.desktop", "org.gnome.Boxes.desktop", "virt-manager.desktop"]
 
 [org/gnome/desktop/interface]
-gtk-theme="ZorinBlue-Dark"
-icon-theme="ZorinBlue-Dark"
+gtk-theme="Adwaita-dark"
+icon-theme="Adwaita"
 color-scheme="prefer-dark"
 
 [org/gnome/desktop/wm/preferences]
@@ -38,10 +38,10 @@ panel-element-positions='{"0":[{"element":"showAppsButton","visible":false,"posi
 
 [org/gnome/shell/extensions/blur-my-shell/panel]
 blur=true
-brightness=0.72
+brightness=1.0
 sigma=28
 static-blur=true
-override-background=true
+override-background=false
 corner-radius=0
 
 [org/gnome/shell/extensions/arcmenu]

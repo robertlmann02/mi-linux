@@ -2,7 +2,7 @@
 set -e
 
 # Ensure live-session sudoers drop-in has strict permissions.
-if [ -f /etc/sudoers.d/90-mi-linux-live-user ]; then
-    chown root:root /etc/sudoers.d/90-mi-linux-live-user
-    chmod 0440 /etc/sudoers.d/90-mi-linux-live-user
+if [ -f /etc/sudoers.d/90-mi-linux-live-session ]; then
+    chown root:root /etc/sudoers.d/90-mi-linux-live-session
+    chmod 0440 /etc/sudoers.d/90-mi-linux-live-session
 fi

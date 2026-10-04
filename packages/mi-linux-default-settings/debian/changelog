@@ -1,3 +1,11 @@
+mi-linux-default-settings (0.1.0-13) forky-founder; urgency=medium
+
+  * Use installed Adwaita dark/icon themes so live desktop menus remain readable.
+  * Disable desktop wallpaper dimming and avoid Blur My Shell darkening the panel background.
+  * Replace the visible generic live-user identity with a neutral MI Linux live session account.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 04 Oct 2026 01:03:02 -0400
+
 mi-linux-default-settings (0.1.0-12) forky-founder; urgency=medium
 
   * Make GNOME Settings surfaces translucent for new users.

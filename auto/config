@@ -7,7 +7,7 @@ if [ "${1:-}" != "noauto" ]; then
     --linux-flavours amd64 \
     --archive-areas "main contrib non-free non-free-firmware" \
     --binary-images iso-hybrid \
-    --bootappend-live "boot=live components live-config username=user user-fullname=MI-Linux-Live-User hostname=mi-linux quiet splash" \
+    --bootappend-live "boot=live components live-config username=milinux user-fullname=MI-Linux hostname=mi-linux quiet splash" \
     --debian-installer none \
     --iso-application "MI Linux Founder Preview" \
     --iso-publisher "Mann Industries" \

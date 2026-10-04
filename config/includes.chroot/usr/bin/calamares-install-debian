@@ -21,13 +21,13 @@ if [ -f /etc/fstab ] && [ ! -f /etc/fstab.orig.calamares ]; then
     FSTAB_MOVED=1
 fi
 
-# Let root connect to the live user's Xwayland display when available. Calamares
+# Let root connect to the live session account's Xwayland display when available. Calamares
 # can also run on Wayland through pkexec, so failure here is non-fatal.
 if command -v xhost >/dev/null 2>&1 && [ -n "${DISPLAY:-}" ]; then
     xhost +si:localuser:root >/dev/null 2>&1 || true
 fi
 
-# The live user is passwordless sudo in the ISO. Use sudo first because pkexec
+# The live session account is passwordless sudo in the ISO. Use sudo first because pkexec
 # may silently fail from a desktop launcher if no polkit agent/password prompt is
 # available. Fall back to pkexec for installed/dev environments.
 if sudo -n true 2>/dev/null; then

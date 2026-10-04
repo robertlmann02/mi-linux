@@ -1,4 +1,4 @@
-# Live ISO convenience: the ephemeral Debian live user must be able to launch
+# Live ISO convenience: the ephemeral Debian live session account must be able to launch
 # Calamares and perform installer preparation without being blocked by a
 # password prompt. This user exists only in the live session.
-user ALL=(ALL) NOPASSWD: ALL
+milinux ALL=(ALL) NOPASSWD: ALL

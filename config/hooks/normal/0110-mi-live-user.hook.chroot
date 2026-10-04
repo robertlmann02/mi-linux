@@ -1,40 +1,40 @@
 #!/bin/sh
 set -e
 
-# Create the MI Linux live user in the image itself so display-manager
+# Create the MI Linux live session account in the image itself so display-manager
 # autologin does not depend on live-config timing. live-config may still
 # adjust the account during boot.
-if ! getent passwd user >/dev/null 2>&1; then
-    useradd -m -s /bin/bash -c "MI Linux Live User" user
+if ! getent passwd milinux >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -c "MI Linux" milinux
 fi
 
 # Live media should not depend on a typed password. Keep the live account
 # unlocked for display-manager autologin/passwordless fallback.
-passwd -d user >/dev/null 2>&1 || true
-usermod -U user >/dev/null 2>&1 || true
+passwd -d milinux >/dev/null 2>&1 || true
+usermod -U milinux >/dev/null 2>&1 || true
 
 for group in sudo audio video plugdev netdev cdrom floppy dip autologin nopasswdlogin; do
     if getent group "$group" >/dev/null 2>&1; then
-        usermod -aG "$group" user
+        usermod -aG "$group" milinux
     fi
 done
 
-install -d -o user -g user /home/user
-cat > /home/user/.dmrc <<'EOF'
+install -d -o milinux -g milinux /home/milinux
+cat > /home/milinux/.dmrc <<'EOF'
 [Desktop]
 Session=gnome
 EOF
-chown user:user /home/user/.dmrc
-chmod 0644 /home/user/.dmrc
+chown milinux:milinux /home/milinux/.dmrc
+chmod 0644 /home/milinux/.dmrc
 
 mkdir -p /etc/gdm3 /var/lib/AccountsService/users
 for gdm_conf in /etc/gdm3/daemon.conf /etc/gdm3/custom.conf; do
 cat > "$gdm_conf" <<'EOF'
 [daemon]
 AutomaticLoginEnable=True
-AutomaticLogin=user
+AutomaticLogin=milinux
 TimedLoginEnable=True
-TimedLogin=user
+TimedLogin=milinux
 TimedLoginDelay=1
 
 [security]
@@ -47,10 +47,10 @@ TimedLoginDelay=1
 EOF
 done
 
-cat > /var/lib/AccountsService/users/user <<'EOF'
+cat > /var/lib/AccountsService/users/milinux <<'EOF'
 [User]
 Session=gnome
 XSession=gnome
 SystemAccount=false
 EOF
-chmod 0644 /var/lib/AccountsService/users/user
+chmod 0644 /var/lib/AccountsService/users/milinux

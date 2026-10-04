@@ -76,7 +76,7 @@ Expected results:
 
 - required extensions are enabled;
 - critical layout keys report `false` for writable;
-- the GTK/icon theme is `ZorinBlue-Dark` or the current MI Linux theme;
+- the GTK/icon theme is `Adwaita-dark`/`Adwaita` or the current MI Linux theme;
 - Dash to Panel is set to `BOTTOM`;
 - ArcMenu uses the MI/Mann Industries menu emblem;
 - `apt-get check` succeeds.
