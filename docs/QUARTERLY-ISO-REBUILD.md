@@ -4,7 +4,7 @@ MI Linux rebuilds a fresh candidate ISO every quarter so the install media picks
 
 ## Schedule
 
-Run the operational timer on your automation runner on the 2nd day of March, June, September, and December, after the quarterly package/update automation has had time to publish.
+Run the operational timer on your automation runner on the 2nd day of January, April, July, and October, after the quarterly package/update automation has had time to publish.
 
 The timer intentionally runs after the quarterly update target day. That gives the package/update automation time to publish the quarterly set first, then the ISO rebuild pulls `origin/main` and bakes those updates into a new candidate image.
 
@@ -27,7 +27,7 @@ Run manually from the automation runner:
 Useful overrides:
 
 ```bash
-MI_LINUX_RELEASE_DATE=2026-09-01 /path/to/mi-linux/scripts/quarterly-iso-rebuild.sh
+MI_LINUX_RELEASE_DATE=2026-10-01 /path/to/mi-linux/scripts/quarterly-iso-rebuild.sh
 MI_LINUX_BUILDER_HOST=builder.example.internal /path/to/mi-linux/scripts/quarterly-iso-rebuild.sh
 ```
 

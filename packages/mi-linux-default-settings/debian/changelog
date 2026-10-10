@@ -1,3 +1,17 @@
+mi-linux-default-settings (0.1.0-15) forky-founder; urgency=medium
+
+  * Move the Founder channel to the 2026-10-01 MI Linux cycle.
+  * Pin Founder Debian snapshot sources to 2026-04-01 and tester examples to 2026-10-01.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Fri, 09 Oct 2026 20:45:00 -0400
+
+mi-linux-default-settings (0.1.0-14) forky-founder; urgency=medium
+
+  * Match MannLinuxLaptop current browser and terminal defaults.
+  * Pin Chrome and Edge, remove Firefox/XFCE Terminal launchers, and keep GNOME Terminal only.
+
+ -- Mann Industries <mi-linux-maintainers@mannindustries.org>  Sun, 04 Oct 2026 02:20:00 -0400
+
 mi-linux-default-settings (0.1.0-13) forky-founder; urgency=medium
 
   * Use installed Adwaita dark/icon themes so live desktop menus remain readable.

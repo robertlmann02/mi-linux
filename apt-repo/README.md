@@ -34,7 +34,7 @@ The publisher:
 5. Generates separate `Packages`, `Packages.gz`, `Release`, `InRelease`, and `Release.gpg` for `forky-founder` and `forky-tester`.
 6. Leaves raw Debian Testing/Forky out of the default installed MI Linux sources.
 
-Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-09-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-03-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
+Installed systems also ship Debian snapshot sources for the operating-system packages. For the 2026-10-01 Founder cycle, `/etc/apt/sources.list.d/debian.sources` points at the 2026-04-01 Debian and Debian Security snapshots, while the current-quarter tester snapshot remains commented out for intentional opt-in only.
 
 The HTTPS host should serve `apt.mannindustries.org` from the deployed apt repository root, for example `/srv/mi-linux-apt`.
 

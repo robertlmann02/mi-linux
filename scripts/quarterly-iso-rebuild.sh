@@ -29,14 +29,19 @@ quarter_release_date() {
   python3 - <<'PY'
 import datetime as dt
 now = dt.date.today()
-q_months = [3, 6, 9, 12]
-# Timer runs in quarter months. If manually run in another month, pick next quarter.
+q_months = [1, 4, 7, 10]
+# Timer runs in quarter months. If manually run later in a quarter month,
+# keep the current quarter's release date instead of jumping ahead.
+if now.month in q_months:
+    print(dt.date(now.year, now.month, 1).isoformat())
+    raise SystemExit
+# If manually run in another month, pick the next quarterly release month.
 for m in q_months:
     if (now.month, now.day) <= (m, 1):
         print(dt.date(now.year, m, 1).isoformat())
         break
 else:
-    print(dt.date(now.year + 1, 3, 1).isoformat())
+    print(dt.date(now.year + 1, 1, 1).isoformat())
 PY
 }
 

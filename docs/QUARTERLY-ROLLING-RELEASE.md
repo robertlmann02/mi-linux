@@ -7,8 +7,8 @@ MI Linux uses a quarterly rolling-release model with two channels:
 
 ## Cadence
 
-- First automated quarterly update target: 2026-09-01.
-- Recurring months: March, June, September, December.
+- First automated quarterly update target: 2026-10-01.
+- Recurring months: January, April, July, October.
 - Release day: the 1st day of the quarter month.
 - Default installed channel: `forky-founder`.
 - Optional early/current channel: `forky-tester`.
@@ -24,18 +24,18 @@ Examples:
 
 | Release date | `forky-tester` target | `forky-founder` target |
 |---|---:|---:|
-| 2026-09-01 | 2026-09-01 current Testing/Forky | 2026-03-01 delayed Testing/Forky |
-| 2026-12-01 | 2026-12-01 current Testing/Forky | 2026-06-01 delayed Testing/Forky |
-| 2027-03-01 | 2027-03-01 current Testing/Forky | 2026-09-01 delayed Testing/Forky |
+| 2026-10-01 | 2026-10-01 current Testing/Forky | 2026-04-01 delayed Testing/Forky |
+| 2027-01-01 | 2027-01-01 current Testing/Forky | 2026-07-01 delayed Testing/Forky |
+| 2027-04-01 | 2027-04-01 current Testing/Forky | 2026-10-01 delayed Testing/Forky |
 
 This keeps MI Linux rolling, but not raw rolling for normal users. Testers can validate the current quarterly package set first; normal Founder-channel users get the same general stream after a six-month buffer.
 
 ## Installed apt sources
 
-Founder systems use Debian snapshot URLs for the delayed target, not live `deb.debian.org` Forky. For the 2026-09-01 cycle, the default Debian sources point to:
+Founder systems use Debian snapshot URLs for the delayed target, not live `deb.debian.org` Forky. For the 2026-10-01 cycle, the default Debian sources point to:
 
-- `https://snapshot.debian.org/archive/debian/20260301T000000Z/` for `forky` and `forky-updates`.
-- `https://snapshot.debian.org/archive/debian-security/20260301T000000Z/` for `forky-security`.
+- `https://snapshot.debian.org/archive/debian/20260401T000000Z/` for `forky` and `forky-updates`.
+- `https://snapshot.debian.org/archive/debian-security/20260401T000000Z/` for `forky-security`.
 
 Apt `Check-Valid-Until` is disabled for those snapshot sources because historical snapshot Release files are intentionally past their original validity window. The current-quarter tester snapshot is documented in the same source file but remains commented out unless a user intentionally opts in.
 

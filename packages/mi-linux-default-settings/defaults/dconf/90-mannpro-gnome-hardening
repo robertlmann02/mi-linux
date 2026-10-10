@@ -2,7 +2,7 @@
 enabled-extensions=["dash-to-panel@jderose9.github.com", "ubuntu-appindicators@ubuntu.com", "blur-my-shell@aunetx", "arcmenu@arcmenu.com", "user-theme@gnome-shell-extensions.gcampax.github.com", "ding@rastersoft.com"]
 disable-user-extensions=false
 disable-extension-version-validation=false
-favorite-apps=["xfce4-terminal.desktop", "org.gnome.Nautilus.desktop", "firefox-esr.desktop", "onlyoffice-desktopeditors.desktop", "org.gnome.Geary.desktop", "org.gnome.Rhythmbox3.desktop", "org.gnome.Settings.desktop", "org.gnome.Software.desktop", "org.gnome.Boxes.desktop", "virt-manager.desktop"]
+favorite-apps=['google-chrome.desktop','microsoft-edge.desktop','org.gnome.Evolution.desktop','org.gnome.Nautilus.desktop','org.gnome.Software.desktop','org.gnome.TextEditor.desktop','org.gnome.Calculator.desktop','org.gnome.Yelp.desktop']
 
 [org/gnome/desktop/interface]
 gtk-theme="Adwaita-dark"
@@ -13,8 +13,8 @@ color-scheme="prefer-dark"
 button-layout="appmenu:minimize,maximize,close"
 
 [org/gnome/desktop/background]
-picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
-picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_carbon_mark_3840x2160.jpg"
+picture-uri="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
+picture-uri-dark="file:///usr/share/backgrounds/mannindustries/mi_linux_04_studio_one_3840x2160.jpg"
 picture-options="zoom"
 
 [org/gnome/desktop/screensaver]
