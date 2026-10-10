@@ -45,8 +45,7 @@ gnome-control-center
 gnome-software
 gnome-software-plugin-flatpak
 flatpak
-microsoft-edge-stable
-google-chrome-stable
+firefox-esr
 onlyoffice-desktopeditors
 gnome-tweaks
 geary
