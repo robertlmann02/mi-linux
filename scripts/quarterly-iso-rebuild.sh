@@ -90,9 +90,9 @@ printf 'builder_head='
 git rev-parse HEAD
 ./scripts/validate-tree.sh
 python3 ./scripts/mi-linux-quarterly-update.py --release-date \"$RELEASE_DATE\" --mode prepare
-./auto/clean || true
-./auto/config
-./auto/build
+sudo -n ./auto/clean || true
+sudo -n ./auto/config
+sudo -n ./auto/build
 mkdir -p \"$REMOTE_OUT\"
 iso=''
 for candidate in live-image-amd64.hybrid.iso mi-linux-live-image-amd64.hybrid.iso mi-linux-forky-founder-amd64.iso; do
