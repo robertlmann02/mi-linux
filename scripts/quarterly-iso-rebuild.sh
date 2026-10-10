@@ -82,6 +82,7 @@ if [ ! -d \"$BUILDER_REPO/.git\" ]; then
   git clone \"$REMOTE_URL\" \"$BUILDER_REPO\"
 fi
 cd \"$BUILDER_REPO\"
+sudo -n chown -R \"$(id -u):$(id -g)\" \"$BUILDER_REPO\"
 git fetch origin \"$BRANCH\"
 git checkout \"$BRANCH\"
 git reset --hard \"origin/$BRANCH\"
